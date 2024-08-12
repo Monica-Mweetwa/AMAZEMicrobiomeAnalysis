@@ -1,0 +1,278 @@
+---
+title: "AMAZE - Baseline Characteristics (stool vs Duoenal Microbiome)"
+Author: Monica N Mweetwa
+Date: 17/04/2024
+---
+1. Set working directory
+```{r setup}
+   # knitr::opts_knit$set(root.dir = normalizePath("C:/Users/Monica/Dropbox/AMAZE")) 
+    knitr::opts_knit$set(root.dir = normalizePath("~/Library/CloudStorage/Dropbox/AMAZE")) 
+```
+
+2. Load necessary packages 
+```{r include=FALSE}
+pacman::p_load(phyloseq, 
+               Maaslin2,
+               ggplot2, 
+               ggpubr,
+               tidyverse,
+               microViz,
+               MicrobiomeStat)
+source("Code/3. SupplementationAnalysis/D. OrdPlot_Functions.R")
+```
+
+3. Load Data
+```{r}
+load("Inputs/RData/AMAZE_ps_filtered_pairs.RData")
+amaze_dup
+amaze_dup2 <- subset_samples(amaze_dup, Timepoint == "Pre-Intervention")
+```
+
+4. Analysis
+
+A. Beta Diversity
+```{r}
+set.seed(1234)
+#permanova test on bray curtis distances
+library(vegan)
+dist <- phyloseq::distance(amaze_dup2, method="bray")
+metadata <- data.frame(sample_data(amaze_dup2))
+adonis2(dist ~ Sample.Type, data = metadata, na.action = na.omit) #pval = 0.001
+  
+beta.plot1 <- amaze_dup2 %>%
+  tax_transform("clr", rank = "Genus") %>%
+  ord_calc(method = "PCA") %>%
+  ord_plot(color = "Sample.Type", plot_taxa = 1:20, size = 5, auto_caption = NA, scaling = "none", expand = TRUE,
+           tax_lab_style = tax_lab_style(type = "text", size = 4, check_overlap = TRUE)) +
+  scale_colour_brewer(palette = "Dark2") +
+  labs(color = "Sample Type", shape = "Timepoint") +
+  theme_bw()
+#Add PERMANOVA to beta.plot2
+beta.plot22 <- beta.plot1 + 
+  annotate("text", x = 0.01, y = 0.2, 
+  label = paste("PERMANOVA Test: p value = 0.001"),
+  size = 5) +
+  scale_colour_brewer(palette = "Dark2") +
+  scale_fill_brewer(palette = "Dark2") 
+ggsave("Outputs/2. Baseline/SampleType/BetaPlot.SampleType.png", plot = beta.plot22, dpi = 600, device = "png", width = 30, height = 15, units = "cm")
+#save for combined plots
+save(beta.plot22, file = "Inputs/RData/ForCombinedPlots/BetaPlot_SampleType.RData")
+```
+
+B. Differential abundance between duodenal and stool samples
+```{r}
+mas_P <- Maaslin2(
+  input_data = data.frame(otu_table(amaze_dup2)),
+  input_metadata = data.frame(sample_data(amaze_dup2)),
+  output = "Outputs/2. Baseline/SampleType/Diff_Abund",
+  min_abundance = 0.001,
+  min_prevalence = 0.05,
+  normalization = "TMM",
+  transform = "NONE",
+  analysis_method = "NEGBIN",
+  max_significance = 0.1,
+  fixed_effects = c("Sample.Type"),
+  random_effects = "PID",
+  correction = "BY",
+  standardize = FALSE,
+  cores = 1,
+  plot_heatmap = TRUE,
+  plot_scatter = TRUE,
+  heatmap_first_n = 50)
+pp.stool <- mas_P[["results"]]
+notsig <- pp.stool %>%
+  mutate(sam.type = ifelse(.$coef > 0,  "Stool", "Duodenal Aspirate"),
+         sam.type = (ifelse(.$qval > 0.05 , "Common", sam.type)),
+         coef.exp = exp(coef),
+         logfold2 = log2(coef.exp),
+         logfold2.2 = ifelse(logfold2 < 0, logfold2*-1, logfold2)) 
+
+write_csv(notsig, "Outputs/2. Baseline/SampleType/lda_sam.csv")
+
+SigBact <- pp.stool %>%
+  mutate(sam.type = ifelse(.$coef > 0,  "Stool", "Duodenal Aspirate"),
+         sam.type = (ifelse(.$qval > 0.05 , "Common", sam.type)),
+         coef.exp = exp(coef),
+         logfold2 = log2(coef.exp),
+         logfold2.2 = ifelse(logfold2 < 0, logfold2*-1, logfold2)) %>%
+  filter(qval < 0.05)
+write_csv(SigBact, "Outputs/2. Baseline/SampleType/lda_sam_unique.csv")
+
+lda.sam <- ggpubr::ggbarplot(SigBact, x = "feature", y = "logfold2.2",
+          fill = "sam.type",           # change fill color by mpg_level
+          color = "white",            # Set bar border colors to white
+          palette = "Dark2",            # jco journal color palett. see ?ggpar
+          sort.val = "asc",           # Sort the value in ascending order
+          sort.by.groups = T,     # Don't sort inside each group
+          x.text.angle = 90,          # Rotate vertically x axis texts
+          ylab = "Log2Fold Change",
+          xlab = "Taxon",
+          legend.title = "Sample Type",
+          rotate = TRUE,
+          ggtheme = theme_classic()
+          ) 
+ggsave("Outputs/2. Baseline/SampleType/lda.sam.png", plot = lda.sam, dpi = 600, device = "png", width = 18, height = 15, units = "cm")
+save(lda.sam, file = "Inputs/RData/ForCombinedPlots/Diff_AbundBaseline_SampleType.RData")
+```
+
+C. Associations between stool and duodenal microbiome
+```{r}
+load("Inputs/AMAZE_ps_filtered_pairs.RData")
+amaze_dup2 <- subset_samples(amaze_dup, Timepoint == "Pre-Intervention")
+
+tax_t <- as.data.frame(amaze_dup2@otu_table) 
+met_t <- as.data.frame(amaze_dup2@sam_data)
+
+
+tax_2 <- tax_t %>%
+  rownames_to_column(var = "Sample")
+q <- ps_melt(amaze_dup2)
+qs <- q%>%
+  select(Sample, PID, InterventionArm, Timepoint, hiv_status, sex_c, Sample.Type) %>%
+  #filter( %>%
+  unique()
+
+for_plot <- left_join(qs, tax_2)
+for_plot2 <- for_plot %>%
+  select(-Sample) %>%
+  pivot_wider(names_from = Sample.Type, 
+              values_from = -c(PID, InterventionArm, Timepoint, hiv_status, sex_c, Sample.Type),
+              names_glue = "{.value}_{Sample.Type}")
+for_plot2[is.na(for_plot2)] <- 0
+
+library(corrplot)
+for_corr <- for_plot2 %>%
+  select(-c(PID, InterventionArm, Timepoint, hiv_status, sex_c)) %>%
+  select(where(~ sum(.) != 0))
+
+
+#rename taxa
+num_rows <- 394
+seq_let <- rep (letters, length.out = num_rows)
+
+forcorrr_t <- t(for_corr)
+forcorr2 <- forcorrr_t %>%
+  as.data.frame()%>%
+  rownames_to_column(var= "tax") %>%
+  mutate(let_col = paste0("tax_",1:n()))
+write.csv(forcorr2 %>%
+            select(tax, let_col), "Outputs/2. Baseline/SampleType/microbe_names.csv")
+
+forcorr3 <- forcorr2 %>%
+  select(-tax)  %>%
+  column_to_rownames(var = "let_col")
+forcorr2_t <- t(forcorr3)  
+
+
+#Calculate correlation coefficient
+library(psych)
+library(tidyverse)
+adj.dat <- corr.test(forcorr2_t, method = "spearman", adjust = "holm")
+write.csv(adj.dat$ci, "Outputs/2. Baseline/SampleType/microbe_cor_pval.csv")
+write.csv(adj.dat$ci2, "Outputs/2. Baseline/SampleType/microbe_cor_pval_adjust.csv")
+write.csv(adj.dat$r, "Outputs/2. Baseline/SampleType/microbe_cor_rvalues.csv")
+
+dat3 <- adj.dat$ci %>%
+  rownames_to_column(var = "tax0") %>%
+  separate(tax0, into = c("tax1", "tax2"), sep = "-") %>%
+  separate(tax1, into = c("tx01", "tx1"), sep = "_") %>%
+  separate(tax2, into = c("tx02", "tx2"), sep = "_") %>%
+  select(-tx01, -tx02) %>%
+  filter(p < 0.05) %>%
+  filter(p != 0)
+
+dd2 <- forcorr2 %>%
+  select(tax, let_col) %>%
+  separate(let_col, into = c("tx01", "tx1"), sep = "_") %>%
+  select(-tx01)
+
+data_fin <- merge(dat3, dd2, by = "tx1", all = T)
+
+dd3 <- forcorr2 %>%
+  select(tax, let_col) %>%
+  separate(let_col, into = c("tx01", "tx2"), sep = "_") %>%
+  select(-tx01) %>%
+  rename(tax2 = tax)
+data_fin2 <- merge(data_fin, dd3, by = "tx2", all = T)
+
+term1 <- "Stool"
+term2 <- "Duodenal Aspirate"
+data_fin2 <- data_fin2%>%
+  filter(!is.na(tx2)) %>%
+  filter((str_detect(tax, term1) & str_detect(tax2, term2)) |
+           (str_detect(tax, term2) & str_detect(tax2, term1)))
+
+write.csv(data_fin2, "Outputs/2. Baseline/SampleType/microbe_cor_sig_duod_stool.csv")
+```
+
+D. Pathway differences 
+This analysis take output from picrust2 as input that was run in a conda environment (picrust-src) using the follwoing command:
+picrust2_pipeline.py -s ~/Dropbox/AMAZE/Inputs/Picrust2/AMAZE_sequences.fna \
+-i ~/Dropbox/AMAZE/Inputs/Picrust2/AMAZE_biom.biom \
+-o ~/Dropbox/AMAZE/Outputs/'4. Picrust2'/AMAZE_out_picrust -p 1
+
+This produced metagenome and pathway predictions based on the abundance of 16 taxa in our dataset. This can be analysed similar to taxonomic abundance analysis using ggpicrust2
+
+```{r}
+library(MicrobiomeProfiler)
+library(ggpicrust2)
+library(readr)
+library(Maaslin2)
+#import data
+#pathways abundance
+pathway_dat <- read.delim("Outputs/4. Picrust2/AMAZE_out_picrust/pathways_out/path_abun_unstrat.tsv")%>%
+  column_to_rownames(var = "pathway")
+names(pathway_dat) <- substring(names(pathway_dat),2)
+
+#metadata
+metadata <- read_csv("Inputs/Metadata/metadata_paired_withELISA.csv") %>%
+  column_to_rownames(var = "SampleID2") %>%
+  filter(Timepoint == "Pre-Intervention")
+
+#Get pathway descriptions and create feature.ann (pathway taxonomy)
+library(ggpicrust2)
+path_df <- pathway_annotation(
+  file = "Outputs/4. Picrust2/AMAZE_out_picrust/pathways_out/path_abun_unstrat.tsv",
+  pathway = "MetaCyc",
+  daa_results_df = path_df,
+  ko_to_kegg = FALSE
+)
+#add pathway description to file
+feature_ann <- path_df %>% 
+  select(pathway, description) %>% 
+  mutate(pathID = pathway) %>%
+  column_to_rownames(var = "pathway")
+
+mas_P <- Maaslin2(
+  input_data = pathway_dat,
+  input_metadata = metadata,
+  output = "Outputs/2. Baseline/SampleType/Picrust2",
+  min_abundance = 0.001,
+  min_prevalence = 0.05,
+  normalization = "TMM",
+  transform = "NONE",
+  analysis_method = "NEGBIN",
+  max_significance = 0.1,
+  fixed_effects = c("Sample.Type"),
+  correction = "BY",
+  standardize = FALSE,
+  cores = 1,
+  plot_heatmap = TRUE,
+  plot_scatter = TRUE,
+  heatmap_first_n = 50)
+res <- mas_P[["results"]]
+notsig <- res %>%
+  mutate(sam.type = ifelse(.$coef > 0,  "Stool", "Duodenal Aspirate"),
+         sam.type = (ifelse(.$qval > 0.05 , "Common", sam.type)),
+         coef.exp = exp(coef),
+         logfold2 = log2(coef.exp),
+         logfold2.2 = ifelse(logfold2 < 0, logfold2*-1, logfold2)) 
+#replace the dots with high-phen
+notsig2 <- notsig %>%
+  mutate(feature = str_replace_all(feature, "\\.", "-"))
+
+write_csv(notsig2, "Outputs/2. Baseline/SampleType/lda_pathway.csv")
+
+#No pathway plot#
+```
+

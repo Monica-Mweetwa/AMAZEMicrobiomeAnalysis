@@ -1,0 +1,70 @@
+---
+title: "2. Alpha diversity"
+Author: Monica Mweetwa
+Date: 20th May 2024
+---
+
+1. Set working directory
+```{r setup}
+    #knitr::opts_knit$set(root.dir = normalizePath("C:/Users/Monica/Dropbox/AMAZE")) 
+    knitr::opts_knit$set(root.dir = normalizePath("~/Library/CloudStorage/Dropbox/AMAZE")) 
+```
+
+2. Load necessary packages 
+```{r include=FALSE}
+library(btools)
+library(ggpubr) 
+library(ggh4x)
+library(ggplot2)
+library(ggbeeswarm)
+library(microViz)
+library(phyloseq)
+library(patchwork)
+library(tidyverse)
+```
+
+3. Load data
+```{r}
+load("Inputs/RData/AMAZE_ps_filtered_pairs.RData")
+amaze_dup
+```
+
+```{r}
+##Estimate Faith's PD Richness that also takes into account phylogenetic relationship 
+library(btools)
+library(tidyverse)
+pd <- estimate_pd(amaze_dup)
+##combine with metadata 
+ad = sample_data(amaze_dup)
+AlphaDiv = merge(pd, ad, by = 'row.names')
+
+write.csv(AlphaDiv, "Outputs/3. SupplementationAnalysis/AlphaDiversity/Alpha_div.csv")
+
+#Plot alpha diversity
+cols2 <- c("Pre-Intervention" = "orange", "Post-Intervention" = "blue")
+int_names <- c("AA", "AA+MM", "MM", "PP")
+library(ggplot2)
+library(ggbeeswarm) #for geom_quasirandom
+library(ggpubr) #for stat_compare_means
+alpha.plot <- ggplot(AlphaDiv, aes(InterventionArm, PD, fill = Timepoint)) + 
+  geom_boxplot(aes(fill = Timepoint), outlier.shape = NA, size = 0.8, width = 0.8) +
+  geom_quasirandom(size = 0.8, color = "black") + 
+  scale_x_discrete(labels = int_names) +
+  theme_bw() + 
+  theme_classic() +
+  scale_fill_manual(values = cols2) +
+  facet_wrap(~Sample.Type, nrow = 1) + 
+  stat_compare_means( label = "p.format", paired = T)+ 
+  labs(x = " ", 
+       y = "Faiths PD")  +
+  theme(axis.text.x = element_text(size = 14, vjust = 0.5),
+        axis.text.y = element_text(size = 14),
+        plot.title = element_text(size = 14, hjust = 0.5),
+        axis.title = element_text(size = 14))
+
+#Save plot
+ggsave("Outputs/3. SupplementationAnalysis/AlphaDiversity/AlphaPlot.png", plot = alpha.plot, dpi = 600, device = "png", width = 30, height = 15, units = "cm")
+
+#save for combined plots
+save(alpha.plot, file = "Inputs/RData/ForCombinedPlots/AlphaPlotMain.RData")
+```

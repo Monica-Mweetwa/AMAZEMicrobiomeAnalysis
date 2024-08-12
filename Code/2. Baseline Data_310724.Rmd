@@ -1,0 +1,567 @@
+---
+title: "AMAZE - Baseline Characteristics"
+Author: Monica N Mweetwa
+Date: 17/04/2024
+---
+
+1. Set working directory
+```{r setup}
+   # knitr::opts_knit$set(root.dir = normalizePath("C:/Users/Monica/Dropbox/AMAZE")) 
+    knitr::opts_knit$set(root.dir = normalizePath("~/Library/CloudStorage/Dropbox/AMAZE")) 
+```
+
+2. Load necessary packages 
+```{r include=FALSE}
+#library(btools)
+library(ggpubr) 
+library(ggh4x)
+library(ggplot2)
+library(ggbeeswarm)
+library(microViz)
+library(phyloseq)
+library(patchwork)
+library(tidyverse)
+```
+
+3. Load data
+```{r}
+load("Inputs/RData/AMAZE_ps_filtered.RData")
+ps_filtered
+```
+
+############################ baseline characteristics ################################
+A. Relative abundance - phylum
+```{r}
+#1. Aspirates
+ps_asp <- subset_samples(ps_filtered, Sample.Type == "Duodenal Aspirate")
+ps_asp.pre <- subset_samples(ps_asp, Timepoint == "Pre-Intervention")
+# Transform to relative abundance
+AID_norm <- transform_sample_counts(ps_asp.pre, function(x) 100 * x/sum(x))
+AID_Orders <- AID_norm  %>%
+  tax_glom(taxrank = "Phylum") %>%                     # agglomerate taxa at order level
+  psmelt() %>%                                        # Melt phyloseq object to long format for producing graphics with ggplot2
+  filter(Abundance > 1.0)  %>%                        # Filter out phyla below 1% in each sample
+  arrange(desc(Phylum))
+# Sum remaining taxa with a relative abundance < 1% and make a new dataframe
+Remainders <- (AID_Orders) %>%
+  group_by(PID) %>% 
+  summarise(Abundance = (100-sum(Abundance))) %>% 
+  as.data.frame()
+Remainders$Order<-"Phyla < 1%"
+Remainders$Phylum<-"_Phyla < 1%"
+Remainders$Class<-"_Phyla < 1%"
+Remainders$Kingdom<-"Bacteria"
+# Join dataframes
+AID_barchart <- full_join(AID_Orders,Remainders)
+# reorder based on phylogeny
+AID_barchart_asp <- AID_barchart[with(AID_barchart, order(Phylum)),]
+
+#2. Stool
+ps_stool <- subset_samples(ps_filtered, Sample.Type == "Stool")
+ps_stool.pre <- subset_samples(ps_stool, Timepoint == "Pre-Intervention")
+# Transform to relative abundance
+AID_norm <- transform_sample_counts(ps_stool.pre, function(x) 100 * x/sum(x))
+AID_Orders <- AID_norm  %>%
+  tax_glom(taxrank = "Phylum") %>%                     # agglomerate taxa at order level
+  psmelt() %>%                                        # Melt phyloseq object to long format for producing graphics with ggplot2
+  filter(Abundance > 1.0)  %>%                        # Filter out orders below 1% in each sample
+  arrange(desc(Phylum))
+# Sum remaining taxa with a relative abundance < 1% and make a new dataframe
+Remainders <- (AID_Orders) %>%
+  group_by(PID) %>% 
+  summarise(Abundance = (100-sum(Abundance))) %>% 
+  as.data.frame()
+Remainders$Order<-"Phyla < 1%"
+Remainders$Phylum<-"_Phyla < 1%"
+Remainders$Class<-"_Phyla < 1%"
+Remainders$Kingdom<-"Bacteria"
+# Join dataframes
+AID_barchart <- full_join(AID_Orders,Remainders)
+# reorder based on phylogeny
+AID_barchart_stool <- AID_barchart[with(AID_barchart, order(Phylum)),]
+
+#3. plot
+palette1 <- c("_Phyla < 1%" = "#808080", 
+          "Actinobacteriota" = "#E41A1C", 
+          "Bacteroidota" = "#FF8C00", 
+          "Campilobacterota" = "#4DAF4A",  
+          "Desulfobacterota" = "#984EA3", 
+          "Firmicutes" = "#FFC0CB", 
+          "Fusobacteriota" = "#40E0D0", 
+          "Proteobacteria" = "#990000", 
+          "Elusimicrobiota" = "#4B0082", 
+          "Spirochaetota" = "#003380")
+
+asp.plot <- ggplot(AID_barchart_asp, aes(x = factor(PID), y = Abundance, fill = Phylum)) +
+  geom_bar(position="stack", stat="identity") +
+  labs(x = "Samples", y = "Relative Abundance", title = "A) DUODENAL ASPIRATE") +
+  scale_fill_manual(values = palette1) +
+  theme_classic2() + 
+  coord_flip() +
+  theme(axis.ticks.y = element_blank())
+
+stool.plot <- ggplot(AID_barchart_stool, aes(x = factor(PID), y = Abundance, fill = Phylum)) +
+  geom_bar(position="stack", stat="identity") +
+  labs(x = "Samples", y = "Relative Abundance",  title = "B) STOOL") +
+  scale_fill_manual(values = palette1) +
+  theme_classic2() + 
+  coord_flip() +
+  theme(axis.ticks.y = element_blank())
+
+#combine and save
+library(ggpubr)
+baseline_relplot <- ggarrange(asp.plot, stool.plot, 
+                              common.legend = TRUE, ncol = 1)
+
+ggsave("Outputs/2. Baseline/SuppFig3.png", plot = baseline_relplot, dpi = 600, device = "png", width = 45, height = 35, units = "cm")
+save(asp.plot, stool.plot, file = "Inputs/RData/ForCombinedPlots/Baseline_phyla.RData")
+```
+
+2. Relative abundance - Genus
+```{r}
+#1. Aspirates
+ps_asp <- subset_samples(ps_filtered, Sample.Type == "Duodenal Aspirate")
+ps_asp.pre <- subset_samples(ps_asp, Timepoint == "Pre-Intervention")
+# Transform to relative abundance
+AID_norm <- transform_sample_counts(ps_asp.pre, function(x) 100 * x/sum(x))
+AID_Orders <- AID_norm  %>%
+  tax_glom(taxrank = "Genus") %>%                     # agglomerate taxa at order level
+  psmelt() %>%                                        # Melt phyloseq object to long format for producing graphics with ggplot2
+  filter(Abundance > 20)  %>%                        # Filter out phyla below 1% in each sample
+  arrange(desc(Genus))
+# Sum remaining taxa with a relative abundance < 1% and make a new dataframe
+Remainders <- (AID_Orders) %>%
+  group_by(PID) %>% 
+  summarise(Abundance = (100-sum(Abundance))) %>% 
+  as.data.frame()
+Remainders$Genus<-"-Genus < 20%"
+Remainders$Family<-"Genus < 1%"
+Remainders$Order<-"Genus < 1%"
+Remainders$Phylum<-"_Genus < 1%"
+Remainders$Class<-"_Genus < 1%"
+Remainders$Kingdom<-"Bacteria"
+# Join dataframes
+AID_barchart <- full_join(AID_Orders,Remainders)
+# reorder based on phylogeny
+AID_barchart_asp <- AID_barchart[with(AID_barchart, order(Phylum)),]
+
+#2. Stool
+ps_stool <- subset_samples(ps_filtered, Sample.Type == "Stool")
+ps_stool.pre <- subset_samples(ps_stool, Timepoint == "Pre-Intervention")
+# Transform to relative abundance
+AID_norm <- transform_sample_counts(ps_stool.pre, function(x) 100 * x/sum(x))
+AID_Orders <- AID_norm  %>%
+  tax_glom(taxrank = "Genus") %>%                     # agglomerate taxa at order level
+  psmelt() %>%                                        # Melt phyloseq object to long format for producing graphics with ggplot2
+  filter(Abundance > 20)  %>%                        # Filter out orders below 1% in each sample
+  arrange(desc(Genus))
+# Sum remaining taxa with a relative abundance < 1% and make a new dataframe
+Remainders <- (AID_Orders) %>%
+  group_by(PID) %>% 
+  summarise(Abundance = (100-sum(Abundance))) %>% 
+  as.data.frame()
+Remainders$Genus<-"-Genus < 20%"
+Remainders$Family<-"Genus < 1%"
+Remainders$Order<-"Genus < 1%"
+Remainders$Phylum<-"_Genus < 1%"
+Remainders$Class<-"_Genus < 1%"
+Remainders$Kingdom<-"Bacteria"
+# Join dataframes
+AID_barchart <- full_join(AID_Orders,Remainders)
+# reorder based on phylogeny
+AID_barchart_stool <- AID_barchart[with(AID_barchart, order(Phylum)),]
+
+#3. plot
+palette2 <- c('Alloprevotella' = "#E41A1C", 
+              'Bacteroides' = "#FF8C00",
+              'Burkholderia-Caballeronia-Paraburkholderia' ="#4DAF4A", 
+              'Corynebacterium' = "#FFC0CB",
+              'Escherichia-Shigella' = "#4B0082",
+              'Faecalibacterium' = "#EE82EE", 
+              'Gemella' = "#00FFFF", 
+              '-Genus < 20%' ="gray", 
+              'Haemophilus' ="#8F7C00", 
+              'Methylobacterium-Methylorubrum' ="#003380",
+              'Neisseria' = "#426600", 
+              'Peptostreptococcus' ="#FF00FF", 
+              'Prevotella' = "#FFFF00",
+              'Ralstonia' ="#740AFF", 
+              'Streptococcus' ="#990000",
+              'Succinivibrio' = "#FF6A6A")
+            
+asp.plot <- ggplot(AID_barchart_asp, aes(x = factor(PID), y = Abundance, fill = Genus)) +
+  geom_bar(position="stack", stat="identity") +
+  labs(x = "Samples", y = "Relative Abundance", title = "A) DUODENAL ASPIRATE") +
+  scale_fill_manual(values = palette2) +
+  theme_classic2() + 
+  coord_flip() +
+  theme(axis.ticks.y = element_blank())
+
+stool.plot <- ggplot(AID_barchart_stool, aes(x = factor(PID), y = Abundance, fill = Genus)) +
+  geom_bar(position="stack", stat="identity") +
+  labs(x = "Samples", y = "Relative Abundance",  title = "B) STOOL") +
+  scale_fill_manual(values = palette2) +
+  theme_classic2() + 
+  coord_flip() +
+  theme(axis.ticks.y = element_blank())
+
+#combine and save
+library(ggpubr)
+baseline_relplot <- ggarrange(asp.plot, stool.plot, common.legend = TRUE, legend = "bottom",ncol = 2)
+
+ggsave("Outputs/2. Baseline/Fig1.png", plot = baseline_relplot, dpi = 600, device = "png", width = 45, height = 35, units = "cm")
+save(asp.plot, stool.plot, file = "Inputs/RData/ForCombinedPlots/Baseline_genus.RData")
+```
+
+3. Alpha Diversity - Faiths PD metric association with sample characteristics
+```{r}
+#function to create linear regression models
+lm_uni_func = function(equation,data){
+  lm_mod = lm(formula = equation, data = data) #family must be binomial if y-values are between 0 & 1
+  mod <- summary(lm_mod)
+  coef = as.data.frame(mod[["coefficients"]])
+  coef <- coef %>%
+    mutate(lwr=round(Estimate-1.96*`Std. Error`,3),
+           upr=round(Estimate+1.96*`Std. Error`,3),
+           `95% CI` = paste0("(",lwr,", ",upr,")")) %>%
+    rownames_to_column(var = "Term") %>%
+    select(-lwr, -upr)%>%
+    filter(Term != "(Intercept)")
+  print(coef)
+}
+
+##Estimate Faith's PD Richness that also takes into account phylogenetic relationship 
+library(btools)
+library(tidyverse)
+#1. Duod
+load("Inputs/RData/AMAZE_ps_filtered.RData")
+amaze_dup_base <- subset_samples(ps_filtered, Timepoint == "Pre-Intervention")
+amaze_dup_base_duod <- subset_samples(amaze_dup_base, Sample.Type == "Duodenal Aspirate")
+pd <- estimate_pd(amaze_dup_base_duod)
+##combine with metadata 
+ad = sample_data(amaze_dup_base_duod)
+AlphaDiv_asp = merge(pd, ad, by = 'row.names')
+
+#Implement function
+lm_age_duod <- lm_uni_func(equation = PD ~ baseline_age, data = AlphaDiv_asp)
+lm_bmi_duod <-lm_uni_func(equation = PD ~ bmi_nustart, data = AlphaDiv_asp)
+lm_sex_duod <- lm_uni_func(equation = PD ~ sex_c, data = AlphaDiv_asp)
+lm_hiv_duod <- lm_uni_func(equation = PD ~ hiv_status, data = AlphaDiv_asp)
+lm_vw_duod <- lm_uni_func(equation = PD ~ VW_mean, data = AlphaDiv_asp)
+lm_cd_duod <- lm_uni_func(equation = PD ~ CD_mean, data = AlphaDiv_asp) 
+lm_vh_duod <- lm_uni_func(equation = PD ~ VH_mean, data = AlphaDiv_asp)
+lm_cle_duod <- lm_uni_func(equation = PD ~ CLE_Fields, data = AlphaDiv_asp)
+lm_crp_duod <- lm_uni_func(equation = PD ~ CRP, data = AlphaDiv_asp)
+lm_scd14_duod <- lm_uni_func(equation = PD ~ SCD14, data = AlphaDiv_asp)
+lm_glp2_duod <- lm_uni_func(equation = PD ~ GLP2, data = AlphaDiv_asp)
+lm_lps_duod <- lm_uni_func(equation = PD ~ LPS, data = AlphaDiv_asp)
+
+duod_alpha_stats <- Reduce(function(x,y) merge(x, y, all.x = TRUE, all.y = TRUE),
+       list(lm_age_duod, lm_bmi_duod, lm_sex_duod, lm_hiv_duod, lm_vw_duod, lm_cd_duod, lm_vh_duod, lm_cle_duod, lm_crp_duod, lm_scd14_duod, lm_glp2_duod, lm_lps_duod))
+write.csv(duod_alpha_stats, "Outputs/2. Baseline/duod_alpha_stats.csv")
+rm(list = ls()[grep("^lm", ls())])
+
+
+#2. Stool
+lm_uni_func = function(equation,data){
+  lm_mod = lm(formula = equation, data = data) #family must be binomial if y-values are between 0 & 1
+  mod <- summary(lm_mod)
+  coef = as.data.frame(mod[["coefficients"]])
+  coef <- coef %>%
+    mutate(lwr=round(Estimate-1.96*`Std. Error`,3),
+           upr=round(Estimate+1.96*`Std. Error`,3),
+           `95% CI` = paste0("(",lwr,", ",upr,")")) %>%
+    rownames_to_column(var = "Term") %>%
+    select(-lwr, -upr)%>%
+    filter(Term != "(Intercept)")
+  print(coef)
+}
+amaze_dup_base_stool <- subset_samples(amaze_dup_base, Sample.Type == "Stool")
+pd <- estimate_pd(amaze_dup_base_stool)
+##combine with metadata 
+ad = sample_data(amaze_dup_base_stool)
+AlphaDiv_stool = merge(pd, ad, by = 'row.names')
+
+#Implement 
+lm_age_duod <- lm_uni_func(equation = PD ~ baseline_age, data = AlphaDiv_stool)
+lm_bmi_duod <-lm_uni_func(equation = PD ~ bmi_nustart, data = AlphaDiv_stool)
+lm_sex_duod <- lm_uni_func(equation = PD ~ sex_c, data = AlphaDiv_stool)
+lm_hiv_duod <- lm_uni_func(equation = PD ~ hiv_status, data = AlphaDiv_stool)
+lm_vw_duod <- lm_uni_func(equation = PD ~ VW_mean, data = AlphaDiv_stool)
+lm_cd_duod <- lm_uni_func(equation = PD ~ CD_mean, data = AlphaDiv_stool) 
+lm_vh_duod <- lm_uni_func(equation = PD ~ VH_mean, data = AlphaDiv_stool)
+lm_cle_duod <- lm_uni_func(equation = PD ~ CLE_Fields, data = AlphaDiv_stool)
+lm_crp_duod <- lm_uni_func(equation = PD ~ CRP, data = AlphaDiv_stool)
+lm_scd14_duod <- lm_uni_func(equation = PD ~ SCD14, data = AlphaDiv_stool)
+lm_glp2_duod <- lm_uni_func(equation = PD ~ GLP2, data = AlphaDiv_stool)
+lm_lps_duod <- lm_uni_func(equation = PD ~ LPS, data = AlphaDiv_stool)
+
+stool_alpha_stats <- Reduce(function(x,y) merge(x, y, all.x = TRUE, all.y = TRUE),
+       list(lm_age_duod, lm_bmi_duod, lm_sex_duod, lm_hiv_duod, lm_vw_duod, lm_cd_duod, lm_vh_duod, lm_cle_duod, lm_crp_duod, lm_scd14_duod, lm_glp2_duod, lm_lps_duod))
+write.csv(stool_alpha_stats, "Outputs/2. Baseline/stool_alpha_stats.csv")
+rm(list = ls()[grep("^lm", ls())])
+rm(stool_alpha_stats)
+rm(duod_alpha_stats)
+rm(ad)
+rm(pd)
+rm(AlphaDiv_asp)
+rm(AlphaDiv_stool)
+```
+
+4. Beta Diversity - Bray Curtis distances association with sample characteristics
+```{r}
+load("Inputs/RData/AMAZE_ps_filtered.RData")
+amaze_dup_base <- subset_samples(ps_filtered, Timepoint == "Pre-Intervention")
+amaze_dup_base_duod <- subset_samples(amaze_dup_base, Sample.Type == "Duodenal Aspirate")
+
+permanova_func = function(equation,data){
+  dist = phyloseq::distance(data, method="bray")
+  metadata <- data.frame(sample_data(data))
+  require(vegan)
+  results <- adonis2(equation, data = metadata, na.action = na.omit)
+  coef <- results %>%
+    rownames_to_column(var = "Term") %>%
+    filter(Term != "Residual") %>%
+    filter(Term != "Total")
+  print(coef)
+}
+
+#1. Duodenal Aspirates
+age_duod <- permanova_func(equation = dist ~ baseline_age, data = amaze_dup_base_duod)
+bmi_duod <-permanova_func(equation = dist ~ bmi_nustart, data = amaze_dup_base_duod)
+sex_duod <- permanova_func(equation = dist ~ sex_c, data = amaze_dup_base_duod)
+hiv_duod <- permanova_func(equation = dist ~ hiv_status, data = amaze_dup_base_duod)
+vw_duod <- permanova_func(equation = dist ~ VW_mean, data = amaze_dup_base_duod)
+cd_duod <- permanova_func(equation = dist ~ CD_mean, data = amaze_dup_base_duod) 
+vh_duod <- permanova_func(equation = dist ~ VH_mean, data = amaze_dup_base_duod)
+cle_duod <- permanova_func(equation = dist ~ CLE_Fields, data = amaze_dup_base_duod)
+glp2_duod <- permanova_func(equation = dist ~ GLP2, data = amaze_dup_base_duod)
+scd14_duod <- permanova_func(equation = dist ~ SCD14, data = amaze_dup_base_duod)
+crp_duod <- permanova_func(equation = dist ~ CRP, data = amaze_dup_base_duod)
+lps_duod <- permanova_func(equation = dist ~ LPS, data = amaze_dup_base_duod)
+
+duod_beta_stats <- Reduce(function(x,y) merge(x, y, all.x = TRUE, all.y = TRUE),
+       list(age_duod, bmi_duod, sex_duod, hiv_duod, vw_duod, cd_duod, vh_duod, cle_duod, glp2_duod,
+            scd14_duod, crp_duod, lps_duod))
+write.csv(duod_beta_stats, "Outputs/2. Baseline/duod_beta_stats.csv")
+
+#2. Stool
+amaze_dup_base_stool <- subset_samples(amaze_dup_base, Sample.Type == "Stool")
+
+age_stool <- permanova_func(equation = dist ~ baseline_age, data = amaze_dup_base_stool)
+bmi_stool <-permanova_func(equation = dist ~ bmi_nustart, data = amaze_dup_base_stool)
+sex_stool <- permanova_func(equation = dist ~ sex_c, data = amaze_dup_base_stool)
+hiv_stool <- permanova_func(equation = dist ~ hiv_status, data = amaze_dup_base_stool)
+vw_stool <- permanova_func(equation = dist ~ VW_mean, data = amaze_dup_base_stool)
+cd_stool <- permanova_func(equation = dist ~ CD_mean, data = amaze_dup_base_stool) 
+vh_stool <- permanova_func(equation = dist ~ VH_mean, data = amaze_dup_base_stool)
+cle_stool <- permanova_func(equation = dist ~ CLE_Fields, data = amaze_dup_base_stool)
+glp2_stool <- permanova_func(equation = dist ~ GLP2, data = amaze_dup_base_stool)
+scd14_stool <- permanova_func(equation = dist ~ SCD14, data = amaze_dup_base_stool)
+crp_stool <- permanova_func(equation = dist ~ CRP, data = amaze_dup_base_stool)
+lps_stool <- permanova_func(equation = dist ~ LPS, data = amaze_dup_base_stool)
+
+stool_beta_stats <- Reduce(function(x,y) merge(x, y, all.x = TRUE, all.y = TRUE),
+       list(age_stool, bmi_stool, sex_stool, hiv_stool, vw_stool, cd_stool, vh_stool, cle_stool,
+            glp2_stool, scd14_stool, crp_stool, lps_stool))
+write.csv(stool_beta_stats, "Outputs/2. Baseline/stool_beta_stats.csv")
+```
+
+5. Baseline microbiome models with baseline biomarkers and morphometry
+```{r}
+load("Inputs/RData/AMAZE_ps_filtered.RData")
+lm_mod_func = function(var,data){
+  require(microViz)
+  mod_lm <- data %>%
+  tax_fix() %>%
+  tax_transform("compositional", rank = "Genus") %>%
+  tax_filter(min_prevalence = 0.1, undetected = 0, use_counts = T) %>%
+  taxatree_models(type = "lm", 
+                  rank = "Genus",
+                  trans = "log2", 
+                  trans_args = list(zero_replace = "halfmin"),
+                  variables = c(var, "hiv_status", "baseline_age"))
+  lm_stats <- taxatree_models2stats(mod_lm)
+  lm_stats <- taxatree_stats_p_adjust(data = lm_stats, method = "BY", grouping = "rank")
+  lm_stats2 <- lm_stats %>% taxatree_stats_get() %>% filter(p.adj.BY.rank < 0.05) %>% filter(term == var)
+  print(lm_stats2)
+}
+
+#1. Duodenal samples
+amaze_dup_base <- subset_samples(ps_filtered, Timepoint == "Pre-Intervention")
+amaze_dup_base_duod <- subset_samples(amaze_dup_base, Sample.Type == "Duodenal Aspirate")
+crp_lm <- lm_mod_func(var = "CRP", data = amaze_dup_base_duod)
+scd14_lm <- lm_mod_func(var = "SCD14", data = amaze_dup_base_duod)
+lps_lm <- lm_mod_func(var = "LPS", data = amaze_dup_base_duod)
+glp2_lm <- lm_mod_func(var = "GLP2", data = amaze_dup_base_duod)
+vh_lm <- lm_mod_func(var = "VH_mean", data = amaze_dup_base_duod)
+cd_lm <- lm_mod_func(var = "CD_mean", data = amaze_dup_base_duod)
+vw_lm <- lm_mod_func(var = "VW_mean", data = amaze_dup_base_duod)
+cle_lm <- lm_mod_func(var = "CLE_Fields", data = amaze_dup_base_duod)
+#merge the data and save
+df_list <- list(crp_lm, scd14_lm, lps_lm, vh_lm, cd_lm, vw_lm, cle_lm)
+lm_biomarkers_duod <- reduce(df_list,full_join)
+write.csv(lm_biomarkers_duod, "Outputs/2. Baseline/biomarker_morph_assoc_duod.csv")
+
+
+#2. Stool
+amaze_dup_base_stool <- subset_samples(amaze_dup_base, Sample.Type == "Stool")
+crp_lm <- lm_mod_func(var = "CRP", data = amaze_dup_base_stool)
+scd14_lm <- lm_mod_func(var = "SCD14", data = amaze_dup_base_stool)
+lps_lm <- lm_mod_func(var = "LPS", data = amaze_dup_base_stool)
+glp2_lm <- lm_mod_func(var = "GLP2", data = amaze_dup_base_stool)
+vh_lm <- lm_mod_func(var = "VH_mean", data = amaze_dup_base_stool)
+cd_lm <- lm_mod_func(var = "CD_mean", data = amaze_dup_base_stool)
+vw_lm <- lm_mod_func(var = "VW_mean", data = amaze_dup_base_stool)
+cle_lm <- lm_mod_func(var = "CLE_Fields", data = amaze_dup_base_stool)
+#merge the data and save
+df_list <- list(crp_lm, scd14_lm, lps_lm, vh_lm, cd_lm, vw_lm, cle_lm)
+lm_biomarkers_stool <- reduce(df_list,full_join)
+write.csv(lm_biomarkers_stool, "Outputs/2. Baseline/biomarker_morph_assoc_stool.csv")
+```
+
+6. Differential abundance of genera  for HIV status in stool samples - Maaslin2
+```{r}
+#get data
+load("Inputs/RData/AMAZE_ps_filtered.RData")
+ps_stool <- subset_samples(ps_filtered, Sample.Type == "Stool")
+ps_stool.pre <- subset_samples(ps_stool, Timepoint == "Pre-Intervention")
+library(Maaslin2)
+mas_P <- Maaslin2(
+  input_data = data.frame(otu_table(ps_stool.pre)),
+  input_metadata = data.frame(sample_data(ps_stool.pre)),
+  output = "Outputs/2. Baseline/DiffStool_HIV_Status",
+  min_abundance = 0.001,
+  min_prevalence = 0.05,
+  normalization = "TMM",
+  transform = "NONE",
+  analysis_method = "NEGBIN",
+  max_significance = 0.1,
+  fixed_effects = c("hiv_status"),
+  reference = c("hiv_status,Negative"),
+  correction = "BY",
+  standardize = FALSE,
+  cores = 1,
+  plot_heatmap = TRUE,
+  plot_scatter = TRUE,
+  heatmap_first_n = 50)
+pp.stool <- mas_P[["results"]]
+SigBact <- pp.stool %>%
+  mutate(sam.type = ifelse(.$coef > 0,  "Positive", "Negative"),
+         coef.exp = exp(coef),
+         logfold2 = log2(coef.exp),
+         logfold2.2 = ifelse(logfold2 < 0, logfold2*-1, logfold2)) %>%
+  filter(qval < 0.05)
+
+lda.hivstatus <- ggpubr::ggbarplot(SigBact, x = "feature", y = "logfold2.2",
+          fill = "sam.type",           # change fill color by mpg_level
+          color = "white",            # Set bar border colors to white
+          palette = c("blue", "red"),            # jco journal color palett. see ?ggpar
+          sort.val = "asc",           # Sort the value in ascending order
+          sort.by.groups = T,     # Don't sort inside each group
+          x.text.angle = 90,          # Rotate vertically x axis texts
+          ylab = "Log2Fold Change",
+          xlab = "Taxon",
+          legend.title = "HIV Status",
+          rotate = TRUE,
+          ggtheme = theme_classic()
+          ) 
+ggsave("Outputs/2. Baseline/SuppFig4.png", plot = lda.hivstatus, dpi = 600, device = "png", width = 18, height = 15, units = "cm")
+```
+
+Duodenal and Stool microbial correlations
+```{r}
+
+load("Inputs/RData/AMAZE_ps_filtered.RData")
+
+library(ggplot2)
+library(phyloseq)
+library(tidyverse)
+library(microbiome)
+library(microViz)
+amaze_dup2 <- subset_samples(ps_filtered, Timepoint == "Pre-Intervention")
+
+tax_t <- as.data.frame(amaze_dup2@otu_table) 
+met_t <- as.data.frame(amaze_dup2@sam_data)
+
+
+tax_2 <- tax_t %>%
+  rownames_to_column(var = "Sample")
+q <- ps_melt(amaze_dup2)
+qs <- q%>%
+  select(Sample, PID, InterventionArm, Timepoint, hiv_status, sex_c, Sample.Type) %>%
+  #filter( %>%
+  unique()
+
+for_plot <- left_join(qs, tax_2)
+for_plot2 <- for_plot %>%
+  select(-Sample) %>%
+  pivot_wider(names_from = Sample.Type, 
+              values_from = -c(PID, InterventionArm, Timepoint, hiv_status, sex_c, Sample.Type),
+              names_glue = "{.value}_{Sample.Type}")
+for_plot2[is.na(for_plot2)] <- 0
+
+library(corrplot)
+for_corr <- for_plot2 %>%
+  select(-c(PID, InterventionArm, Timepoint, hiv_status, sex_c)) %>%
+  select(where(~ sum(.) != 0))
+
+
+#rename taxa
+num_rows <- 394
+seq_let <- rep (letters, length.out = num_rows)
+
+forcorrr_t <- t(for_corr)
+forcorr2 <- forcorrr_t %>%
+  as.data.frame()%>%
+  rownames_to_column(var= "tax") %>%
+  mutate(let_col = paste0("tax_",1:n()))
+write.csv(forcorr2 %>%
+            select(tax, let_col), "Outputs/2. Baseline/SpearmanCorr/microbe_names.csv")
+
+forcorr3 <- forcorr2 %>%
+  select(-tax)  %>%
+  column_to_rownames(var = "let_col")
+forcorr2_t <- t(forcorr3)  
+
+#Calculate correlation coefficient
+library(psych)
+library(tidyverse)
+adj.dat <- corr.test(forcorr2_t, method = "spearman", adjust = "holm")
+write.csv(adj.dat$ci, "Outputs/2. Baseline/SpearmanCorr/microbe_cor_pval.csv")
+write.csv(adj.dat$ci2, "Outputs/2. Baseline/SpearmanCorr/microbe_cor_pval_adjust.csv")
+write.csv(adj.dat$r, "Outputs/2. Baseline/SpearmanCorr/microbe_cor_rvalues.csv")
+
+dat3 <- adj.dat$ci %>%
+  rownames_to_column(var = "tax0") %>%
+  separate(tax0, into = c("tax1", "tax2"), sep = "-") %>%
+  separate(tax1, into = c("tx01", "tx1"), sep = "_") %>%
+  separate(tax2, into = c("tx02", "tx2"), sep = "_") %>%
+  select(-tx01, -tx02) %>%
+  filter(p < 0.05) %>%
+  filter(p != 0)
+
+dd2 <- forcorr2 %>%
+  select(tax, let_col) %>%
+  separate(let_col, into = c("tx01", "tx1"), sep = "_") %>%
+  select(-tx01)
+
+data_fin <- merge(dat3, dd2, by = "tx1", all = T)
+
+dd3 <- forcorr2 %>%
+  select(tax, let_col) %>%
+  separate(let_col, into = c("tx01", "tx2"), sep = "_") %>%
+  select(-tx01) %>%
+  rename(tax2 = tax)
+data_fin2 <- merge(data_fin, dd3, by = "tx2", all = T)
+
+term1 <- "Stool"
+term2 <- "Duodenal Aspirate"
+data_fin2 <- data_fin2%>%
+  filter(!is.na(tx2)) %>%
+  filter((str_detect(tax, term1) & str_detect(tax2, term2)) |
+           (str_detect(tax, term2) & str_detect(tax2, term1)))
+
+write.csv(data_fin2, "Outputs/2. Baseline/microbe_cor_sig_duod_stool.csv")
+```
+

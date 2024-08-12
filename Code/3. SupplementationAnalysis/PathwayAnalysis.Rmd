@@ -1,0 +1,150 @@
+---
+title: "AMAZE- Pathway Analysis"
+Author: Monica Mweetwa
+Date: 20th May 2024
+---
+
+1. Set working directory
+```{r setup}
+    #knitr::opts_knit$set(root.dir = normalizePath("C:/Users/Monica/Dropbox/AMAZE")) 
+    knitr::opts_knit$set(root.dir = normalizePath("~/Library/CloudStorage/Dropbox/AMAZE")) 
+```
+
+2. Load necessary packages 
+```{r include=FALSE}
+#BiocManager::install("MicrobiomeProfiler")
+library(MicrobiomeProfiler)
+library(ggpicrust2)
+library(readr)
+library(Maaslin2)
+```
+
+This analysis take output from picrust2 as input that was run in a conda environment (picrust-src) using the follwoing command:
+picrust2_pipeline.py -s ~/Dropbox/AMAZE/Inputs/Picrust2/AMAZE_sequences.fna \
+-i ~/Dropbox/AMAZE/Inputs/Picrust2/AMAZE_biom.biom \
+-o ~/Dropbox/AMAZE/Outputs/G_Picrust2/AMAZE_out_picrust -p 1
+
+This produced metagenome and pathway predictions based on the abundance of 16 taxa in our dataset. This can be analysed similar to taxonomic abundance analysis using ggpicrust2
+
+Implement:
+
+Import data
+```{r}
+#If you want to analysis the EC. MetaCyc. KO without conversions. You should turn ko_to_kegg to FALSE.
+#metadata
+metadata <- read_csv("Inputs/Metadata/metadata_paired_withELISA.csv") %>%
+  column_to_rownames(var = "SampleID2")
+levels(as.factor(metadata$InterventionArm))
+metadata$Intervention_arm <- relevel(as.factor(metadata$InterventionArm), "Placebo")
+
+#pathways
+pathway_dat <- read.delim("Outputs/4. Picrust2/AMAZE_out_picrust/pathways_out/path_abun_unstrat.tsv")%>%
+  column_to_rownames(var = "pathway")
+names(pathway_dat) <- substring(names(pathway_dat),2)
+
+#Get pathway descriptions and create feature.ann
+library(ggpicrust2)
+path_df <- pathway_annotation(
+  file = "Outputs/4. Picrust2/AMAZE_out_picrust/pathways_out/path_abun_unstrat.tsv",
+  pathway = "MetaCyc",
+  daa_results_df = path_df,
+  ko_to_kegg = FALSE
+)
+
+#add pathway description to file
+feature_ann <- path_df %>% select(pathway, description) %>% mutate(pathID = pathway) %>%column_to_rownames(var = "pathway")
+```
+
+Create models
+```{r}
+mas_P <- Maaslin2(
+  input_data = pathway_dat,
+  input_metadata = metadata %>% filter(Sample.Type == "Duodenal Aspirate"),
+  output = "Outputs/3. SupplementationAnalysis/PathwayAnalysis/maaslin2",
+  min_abundance = 0.001,
+  min_prevalence = 0.05,
+  normalization = "TMM",
+  transform = "NONE",
+  analysis_method = "NEGBIN",
+  max_significance = 0.1,
+  fixed_effects = c("InterventionArm", "Timepoint"),
+  random_effects = "PID",
+  correction = "BY",
+  standardize = FALSE,
+  cores = 1,
+  plot_heatmap = TRUE,
+  plot_scatter = TRUE,
+  heatmap_first_n = 50,
+  reference = ('InterventionArm,Placebo'))
+res <- mas_P[["results"]]
+notsig <- res %>%
+  mutate(sam.type = ifelse(.$coef > 0,  "Stool", "Duodenal Aspirate"),
+         sam.type = (ifelse(.$qval > 0.05 , "Common", sam.type)),
+         coef.exp = exp(coef),
+         logfold2 = log2(coef.exp),
+         logfold2.2 = ifelse(logfold2 < 0, logfold2*-1, logfold2)) 
+#replace the dots with high-phen
+notsig2 <- notsig %>%
+  mutate(feature = str_replace_all(feature, "\\.", "-"))
+
+write_csv(notsig2, "Outputs/3. SupplementationAnalysis/PathwayAnalysis/lda_pathway_intervention.csv")
+```
+
+
+
+Create MicrobiomeStat Object
+```{r}
+library(MicrobiomeStat)
+
+#1. duodenal samples
+metadata_duod <- metadata %>% filter(Sample_Type == "Duodenal Aspirate")
+MicrobiomeData_duod <- list(
+  feature.tab = as.matrix(pathway_dat),
+  meta.dat = metadata_duod,
+  feature.ann = as.matrix(feature_ann)
+)
+
+#Create models : pathway change test pair
+test.list_duod <- generate_taxa_change_test_pair(
+  data.obj = MicrobiomeData_duod,
+  subject.var = "PID",
+  time.var = "Timepoint",
+  group.var = "Intervention_arm",
+  adj.vars = NULL,
+  change.base = "Pre-Intervention",
+  feature.change.func = "log fold change",
+  feature.level = "pathID",
+  prev.filter = 0.01,
+  abund.filter = 0.001,
+  feature.dat.type = "count"
+)
+
+#No significant pathways between intervention arms
+
+#2. stool samples
+metadata_stool <- metadata %>% filter(Sample_Type == "Stool")
+MicrobiomeData_stool <- list(
+  feature.tab = as.matrix(pathway_dat),
+  meta.dat = metadata_stool,
+  feature.ann = as.matrix(feature_ann)
+)
+
+#Create models : pathway change test pair
+test.list_stool <- generate_taxa_change_test_pair(
+  data.obj = MicrobiomeData_stool,
+  subject.var = "PID",
+  time.var = "Timepoint",
+  group.var = "Intervention_arm",
+  adj.vars = NULL,
+  change.base = "Pre-Intervention",
+  feature.change.func = "log fold change",
+  feature.level = "pathID",
+  prev.filter = 0.01,
+  abund.filter = 0.001,
+  feature.dat.type = "count"
+)
+
+#Miconutrient had 1 pathway significant after intervention compared to Placebo
+#save results:
+save(test.list_duod, test.list_stool, file = "Outputs/3. SupplementationAnalysis/Picrust2/LDA_Pathway.RData")
+```

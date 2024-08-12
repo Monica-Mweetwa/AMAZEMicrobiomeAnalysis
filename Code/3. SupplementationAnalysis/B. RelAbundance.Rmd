@@ -1,0 +1,234 @@
+---
+title: "AMAZE - Relative Adbundance Analysis"
+Author: Monica N Mweetwa
+Date: 17/04/2024
+---
+
+1. Set working directory
+```{r setup}
+    #knitr::opts_knit$set(root.dir = normalizePath("C:/Users/Monica/Dropbox/AMAZE")) 
+    knitr::opts_knit$set(root.dir = normalizePath("~/Library/CloudStorage/Dropbox/AMAZE")) 
+```
+
+2. Load necessary packages 
+```{r include=FALSE}
+library(btools)
+library(ggpubr) 
+library(ggh4x)
+library(ggplot2)
+library(ggbeeswarm)
+library(microViz)
+library(phyloseq)
+library(patchwork)
+library(tidyverse)
+```
+
+3. Load data
+```{r}
+load("Inputs/AMAZE_ps_filtered.RData")
+ps_filtered
+```
+
+############################ ANALYSIS ################################
+
+A: Abundance Analysis
+
+Check sequencing Depth
+```{r}
+library("phyloseq.extended")
+cols2 <- c("Pre-Intervention" = "orange", "Post-Intervention" = "blue")
+
+p <- ggrare(ps_filtered, color = "Timepoint", label = "SampleID", se = FALSE)
+plot1 <- p + 
+  facet_wrap(Sample.Type~Intervention_Arm, scales = "free_x") +
+  theme_classic() +
+  scale_color_manual(values = cols2) +
+  theme(legend.position = "bottom") +
+  #guides(fill = guide_legend(nrow = 6)) +
+  xlab("Size Count")
+ggsave("Outputs/combined/rarefaction_curve.png", plot = plot1, dpi = 600, device = "png", width = 25, height = 15, units = "cm")
+
+```
+
+6305A2 and 6377A2 has really high sequencing depth. These could over shadow the rest of the samples
+Should these be excluded from analysis?
+
+
+Create a data MicrobiomeStat object 
+```{r}
+library(MicrobiomeStat)
+ps.obj <- mStat_convert_phyloseq_to_data_obj(ps_filtered)
+
+#check that that timepoint levels are pre - psot
+levels(ps.obj[["meta.dat"]]$Timepoint)
+
+#change the levels of data
+ps.obj[["meta.dat"]]$Timepoint <- factor(ps.obj[["meta.dat"]]$Timepoint, levels = c("Pre-Intervention", "Post-Intervention"))
+
+#add time variable with pre-intervention as 0
+ps.obj[["meta.dat"]]$Timepoint2 <- ifelse(ps.obj[["meta.dat"]]$Timepoint == "Pre-Intervention", "1 = Pre-Intervention", "2 = Post-Intervention")
+```
+
+1. Abundance bar plots
+
+```{r}
+#Color palette
+pal1 <- c("#808080","#E41A1C", "#FF8C00", "#4DAF4A",  "#984EA3",  "#FFC0CB", "#40E0D0", "#00BFFF", "#4B0082", "#90EE90",  "#EE82EE",  "#00FFFF",  "#0075DC",  "#F0A3FF",   "#94FFB5", "#8F7C00",  "#218801",  "#FFCC99", "#2BCE48", "#4C005C",  "#993F00")
+pal2 <- c("#808080", "#C20088", "#003380", "#FFA405", "#FFA8BB", "#FF0010", "#426600", "#990000","#740AFF", "#00998F","#5EF1F2", "#FF6A6A",  "#87CEFA",  "#FFE7BA", "#FF8247", "#0000FF", "#FFFF00", "#9DCC00", "#6A5ACD", "#483D8B", "#9400D3", "#8A2BE2",  "#FF00FF", "#FF69B4", "#FF1493", "#C71585", "#DB7093")
+```
+
+1. Duodenum
+```{r}
+# Subset data
+condition <- "Sample.Type == 'Duodenal Aspirate'"
+ps.obj.duod <- mStat_subset_data(data.obj = ps.obj, condition = condition)
+
+#plot
+barplot.duod <- generate_taxa_barplot_single(
+  data.obj = ps.obj.duod,
+  subject.var = "PID",
+  #time.var = "Timepoint",
+  #t.level = "Pre-Intervention",
+  group.var = "Intervention_arm",
+  strata.var = "Timepoint2",
+  feature.level = "Genus",
+  feature.dat.type = "proportion",
+  feature.number = 20,
+  base.size = 10,
+  theme.choice = "bw",
+  custom.theme = NULL,
+  palette = mStat_get_palette(pal1),
+  pdf = FALSE,
+  file.ann = NULL
+)
+#Average Plot
+barplot1 <- barplot.duod[["Genus"]][["average"]] +
+  labs(title = "Duodenal Aspirates") +
+  theme(legend.position = "bottom",
+        legend.direction = "horizontal")
+#Individual Plot
+barplot1.1 <- barplot.duod[["Genus"]][["indiv"]] +
+  labs(title = "Duodenal Aspirates") +
+  theme(legend.position = "bottom",
+        legend.direction = "horizontal")
+```
+
+2. stool
+```{r}
+# Subset data
+condition <- "Sample.Type == 'Stool'"
+ps.obj.stool <- mStat_subset_data(data.obj = ps.obj, condition = condition)
+
+#plot
+barplot.stool<- generate_taxa_barplot_single(
+  data.obj = ps.obj.stool,
+  subject.var = "PID",
+  #time.var = "Timepoint",
+  #t.level = "Pre-Intervention",
+  group.var = "Intervention_arm",
+  strata.var = "Timepoint2",
+  feature.level = "Genus",
+  feature.dat.type = "count",
+  feature.number = 20,
+  base.size = 10,
+  theme.choice = "bw",
+  custom.theme = NULL,
+  palette = mStat_get_palette(pal2),
+  pdf = FALSE,
+  file.ann = NULL
+)
+#Average Plot
+barplot2 <- barplot.stool[["Genus"]][["average"]] +
+  labs(title = "Stool") +
+  theme(legend.position = "bottom",
+        legend.direction = "horizontal") +
+  guides(fill = guide_legend(nrow = 6))
+#Individual Plot
+barplot2.2 <- barplot.stool[["Genus"]][["indiv"]] +
+  labs(title = "Stool") +
+  theme(legend.position = "bottom",
+        legend.direction = "horizontal") +
+  guides(fill = guide_legend(nrow = 6))
+```
+
+Combine the bar plots and save as images
+```{r}
+#Mean
+barplots <- ggarrange(barplot1, barplot2, ncol = 2, common.legend = F, legend = "bottom")
+#Save plot
+save(barplot1, file = "Inputs/ForCombinedPlots/RelAbundanceDuodenum.RData")
+save(barplot2, file = "Inputs/ForCombinedPlots/RelAbundanceStool.RData")
+
+ggsave("Outputs/B_RelAbundance/Barplots.png", plot = barplots, dpi = 600, device = "png", width = 60, height = 25, units = "cm")
+
+#Individual
+barplots2 <- ggarrange(barplot1.1, barplot2.2, ncol = 1, common.legend = F, legend = "bottom")
+#Save plot
+ggsave("Outputs/B_RelAbundance/Barplots.indiv.png", plot = barplots2, dpi = 600, device = "png", width = 60, height = 35, units = "cm")
+```
+
+Investigating Acinomyces abundance
+```{r}
+#Melt and plot
+cols2 <- c("Pre-Intervention" = "orange", "Post-Intervention" = "blue")
+a <- phyloseq::psmelt(ps_filtered) %>%
+  filter(Sample.Type == "Duodenal Aspirate") %>%
+  filter(OTU == "Actinomyces") %>%
+  filter(Timepoint == "Pre-Intervention") %>%
+  select(PID, Intervention_arm, Timepoint, OTU, Abundance) %>%
+  spread(key = Timepoint, value = Abundance)
+b <- phyloseq::psmelt(ps_filtered) %>%
+  filter(Sample.Type == "Duodenal Aspirate") %>%
+  filter(OTU == "Actinomyces") %>%
+  filter(Timepoint == "Post-Intervention") %>%
+  select(PID, Intervention_arm, Timepoint, OTU, Abundance) %>%
+  spread(key = Timepoint, value = Abundance)
+  
+c <- full_join(a, b)
+c$`Pre-Intervention` <- ifelse(is.na(c$`Pre-Intervention`), 0, c$`Pre-Intervention`)
+c$`Post-Intervention` <- ifelse(is.na(c$`Post-Intervention`), 0, c$`Post-Intervention`)
+  
+plot1 <- ggpaired(c, cond1 = "Pre-Intervention", cond2 = "Post-Intervention",
+            add = "jitter", fill = "condition", line.color = "gray",
+            palette = cols2) +
+stat_compare_means(method = "t.test", 
+                   label = "p.format", na.rm = T,
+                   label.x.npc = "centre",
+                   label.y.npc = "top",) +
+  facet_wrap(~ Intervention_arm, scales = "free", nrow = 2)+
+  scale_y_log10() +
+  theme_classic() +
+  theme(legend.position = "none") +
+  ggtitle("Actinomyces absolute abundance over time") +
+  ylab("Sequnces Count")
+#save plot
+ggsave("Outputs/B_RelAbundance/actinomyces.png", plot = plot1, dpi = 600, device = "png", width = 25, height = 15, units = "cm")
+```
+
+Barplots for Actinomyces 
+```{r}
+cols2 <- c("Pre-Intervention" = "orange", "Post-Intervention" = "blue")
+
+w1 <- ps_filtered %>%
+  psmelt() 
+c1 <- w1 %>%
+  filter(OTU == "Actinomyces") %>%
+  filter(Sample.Type == "Duodenal Aspirate") %>%
+  filter(Intervention_arm == "Amino acid")
+c2 <- ggplot(data = c1, aes(x = as.factor(PID), y=Abundance, fill=Timepoint, order=Timepoint)) + 
+  geom_bar(stat = "identity") + 
+  scale_fill_manual(values = cols2) +
+  labs(y= "Actinomyces Absolute Count", x = "") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+ggsave("Outputs/B_RelAbundance/ActinomycesBarplot1.png", plot = c2, dpi = 600, device = "png", width = 25, height = 15, units = "cm")
+
+c2 <- ggplot(data = c1, aes(x = as.factor(PID), y=Abundance, fill=Timepoint, order=Timepoint)) + 
+  geom_bar(stat = "identity") + 
+  scale_y_log10() +
+  scale_fill_manual(values = cols2) +
+  labs(y= "Log(Actinomyces Count)", x = "") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+ggsave("Outputs/B_RelAbundance/ActinomycesBarplot2.png", plot = c2, dpi = 600, device = "png", width = 25, height = 15, units = "cm")
+```

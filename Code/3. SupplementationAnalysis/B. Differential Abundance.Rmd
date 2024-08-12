@@ -1,0 +1,681 @@
+---
+title: "AMAZE - Differential Abundance Analysis"
+Author: Monica N Mweetwa
+Date: 17/04/2024
+---
+
+1. Set working directory
+```{r setup}
+    #knitr::opts_knit$set(root.dir = normalizePath("C:/Users/Monica/Dropbox/AMAZE")) 
+    knitr::opts_knit$set(root.dir = normalizePath("~/Library/CloudStorage/Dropbox/AMAZE")) 
+```
+
+2. Load necessary packages 
+```{r include=FALSE}
+#library(btools)
+library(ggpubr) 
+library(ggh4x)
+library(ggplot2)
+library(ggbeeswarm)
+library(microViz) 
+library(phyloseq) 
+library(patchwork)
+library(tidyverse)
+#LDA specific packages
+library(Maaslin2) 
+```
+
+3. Load data
+```{r}
+load("Inputs/RData/AMAZE_ps_filtered_pairs.RData")
+amaze_dup
+```
+
+Check if data is over dispersed
+```{r}
+for.check <- ps_melt(amaze_dup)
+#do a linear regression for sample type
+fdc <- glm(data = for.check %>%
+             filter(OTU == "Abiotrophia"), Abundance ~ Sample.Type + (1|PID), family = poisson)
+library(AER) 
+dispersiontest(fdc)
+```
+
+Simple linear regression with Poisson distribution will not work for this data, instead use negative binomial instead.
+
+Intervention arm - Genus Level
+```{r include=FALSE}
+### Duodenal samples
+ps.duod <- subset_samples(amaze_dup, Sample.Type == "Duodenal Aspirate")
+
+#a) Amino Acid
+ps.aa <- subset_samples(ps.duod, InterventionArm == "Amino Acid")
+
+mas_P <- Maaslin2::Maaslin2(
+  input_data = data.frame(otu_table(ps.aa)),
+  input_metadata = data.frame(sample_data(ps.aa)),
+  output = "Outputs/3. SupplementationAnalysis/DiffAbundance/Duod/AA",
+  min_abundance = 0.001,
+  min_prevalence = 0.05,
+  normalization = "TMM",
+  transform = "NONE",
+  analysis_method = "NEGBIN",
+  max_significance = 0.1,
+  fixed_effects = c("pre_post"),
+  random_effects = "PID",
+  correction = "BY",
+  standardize = FALSE,
+  cores = 1,
+  plot_heatmap = TRUE,
+  plot_scatter = TRUE,
+  heatmap_first_n = 50)
+aa.duod <- mas_P[["results"]]
+
+#b) Amino acid & Micronutrient
+ps.aamm <- subset_samples(ps.duod, InterventionArm == "Combined")
+
+mas_P <- Maaslin2(
+  input_data = data.frame(otu_table(ps.aamm)),
+  input_metadata = data.frame(sample_data(ps.aamm)),
+  output = "Outputs/3. SupplementationAnalysis/DiffAbundance/Duod/AAMM",
+  min_abundance = 0.001,
+  min_prevalence = 0.05,
+  normalization = "TMM",
+  transform = "NONE",
+  analysis_method = "NEGBIN",
+  max_significance = 0.1,
+  fixed_effects = c("pre_post"),
+  random_effects = "PID",
+  correction = "BY",
+  standardize = FALSE,
+  cores = 1,
+  plot_heatmap = TRUE,
+  plot_scatter = TRUE,
+  heatmap_first_n = 50)
+aamm.duod <- mas_P[["results"]]
+
+#c) Micronutrient
+ps.mm <- subset_samples(ps.duod, InterventionArm == "Micronutrient")
+
+mas_P <- Maaslin2(
+  input_data = data.frame(otu_table(ps.mm)),
+  input_metadata = data.frame(sample_data(ps.mm)),
+  output = "Outputs/3. SupplementationAnalysis/DiffAbundance/Duod/MM",
+  min_abundance = 0.001,
+  min_prevalence = 0.05,
+  normalization = "TMM",
+  transform = "NONE",
+  analysis_method = "NEGBIN",
+  max_significance = 0.1,
+  fixed_effects = c("pre_post"),
+  random_effects = "PID",
+  correction = "BY",
+  standardize = FALSE,
+  cores = 1,
+  plot_heatmap = TRUE,
+  plot_scatter = TRUE,
+  heatmap_first_n = 50)
+mm.duod <- mas_P[["results"]]
+
+#d) Placebo
+ps.pp <- subset_samples(ps.duod, InterventionArm == "Placebo")
+
+mas_P <- Maaslin2(
+  input_data = data.frame(otu_table(ps.pp)),
+  input_metadata = data.frame(sample_data(ps.pp)),
+  output = "Outputs/3. SupplementationAnalysis/DiffAbundance/Duod/PP",
+  min_abundance = 0.001,
+  min_prevalence = 0.05,
+  normalization = "TMM",
+  transform = "NONE",
+  analysis_method = "NEGBIN",
+  max_significance = 0.1,
+  fixed_effects = c("pre_post"),
+  random_effects = "PID",
+  correction = "BY",
+  standardize = FALSE,
+  cores = 1,
+  plot_heatmap = TRUE,
+  plot_scatter = TRUE,
+  heatmap_first_n = 50)
+pp.duod <- mas_P[["results"]]
+
+##### Stool samples
+ps.stool <- subset_samples(amaze_dup, Sample.Type == "Stool")
+#a) Amino Acid
+ps.aa <- subset_samples(ps.stool, InterventionArm == "Amino Acid")
+
+mas_P <- Maaslin2(
+  input_data = data.frame(otu_table(ps.aa)),
+  input_metadata = data.frame(sample_data(ps.aa)),
+  output = "Outputs/3. SupplementationAnalysis/DiffAbundance/Stool/AA",
+  min_abundance = 0.001,
+  min_prevalence = 0.05,
+  normalization = "TMM",
+  transform = "NONE",
+  analysis_method = "NEGBIN",
+  max_significance = 0.1,
+  fixed_effects = c("pre_post"),
+  random_effects = "PID",
+  correction = "BY",
+  standardize = FALSE,
+  cores = 1,
+  plot_heatmap = TRUE,
+  plot_scatter = TRUE,
+  heatmap_first_n = 50)
+aa.stool <- mas_P[["results"]]
+
+#b) Amino acid & Micronutrient
+ps.aamm <- subset_samples(ps.stool, InterventionArm == "Combined")
+
+mas_P <- Maaslin2(
+  input_data = data.frame(otu_table(ps.aamm)),
+  input_metadata = data.frame(sample_data(ps.aamm)),
+  output = "Outputs/3. SupplementationAnalysis/DiffAbundance/Stool/AAMM",
+  min_abundance = 0.001,
+  min_prevalence = 0.05,
+  normalization = "TMM",
+  transform = "NONE",
+  analysis_method = "NEGBIN",
+  max_significance = 0.1,
+  fixed_effects = c("pre_post"),
+  random_effects = "PID",
+  correction = "BY",
+  standardize = FALSE,
+  cores = 1,
+  plot_heatmap = TRUE,
+  plot_scatter = TRUE,
+  heatmap_first_n = 50)
+aamm.stool <- mas_P[["results"]]
+
+#c) Micronutrient
+ps.mm <- subset_samples(ps.stool, InterventionArm == "Micronutrient")
+
+mas_P <- Maaslin2(
+  input_data = data.frame(otu_table(ps.mm)),
+  input_metadata = data.frame(sample_data(ps.mm)),
+  output = "Outputs/3. SupplementationAnalysis/DiffAbundance/Stool/MM",
+  min_abundance = 0.001,
+  min_prevalence = 0.05,
+  normalization = "TMM",
+  transform = "NONE",
+  analysis_method = "NEGBIN",
+  max_significance = 0.1,
+  fixed_effects = c("pre_post"),
+  correction = "BY",
+  standardize = FALSE,
+  cores = 1,
+  plot_heatmap = TRUE,
+  plot_scatter = TRUE,
+  heatmap_first_n = 50)
+mm.stool <- mas_P[["results"]]
+
+#d) Placebo
+ps.pp <- subset_samples(ps.stool, InterventionArm == "Placebo")
+
+mas_P <- Maaslin2(
+  input_data = data.frame(otu_table(ps.pp)),
+  input_metadata = data.frame(sample_data(ps.pp)),
+  output = "Outputs/3. SupplementationAnalysis/DiffAbundance/Stool/PP",
+  min_abundance = 0.001,
+  min_prevalence = 0.05,
+  normalization = "TMM",
+  transform = "NONE",
+  analysis_method = "NEGBIN",
+  max_significance = 0.1,
+  fixed_effects = c("pre_post"),
+  random_effects = "PID",
+  correction = "BY",
+  standardize = FALSE,
+  cores = 1,
+  plot_heatmap = TRUE,
+  plot_scatter = TRUE,
+  heatmap_first_n = 50)
+pp.stool <- mas_P[["results"]]
+```
+
+
+Extract significant Taxa and plot
+```{r}
+#duod
+SigBact.aa.duod <- aa.duod %>%
+  mutate(Int1 = if_else(.$feature == "", NA, "Amino Acid")) %>%
+  mutate(group = ifelse(.$coef > 0,  "Increased", "Decreased")) %>%
+  filter(pval < 0.05) #subset those with a pval < 0.05
+SigBact.aamm.duod <- aamm.duod %>%
+  mutate(Int2 = if_else(.$feature == "", NA, "Combined Intervention")) %>%
+  mutate(group = ifelse(.$coef > 0,  "Increased", "Decreased")) %>%
+  filter(pval < 0.05) #subset those with a pval < 0.05
+SigBact.mm.duod <- mm.duod %>%
+  mutate(Int3 = if_else(.$feature == "", NA, "Micronutrient")) %>%
+  mutate(group = ifelse(.$coef > 0,  "Increased", "Decreased")) %>%
+  filter(pval < 0.05) #subset those with a pval < 0.05
+SigBact.pp.duod <-pp.duod %>%
+  mutate(Int4 = if_else(.$feature == "", NA, "Placebo")) %>%
+  mutate(group = ifelse(.$coef > 0,  "Increased", "Decreased")) %>%
+  filter(pval < 0.05) #subset those with a pval < 0.05
+#merge all data frames together
+df_list <- list(SigBact.aa.duod, SigBact.aamm.duod, SigBact.mm.duod, SigBact.pp.duod) 
+df.plot <- Reduce(function(x, y) merge(x, y, all=TRUE), df_list)  
+df.plot1 <- df.plot %>%
+  gather(key = Int_arm, val = Int_arm2 , Int1, Int2, Int3, Int4, factor_key = TRUE) %>%
+  filter(!is.na(Int_arm2)) %>%
+  dplyr::select(feature, coef,  pval, qval, N,  group, Int_arm2)
+df.plot1$SamType <- ifelse(df.plot1$Int_arm2 == "", NA, "Duodenal Aspirate")
+
+#stool
+SigBact.aa.stool <- aa.stool%>%
+  mutate(Int1 = if_else(.$feature == "", NA, "Amino Acid")) %>%
+  mutate(group = ifelse(.$coef > 0, "Increased", "Decreased")) %>%
+  filter(pval < 0.05) #subset those with a pval < 0.05
+SigBact.aamm.stool <- aamm.stool %>%
+  mutate(Int2 = if_else(.$feature == "", NA, "Combined Intervention")) %>%
+  mutate(group = ifelse(.$coef > 0,  "Increased", "Decreased")) %>%
+  filter(pval < 0.05) #subset those with a pval < 0.05
+SigBact.mm.stool <- mm.stool %>%
+  mutate(Int3 = if_else(.$feature == "", NA, "Micronutrient")) %>%
+  mutate(group = ifelse(.$coef > 0,  "Increased", "Decreased")) %>%
+  filter(pval < 0.05) #subset those with a pval < 0.05
+SigBact.pp.stool <- pp.stool%>%
+  mutate(Int4 = if_else(.$feature == "", NA, "Placebo")) %>%
+  mutate(group = ifelse(.$coef > 0,  "Increased", "Decreased")) %>%
+  filter(pval < 0.05) #subset those with a pval < 0.05
+
+#merge all data frames together
+df_list <- list(SigBact.aa.stool, SigBact.aamm.stool, SigBact.mm.stool, SigBact.pp.stool)      
+df.plot <- Reduce(function(x, y) merge(x, y, all=TRUE), df_list)  
+df.plot2 <- df.plot %>%
+  gather(key = Int_arm, val = Int_arm2 , Int1, Int2, Int3, Int4, factor_key = TRUE) %>%
+  filter(!is.na(Int_arm2))  %>%
+  dplyr::select(feature, coef,  pval, qval, N, group, Int_arm2)
+df.plot2$SamType <- ifelse(df.plot2$Int_arm2 == "", NA, "Stool")
+
+#Combine tables 
+df.p <- full_join(df.plot1, df.plot2)
+df.p <- df.p %>%
+  mutate(coef.exp = exp(coef),
+         logfold2 = log2(coef.exp),
+         logfold2.2 = ifelse(logfold2 < 0, logfold2*-1, logfold2),
+         logfold2.round = round(logfold2,2)) %>%
+  filter(qval < 0.05)
+
+#export table and edit names outside R
+write.csv(df.p, "Outputs/3. SupplementationAnalysis/DiffAbundance/IntArm_Genus_NEGBIN.csv")
+```
+
+ALL
+```{r}
+library(viridis)
+library(ggExtra)
+library(readr)
+library(scales) #for rescale
+library(forcats)
+library(phyloseq)
+library(ape)
+library(ggtree)
+library(pals) #for color palette
+#Load data
+df.p <- read_csv("Outputs/3. SupplementationAnalysis/DiffAbundance/IntArm_Genus_NEGBIN_edited.csv")
+df.p$feature <- gsub("\\." , "-", df.p$feature)
+load("Inputs/AMAZE_ps_filtered_pairs.RData")
+#add taxonomy data 
+tax_dat <- as.data.frame(tax_table(amaze_dup))
+tax_dat <- tax_dat %>%
+  rownames_to_column(var = "feature") %>%
+  mutate(feature = Genus)
+for.plot <- right_join(tax_dat, df.p, by = "feature")
+
+#create tree
+dat <- for.plot %>%
+  select(Kingdom,Phylum,Class,Order,Genus, SamType) %>%
+  mutate_if(is.character, as.factor)
+dat2 <- unique(dat)
+dat2 <- dat2 %>%
+  mutate(feature = Genus)
+
+taxa <- as.phylo(~Kingdom/Phylum/Class/Order/Genus, data = dat2)
+for.plot2 <- for.plot %>%
+  pivot_wider(names_from = Int_arm2, values_from = logfold2.round) %>%
+  rename(MM = Micronutrient,
+         AA = `Amino Acid`,
+         `AA+MM` = `Combined Intervention`,
+         PP = Placebo) %>%
+  column_to_rownames(var = "feature")%>%
+  select(SamType, AA, `AA+MM`, MM, PP)
+
+okabe <- c("Clostridia" = "#E69F00", "Bacilli" = "#56B4E9", "Gammaproteobacteria" = "#009E73", "Alphaproteobacteria" = "#F0E442", "Actinobacteria" = "#829BAB", "#D55E00", "Fusobacteriia" = "#4B0082", "Negativicutes" = "#FFC0CB", "Campylobacteria" = "#E41A1C", "Coriobacteriia" = "#0000FF", "Synergistia" = "#C20088")
+otu_palette <- c(unname(alphabet2(n=15)))
+
+int_names2 <- c("AA", "AA+MM", "MM", "PP", "AA", "AA+MM", "MM", "PP")
+p_all <- gheatmap(ggtree(taxa, layout ='rectangular')  %<+% dat2 +
+           geom_tippoint(aes(color = Class), size= 4),
+           data = for.plot2[,-1], 
+           colnames=TRUE, 
+           colnames_angle = 0,
+           #colnames_offset_y = 0,
+           colnames_position = "bottom",
+           legend_title = "Log 2-Fold Change") +
+  facet_wrap(~SamType) +
+  scale_x_ggtree() +
+  scale_fill_gradientn(colors=c("blue","lightgray","red"),
+                       values=rescale(c(-30,0,30)),
+                       limits=c(-30, 30),
+                       name = "Log 2-Fold Change") +
+  geom_tiplab(align = TRUE, linesize=0, offset = 4.5, size=5, as_ylab=TRUE) +
+  scale_color_manual(values = okabe) +
+  theme(axis.text.y=element_text(size = 10))
+  #theme_bw()
+  
+
+p_all
+
+#save:
+#ggsave("Outputs/3. SupplementationAnalysis/DiffAbundance/Heatmap_all.png", plot = p_all, dpi = 600, device = "png", width = 24, height = 34, units = "cm") 
+```
+
+
+Duodenal Aspirates
+```{r}
+library(viridis)
+library(ggExtra)
+library(readr)
+library(scales) #for rescale
+library(forcats)
+library(phyloseq)
+library(ape)
+library(ggtree)
+library(pals) #for color palette
+#Load data
+df.p <- read_csv("Outputs/IntArm_Genus_NEGBIN_edited.csv")
+df.p$feature <- gsub("-", "\\." , df.p$feature)
+load("Inputs/AMAZE_ps_filtered_pairs.RData")
+#add taxonomy data 
+tax_dat <- as.data.frame(tax_table(amaze_dup))
+tax_dat <- tax_dat %>%
+  rownames_to_column(var = "feature")
+for.plot <- right_join(tax_dat, df.p %>%
+                         filter(SamType == "Duodenal Aspirate"), by = "feature")
+
+#create tree
+dat <- for.plot[1:7] %>%
+  mutate_if(is.character, as.factor)
+dat2 <- unique(dat)
+dat2 <- dat2 %>%
+  mutate(feature = Genus)
+taxa <- as.phylo(~Kingdom/Phylum/Class/Order/Genus, data = dat2)
+
+
+for.plot2 <- for.plot %>%
+  pivot_wider(names_from = Int_arm2, values_from = logfold2.round) %>%
+  rename(MM = Micronutrient,
+         AA = `Amino Acid`,
+         `AA+MM` = `Combined Intervention`,
+         PP = Placebo) %>%
+  column_to_rownames(var = "feature")%>%
+  select(SamType, AA, `AA+MM`, MM, PP)
+
+okabe <- c("Clostridia" = "#E69F00", "Bacilli" = "#56B4E9", "Gammaproteobacteria" = "#009E73", "Alphaproteobacteria" = "#F0E442", "Actinobacteria" = "#829BAB", "#D55E00", "Fusobacteriia" = "#4B0082", "Negativicutes" = "#FFC0CB", "Campylobacteria" = "#E41A1C", "Coriobacteriia" = "#0000FF", "Synergistia" = "#C20088")
+ 
+#otu_palette <- c(unname(alphabet2(n=15)))
+
+p_duod <- gheatmap(ggtree(taxa, layout ='rectangular')  %<+% dat2 +
+           geom_tippoint(aes(color = Class), size= 4),
+           data = for.plot2[,-1], 
+           colnames=TRUE, 
+           colnames_angle = 0,
+           #colnames_offset_y = 0,
+           colnames_position = "bottom",
+           legend_title = "Log 2-Fold Change") +
+  scale_x_ggtree() +
+  scale_fill_gradientn(colors=c("blue","lightgray","red"),
+                       values=rescale(c(-30,0,30)),
+                       limits=c(-30, 30),
+                       name = "Log 2-Fold Change") +
+  geom_tiplab(align = TRUE, linesize=0, offset = 4.5, size=5, as_ylab=TRUE) +
+  labs(title = "A) Duodenal Aspirate") +
+  scale_color_manual(values = okabe) +
+  theme_classic() +
+  theme(axis.text.y=element_text(size = 10),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.line.x = element_blank(),
+        title = element_text(size = 12, hjust = -0.5))
+
+p_duod
+
+#ggsave("Outputs/Heatmap_duod.png", plot = p_duod, dpi = 600, device = "png", width = 24, height = 22, units = "cm") 
+```
+
+Stool
+```{r}
+library(viridis)
+library(ggExtra)
+library(readr)
+library(scales) #for rescale
+library(forcats)
+library(phyloseq)
+library(ape)
+library(ggtree)
+library(pals) #for color palette
+#Load data
+df.p <- read_csv("Outputs/IntArm_Genus_NEGBIN_edited.csv")
+#load("Inputs/AMAZE_amaze_dup.RData")
+#add taxonomy data 
+tax_dat <- as.data.frame(tax_table(amaze_dup))
+tax_dat <- tax_dat %>%
+  rownames_to_column(var = "feature")
+for.plot <- right_join(tax_dat, df.p %>%
+                         filter(SamType == "Stool"), by = "feature")
+
+#create tree
+dat <- for.plot[1:7] %>%
+  mutate_if(is.character, as.factor)
+dat2 <- unique(dat)
+dat2 <- dat2 %>%
+  mutate(feature = Genus)
+taxa <- as.phylo(~Kingdom/Phylum/Class/Order/Genus, data = dat2)
+
+
+for.plot2 <- for.plot %>%
+  pivot_wider(names_from = Int_arm2, values_from = logfold2.round) %>%
+  rename(MM = Micronutrient,
+         `AA+MM` = `Combined Intervention`,
+         PP = Placebo) %>%
+  column_to_rownames(var = "feature")%>%
+  select(SamType, `AA+MM`, MM, PP)
+
+okabe <- c("Clostridia" = "#E69F00", "Bacilli" = "#56B4E9", "Gammaproteobacteria" = "#009E73", "Alphaproteobacteria" = "#F0E442", "Actinobacteria" = "#829BAB", "#D55E00", "Fusobacteriia" = "#4B0082", "Negativicutes" = "#FFC0CB", "Campylobacteria" = "#E41A1C", "Coriobacteriia" = "#0000FF", "Synergistia" = "#C20088")
+otu_palette <- c(unname(alphabet2(n=15)))
+
+
+int_names2 <- c("AA", "AA+MM", "MM", "PP")
+p_stool <- gheatmap(ggtree(taxa, layout ='rectangular')  %<+% dat2 +
+           geom_tippoint(aes(color = Class), size= 4),
+           data = for.plot2[,-1], 
+           colnames=TRUE, 
+           colnames_angle = 0,
+           #colnames_offset_y = 0,
+           colnames_position = "bottom",
+           legend_title = "Log 2-Fold Change") +
+  scale_x_ggtree() +
+  scale_fill_gradientn(colors=c("blue","lightgray","red"),
+                       values=rescale(c(-5,0,5)),
+                       limits=c(-5, 5),
+                       name = "Log 2-Fold Change") +
+  geom_tiplab(align = TRUE, linesize=0, offset = 4.5, size=5, as_ylab=TRUE) +
+  labs(title = "B) Stool") +
+  theme_classic() +
+  theme(axis.text.y=element_text(size = 10),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.line.x = element_blank(),
+        title = element_text(size = 12))
+
+p_stool
+#ggsave("Outputs/Heatmap_stool.png", plot = p_stool, dpi = 600, device = "png", width = 24, height = 28, units = "cm") 
+```
+
+save all figs in single RData file
+```{r}
+save(p_duod, p_stool , file = "Inputs/ForCombinedPlots/DiffAbundPlot_InterventionArm.RData")
+```
+
+Create combined plot
+```{r}
+library(patchwork)
+
+layout1 <- "AB"
+
+fig2 <- p_duod + p_stool + plot_layout(design = layout1)
+ggsave("Outputs/Fig2_Heatmap_combined.png", plot = fig2, dpi = 600, device = "png", width = 45, height = 20, units = "cm") 
+```
+
+
+```{r}
+library(MicrobiomeStat)
+ps.obj <- mStat_convert_phyloseq_to_data_obj(amaze_dup) #If the error that the function can't be 
+
+test.list <- generate_taxa_test_pair(
+  data.obj = ps.obj,
+  subject.var = "PID",
+  time.var = "Timepoint",
+  group.var = "InterventionArm",
+  adj.vars = NULL,
+  feature.level = c("Genus"),
+  prev.filter = 0.1,
+  abund.filter = 0.0001,
+  feature.dat.type = "count"
+)
+
+#' Generate the volcano plot
+plot.list <- generate_taxa_volcano_single(
+  data.obj = ps.obj,
+  group.var = "InterventionArm",
+  test.list = test.list,
+  feature.sig.level = 0.1,
+  feature.mt.method = "none"
+)
+
+plot.list
+
+```
+
+
+plot baseline stool heatmap (HIV)
+```{r}
+library(microViz)
+load("Inputs/AMAZE_ps_filtered_pairs.RData")
+amaze_dup2 <- subset_samples(amaze_dup, Timepoint == "Pre-Intervention")
+amaze_dup2
+```
+
+Plot
+```{r}
+amaze_dup2_stool <- subset_samples(amaze_dup2, Sample.Type == "Stool")
+#convert to compositional 
+library(microbiome)
+abund_stool <- transform_sample_counts(amaze_dup2_stool, function(x){x/sum(x)})
+
+abund_stool_ty <- subset_taxa(amaze_dup2_stool,
+                              Genus == "Prevotellaceae.UCG.003" |Genus == "Pseudocitrobacter" |Genus == "Treponema" |Genus == "dgA.11.gut.group" |Genus == "Mitsuokella" |Genus == "Ruminobacter" |Genus == "Tyzzerella" |Genus == "Anaerosporobacter" |Genus == "Paraprevotella" |Genus == "Akkermansia" |Genus == "Lachnospiraceae.NK3A20.group" |Genus == "Mogibacterium" |Genus == "Prevotellaceae.NK3B31.group" |Genus == "Hungatella" |Genus == "Anaerovibrio" |Genus == "Escherichia.Shigella" |Genus == "Aggregatibacter" |Genus == "Lachnoclostridium" |Genus == "Lachnospiraceae.UCG.007" |Genus == "Turicibacter" |Genus == "Lachnospiraceae.AC2044.group" |Genus == "Peptococcus" |Genus == "Alistipes" |Genus == "Actinomyces" |Genus == "Paludicola" |Genus == "Megamonas"
+)
+
+cols <- distinct_palette(n = 2, add = NA)
+names(cols) <- unique(samdat_tbl(amaze_dup2_stool)$hiv_status)
+
+abund_stool_ty %>%
+  #tax_fix_interactive() %>%
+  tax_transform("log2", rank = "Genus") %>%
+  ps_arrange(hiv_status) %>% 
+  comp_heatmap(
+    tax_anno = taxAnnotation(
+      Prev. = anno_tax_prev(bar_width = 0.3, size = grid::unit(1, "cm"))
+    ),
+    sample_anno = sampleAnnotation(
+      `HIV Status` = anno_sample("hiv_status"),
+      col = list(State1 = cols), border = FALSE
+    ),
+    sample_seriation = "Identity" # suppress sample reordering
+  )
+
+amaze_dup2_stool %>%
+  tax_transform("clr", rank = "Genus") %>%
+  # when no distance matrix or constraints are supplied, PCA is the default/auto ordination method
+  ord_calc(method = "PCA") %>%
+  ord_plot(color = "hiv_status", shape = "hiv_status", plot_taxa = 1:8, size = 4) +
+  scale_colour_brewer(palette = "Dark2")
+
+amaze_dup2_stool %>%
+  tax_transform("identity", rank = "Genus") %>% # don't transform!
+  dist_calc("bray") %>%
+  ord_calc("PCoA") %>%
+  ord_get() %>%
+  phyloseq::plot_scree() + theme(axis.text.x = element_text(size = 6))
+```
+
+
+Compare change in abundance between intervention arms
+```{r}
+library(lme4)
+library(MicrobiomeStat)
+
+MicrobiomeData <- list(
+  feature.tab = otu_table(amaze_dup),
+  meta.dat = sample_data(amaze_dup),
+  feature.ann = tax_table(amaze_dup),
+  tree = phy_tree(amaze_dup))
+
+ps.obj <- mStat_convert_phyloseq_to_data_obj(amaze_dup)
+generate_taxa_change_heatmap_pair(
+   data.obj = ps.obj,
+   subject.var = "PID",
+   time.var = "pre_post",
+   group.var = "InterventionArm",
+   strata.var = "Sample.Type",
+   change.base = "1",
+   #feature.change.func = "relative change",
+   feature.level = "Genus",
+   feature.dat.type = "count",
+   features.plot = NULL,
+   top.k.plot = NULL,
+   top.k.func = NULL,
+   prev.filter = 0.1,
+   abund.filter = 0.001,
+   base.size = 12,
+   palette = NULL,
+   cluster.rows = NULL,
+   cluster.cols = FALSE,
+   pdf = TRUE,
+   file.ann = NULL,
+   pdf.wid = 11,
+   pdf.hei = 8.5
+)
+
+# Generate taxa change test pair
+test.list <- generate_taxa_change_test_pair(
+  data.obj = ps.obj,
+  subject.var = "PID",
+  time.var = "pre_post",
+  group.var = "InterventionArm",
+  adj.vars = NULL,
+  change.base = "0",
+  feature.change.func = "log fold change",
+  feature.level = "Genus",
+  prev.filter = 0.01,
+  abund.filter = 0.001,
+  feature.dat.type = "count"
+)
+
+# Generate the volcano plot
+plot.list <- generate_taxa_volcano_single(
+  data.obj = ps.obj,
+  group.var = "InterventionArm",
+  test.list = test.list,
+  feature.sig.level = 0.1,
+  feature.mt.method = "none"
+)
+
+```
+
