@@ -1,0 +1,157 @@
+SampleID,PID,Sample.Type,Timepoint,pre_post,InterventionArm,InterventionArm2,baseline_age,pod_Age,hiv_pos,hiv_status,sex,sex_c,bmi_nustart,anthro_date,endo_date,VW_mean,CD_mean,VH_mean,CLE_Fields,CRP,SCD14,LPS,GLP2
+6300A1,6300,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,18,18.65,0,Negative,1,Male,NA,29/09/2015,29/09/2015,266.9094,130.2792,184.909,121,81,1754,136,1
+6300A2,6300,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,19.07,NA,Negative,1,Male,19.2634785,02/03/2016,26/02/2016,204.2857143,170.3707143,166.3637143,102,207,1480,0,NA
+6302A1,6302,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,50,50.99,1,Positive,1,Male,19.26717144,20/10/2015,20/10/2015,364.091,178.278,218.18175,135,29549,2197,275,1
+6302A2,6302,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,51.37,NA,Positive,1,Male,18.48972418,09/03/2016,09/03/2016,285.7851818,183.8282727,183.1405455,92,15667,1531,93,1
+6303A1,6303,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,59,59.9,0,Negative,1,Male,20.94067909,19/11/2015,19/11/2015,231.2728,199.132,241.9998,128,705,1138,136,0
+6303A2,6303,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,60.28,NA,Negative,1,Male,21.66732726,05/04/2016,05/04/2016,259.8991111,171.429,161.9194444,220,2551,2052,359,1
+6304A1,6304,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,44,44.92,0,Negative,1,Male,26.8388318,05/10/2015,05/10/2015,221.2728,105.1606667,291.4546,109,1047,1408,156,1
+6304A2,6304,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,45.32,NA,Negative,1,Male,25.82477015,01/03/2016,01/03/2016,173.6362857,159.1678571,278.8311429,NA,1670,1194,88,2
+6305A1,6305,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,60,60.29,1,Positive,2,Female,27.695595,06/11/2015,06/11/2015,NA,NA,NA,78,501,2244,70,0
+6305A2,6305,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,60.65,NA,Positive,2,Female,27.36686391,14/03/2016,14/03/2016,NA,NA,NA,151,308,2260,NA,1
+6306A1,6306,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,56,56.01,1,Positive,2,Female,24.7265625,12/11/2015,12/11/2015,223.409125,157.462,201.93175,35,4084,3503,314,1
+6306A2,6306,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,56.43,NA,Positive,2,Female,23.203125,14/04/2016,14/04/2016,243.86375,102.434,151.591,NA,319,1622,290,1
+6308A1,6308,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,37,35.32,1,Positive,2,Female,31.80580035,08/10/2015,08/10/2015,423.636,208.5365,256.3635,117,12826,1646,195,0
+6308A2,6308,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,35.72,NA,Positive,2,Female,30.92453133,02/03/2016,02/03/2016,323.6365,149.62775,277.9545,73,14343,2083,NA,0
+6309A1,6309,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,32,32.38,1,Positive,2,Female,NA,01/10/2015,01/10/2015,191.8185,163.125,178.6365,49,2749,2531,187,2
+6309A2,6309,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,32.8,NA,Positive,2,Female,16.55239563,29/02/2016,29/02/2016,245.1516667,196.5913333,175.4546667,84,52500,14717,0,1
+6310A1,6310,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,55,57.41,1,Negative,2,Female,20.67580845,11/11/2015,11/11/2015,NA,NA,NA,71,330,2655,88,1
+6310A2,6310,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,57.79,NA,Negative,2,Female,21.06027596,31/03/2016,31/03/2016,NA,NA,NA,90,110,1730,154,NA
+6311A1,6311,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,57,57.28,0,Negative,2,Female,25.58844889,16/11/2015,17/11/2015,320.795625,120.44425,292.045375,66,9704,2013,314,0
+6311A2,6311,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,57.66,NA,Negative,2,Female,25.24669999,04/04/2016,04/04/2016,169.204625,114.398625,180.056875,120,6328,2067,139,0
+6312A1,6312,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,28,29.85,0,Negative,2,Female,24.82347265,16/11/2015,17/11/2015,253.0304167,163.1529167,213.7120833,137,2337,1867,346,3
+6312A2,6312,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,30.23,NA,Negative,2,Female,24.12174905,04/04/2016,04/04/2016,230.2275,117.1365,132.9545,142,1561,1693,460,1
+6318A1,6318,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,51,51.02,1,Positive,2,Female,20.26918763,02/11/2015,02/11/2015,369.318,162.6675,472.27275,72,1513,2259,69,0
+6318A2,6318,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,51.4,NA,Positive,2,Female,20.38936068,18/03/2016,18/03/2016,NA,NA,NA,149,3248,1605,NA,0
+6322A1,6322,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,43,42.47,1,Positive,2,Female,19.9609375,27/10/2015,27/10/2015,497.7275,211.3755,249.091,78,5714,1492,226,0
+6322A2,6322,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,42.86,NA,Positive,2,Female,20.390625,17/03/2016,17/03/2016,257.273,146.3265,167.727,NA,4750,1540,160,0
+6324A1,6324,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,56,59.1,0,Negative,2,Female,36.21214549,26/10/2015,26/10/2015,237.7275,241.3185,178.636,0,2136,1983,289,1
+6324A2,6324,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,59.49,NA,Negative,2,Female,36.29226086,16/03/2016,16/03/2016,163.8842727,131.7381818,191.5703636,138,4503,2214,192,1
+6327A1,6327,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,51,50.99,0,Negative,2,Female,36.76842638,22/10/2015,12/10/2015,NA,NA,NA,118,8867,1178,NA,1
+6327A2,6327,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,51.41,NA,Negative,2,Female,36.43110137,21/03/2016,21/03/2016,228.86375,155.501,192.9545,165,7395,1540,121,0
+6328A1,6328,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,39,39.84,1,Positive,2,Female,21.6024974,04/11/2015,04/11/2015,131.364,161.934,234.5455,53,5229,3116,44,1
+6328A2,6328,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,40.22,NA,Positive,2,Female,21.31113424,23/03/2016,23/03/2016,NA,NA,NA,116,1002,5637,78,1
+6329A1,6329,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,39,39.3,0,Negative,2,Female,17.59412305,05/10/2015,05/10/2015,227.72725,120.58125,106.81825,0,320,2399,180,0
+6329A2,6329,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,39.71,NA,Negative,2,Female,17.07988981,01/03/2016,01/03/2016,257.0909,151.5237,205.8182,95,106,1489,NA,1
+6331A1,6331,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,54,54.61,0,Negative,2,Female,36.52405868,11/11/2015,11/11/2015,185.4546667,183.509,213.9393333,86,10732,1829,91,3
+6331A2,6331,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,55,NA,Negative,2,Female,34.19855682,31/03/2016,31/03/2016,258.0301667,189.035,237.5755,129,13296,1565,0,2
+6332A1,6332,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,45,44.42,1,Positive,2,Female,30.16107824,19/11/2015,20/11/2015,209.772625,140.993,190.113625,66,4657,1249,334,1
+6332A2,6332,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,44.8,NA,Positive,2,Female,29.83234714,08/04/2016,08/04/2016,253.3765714,118.0977143,162.8571429,98,2704,1450,604,2
+6334A1,6334,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,45,45.75,1,Positive,2,Female,25.41533303,22/10/2015,22/10/2015,NA,NA,NA,77,6635,3324,NA,0
+6334A2,6334,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,46.15,NA,Positive,2,Female,25.56774882,16/03/2016,16/03/2016,141.8181111,137.5815556,185.1515556,65,6135,3781,105,1
+6335A1,6335,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,21,21.14,0,Negative,1,Male,20.12855831,18/11/2015,18/11/2015,219.0908571,214.7244286,270.5194286,85,184,1743,363,1
+6335A2,6335,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,NA,NA,Negative,1,Male,NA,01/04/2016,01/04/2016,159.2425,171.9323333,220,107,177,2064,412,2
+6336A1,6336,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,22,19.37,0,Negative,1,Male,21.04683196,19/10/2015,19/10/2015,245.0504444,198.6042222,193.6362222,83,47,1415,124,0
+6336A2,6336,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,29.76,NA,Negative,1,Male,22.62626263,11/03/2016,11/03/2016,227.0455,155.90025,221.36375,116,236,1797,NA,0
+6337A1,6337,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,34,34.31,0,Negative,1,Male,NA,29/09/2015,29/09/2015,263.52275,181.14675,160.113625,40,1999,1378,191,1
+6337A2,6337,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,34.74,NA,Negative,1,Male,21.24225207,03/03/2016,26/02/2016,143.2323333,141.1786667,130.2022222,87,52500,2461,138,0
+6338A1,6338,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,57,58.8,1,Positive,1,Male,NA,20/10/2015,20/10/2015,217.95475,165.185,200.00025,71,18734,4667,126,0
+6338A2,6338,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,59.19,NA,Positive,1,Male,23.41788876,10/03/2016,10/03/2016,305.974,168.7562857,205.1948571,165,52500,6761,68,0
+6342A1,6342,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,43,44.28,0,Negative,1,Male,20.17388686,21/10/2015,21/10/2015,375.4545,135.348,160,75,11519,3116,NA,NA
+6342A2,6342,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,44.68,NA,Negative,1,Male,20.21152471,14/03/2016,14/03/2016,145.4546667,118.4356667,160.606,118,1138,2472,117,1
+6345A1,6345,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,48,46.35,0,Negative,1,Male,19.21028466,30/09/2015,30/09/2015,216.1818,193.4516,152.5452,66,1804,2918,141,1
+6345A2,6345,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,46.77,NA,Negative,1,Male,18.47566575,29/02/2016,29/02/2016,151.5582857,151.823,217.4027143,95,2327,1727,158,0
+6346A1,6346,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,49,51.05,NA,Negative,2,Female,26.0077534,11/11/2015,11/11/2015,202.04575,172.4495,215.4545,66,25134,1581,251,1
+6346A2,6346,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,51.44,NA,Negative,2,Female,25.48082352,04/04/2016,04/04/2016,232.27275,106.588875,141.25,84,1097,1926,274,1
+6348A1,6348,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,42,42.06,0,Negative,2,Female,33.45740997,29/10/2015,29/10/2015,NA,NA,NA,45,10982,1429,63,1
+6348A2,6348,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,42.51,NA,Negative,2,Female,31.63954294,07/04/2016,07/04/2016,179.9996667,89.78133333,266.3636667,81,518,2099,0,0
+6349A1,6349,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,54,53.07,0,Negative,2,Female,50.83004602,19/11/2015,19/11/2015,NA,NA,NA,99,12365,1218,NA,0
+6349A2,6349,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,53.45,NA,Negative,2,Female,50.33694938,06/04/2016,06/04/2016,201.875,118.167625,204.7159375,NA,10671,1261,470,1
+6350A1,6350,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,20,21.09,0,Negative,2,Female,25.18902038,12/11/2015,12/11/2015,NA,NA,NA,145,397,1541,353,1
+6350A2,6350,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,21.47,NA,Negative,2,Female,26.83267587,30/03/2016,30/03/2016,228.295625,123.306625,264.88625,95,189,3161,NA,1
+6351A1,6351,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,56,56.86,0,Negative,2,Female,26.61369559,11/11/2015,11/11/2015,NA,NA,NA,128,1410,2162,NA,NA
+6351A2,6351,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,57.25,NA,Negative,2,Female,27.16903755,31/03/2016,31/03/2016,340.606,107.658,233.939,104,6172,2965,384,1
+6352A1,6352,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,58,58.08,0,Negative,2,Female,31.05643129,13/11/2015,16/11/2015,307.7275,195.9785,251.818,52,8945,3591,445,2
+6352A2,6352,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,58.46,NA,Negative,2,Female,32.08167799,01/04/2016,01/04/2016,205.2275,153.3185,217.9545,82,11555,3935,425,2
+6355A1,6355,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,38,45.66,0,Negative,2,Female,29.07321704,13/11/2015,16/11/2015,169.9996667,168.2996667,292.4243333,114,8585,1990,376,1
+6355A2,6355,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,46.05,NA,Negative,2,Female,28.55899688,01/04/2016,01/04/2016,630,221.782,365.909,130,5702,2416,653,1
+6357A1,6357,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,28,28.94,0,Negative,2,Female,22.6784048,03/11/2015,03/11/2015,207.2725,198.243,197.273,10,1251,1402,NA,0
+6357A2,6357,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,29.33,NA,Negative,2,Female,22.43498722,22/03/2016,22/03/2016,243.0303333,171.385,225.4546667,117,367,319,63,0
+6359A1,6359,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,47,46.18,0,Negative,2,Female,24.80334224,02/11/2015,02/11/2015,200.1703125,140.4745625,130.3409375,78,998,1613,99,1
+6359A2,6359,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,46.57,NA,Negative,2,Female,24.50223945,21/03/2016,21/03/2016,275.4545,142.618,159.091,108,52500,4259,689,NA
+6360A1,6360,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,42,56.19,1,Positive,2,Female,25.97948251,22/10/2015,22/10/2015,146.3635,198.764,214.091,55,922,1105,232,0
+6360A2,6360,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,56.59,NA,Positive,2,Female,26.04950807,16/03/2016,16/03/2016,174.6464444,138.1077778,184.3435556,6,1704,1200,NA,0
+6361A1,6361,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,34,34.24,0,Negative,2,Female,22.15100004,23/10/2015,23/10/2015,196.704625,150.247125,251.93175,70,2839,1882,211,3
+6361A2,6361,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,34.63,NA,Negative,2,Female,22.63783521,14/03/2016,14/03/2016,258.961,92.15771429,207.5325714,143,2467,1600,NA,1
+6362A1,6362,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,23,23.3,0,Negative,2,Female,32.59402935,23/10/2015,23/10/2015,249.9241667,196.4683333,203.2574167,130,12676,2906,177,2
+6362A2,6362,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,23.69,NA,Negative,2,Female,33.9433294,15/03/2016,15/03/2016,291.3635,125.2985,198.6365,51,18908,2120,552,2
+6366A1,6366,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,32,32.73,0,Negative,2,Female,23.96738302,07/10/2015,07/10/2015,NA,NA,NA,87,340,1681,291,1
+6366A2,6366,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,33.15,NA,Negative,2,Female,24.91998171,11/03/2016,11/03/2016,200.606,132.3041667,179.2421667,104,388,1361,94,0
+6367A1,6367,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,40,39.89,1,Positive,2,Female,23.4660336,29/10/2015,29/10/2015,285.4543333,156.181,198.1816667,72,3305,3034,109,3
+6367A2,6367,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,40.29,NA,Positive,2,Female,22.27903579,24/03/2016,24/03/2016,NA,NA,NA,126,17427,3500,15,2
+6368A1,6368,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,54,55.84,0,Negative,2,Female,19.95405612,06/11/2015,06/11/2015,212.2725,152.0355,188.1815,77,3414,2215,50,1
+6368A2,6368,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,55.8,NA,Negative,2,Female,19.95405612,24/03/2016,24/03/2016,NA,NA,NA,86,2585,2294,27,1
+6369A1,6369,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,40,40.94,1,Positive,2,Female,18.93183786,14/10/2015,14/10/2015,195.8182,116.4048,205.4544,15,15086,2155,94,1
+6369A2,6369,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,41.34,NA,Positive,2,Female,19.00711355,09/03/2016,09/03/2016,NA,NA,NA,76,2439,2620,101,0
+6377A1,6377,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,54,54.82,0,Negative,2,Female,24.76570439,22/10/2015,12/10/2015,137.7275,240.853,138.182,77,1970,2066,267,1
+6377A2,6377,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,55.21,NA,Negative,2,Female,24.99153148,15/03/2016,15/03/2016,NA,NA,NA,47,3336,2552,NA,1
+6378A1,6378,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,45,45.46,1,Positive,2,Female,38.77583721,26/10/2015,26/10/2015,NA,NA,NA,48,8428,5784,146,2
+6378A2,6378,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,45.93,NA,Positive,2,Female,37.81445281,15/03/2016,15/03/2016,288.182,117.772,196.182,130,25683,4503,NA,1
+6379A1,6379,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,38,38.63,1,Positive,2,Female,21.04347138,27/10/2015,27/10/2015,207.840875,153.643625,211.7045,81,9921,2656,66,1
+6379A2,6379,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,39.02,NA,Positive,2,Female,22.3092441,17/03/2016,17/03/2016,156.0606667,113.0451667,134.5453333,23,6938,2341,221,0
+6380A1,6380,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,50,51.07,1,Positive,2,Female,23.48601754,19/11/2015,19/11/2015,289.2728,222.1098,251.091,30,1317,2350,490,0
+6380A2,6380,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,51.47,NA,Positive,2,Female,23.90003387,13/04/2016,13/04/2016,207.9545,146.88025,103.182,43,3329,3884,321,0
+6382A1,6382,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,41,41.56,1,Positive,2,Female,29.78879706,12/10/2015,12/10/2015,NA,NA,NA,12,7734,2050,134,0
+6382A2,6382,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,41.95,NA,Positive,2,Female,29.45821855,03/03/2016,03/03/2016,264.091,148.9215,254.545,106,9747,2538,42,0
+6383A1,6383,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,39,39.27,0,Negative,1,Male,19.5615745,20/10/2015,20/10/2015,196.3636667,152.0506667,159.394,100,3921,3179,NA,1
+6383A2,6383,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,39.66,NA,Negative,1,Male,18.94600048,10/03/2016,10/03/2016,NA,NA,NA,102,359,1742,86,1
+6384A1,6384,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,39,44.72,0,Negative,1,Male,19.00408163,09/10/2015,09/10/2015,NA,NA,NA,76,141,1490,260,0
+6384A2,6384,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,45.12,NA,Negative,1,Male,18.22040816,03/03/2016,03/03/2016,184.6363,164.2717,215.7273,66,409,3938,39,0
+6385A1,6385,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,24,24.27,0,Negative,2,Female,25.06574622,14/10/2015,14/10/2015,377.8182,159.5586,209.818,34,1339,2437,186,2
+6385A2,6385,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,24.67,NA,Negative,2,Female,27.20249836,07/03/2016,07/03/2016,455.1513333,117.8823333,193.9393333,100,2497,2717,NA,1
+6386A1,6386,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,19,20.39,0,Negative,1,Male,20.07842077,06/10/2015,06/10/2015,225,136.0905,134.091,0,1209,1077,NA,0
+6386A2,6386,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,20.79,NA,Negative,1,Male,18.72633856,01/03/2016,01/03/2016,241.212,142.7973333,208.4848333,103,14525,1135,109,1
+6391A1,6391,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,47,46.26,0,Negative,1,Male,25.82779244,09/10/2015,09/10/2015,NA,NA,NA,37,19007,1278,100,NA
+6391A2,6391,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,46.74,NA,Negative,1,Male,25.49366835,03/03/2016,03/03/2016,333.6366667,224.3736667,176.9696667,49,NA,1202,47,0
+6392A1,6392,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,20,20.62,0,Negative,1,Male,19.62997162,08/10/2015,08/10/2015,241.591125,152.630625,232.045375,81,18435,2268,214,NA
+6392A2,6392,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,21.02,NA,Negative,1,Male,20.10875141,02/03/2016,02/03/2016,362.9545,157.9256,256.59075,121,330,1233,46,NA
+6397A1,6397,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,21,22.13,0,Negative,2,Female,28.3530572,10/11/2015,10/11/2015,NA,NA,NA,83,1804,1659,214,1
+6397A2,6397,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,22.5,NA,Negative,2,Female,28.59960552,23/03/2016,23/03/2016,NA,NA,NA,103,4648,984,0,3
+6398A1,6398,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,24,22.87,0,Negative,2,Female,20.52925122,05/11/2015,05/11/2015,283.1815,163.089,225.909,102,943,1143,58,1
+6398A2,6398,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,23.27,NA,Negative,2,Female,21.04347138,30/03/2016,30/03/2016,NA,NA,NA,14,609,1110,NA,2
+6399A1,6399,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,20,20.19,0,Negative,2,Female,25.23428942,16/10/2015,16/10/2015,172.273,187.994,175,122,370,1118,173,1
+6399A2,6399,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,20.58,NA,Negative,2,Female,24.78802385,07/03/2016,07/03/2016,NA,NA,NA,71,683,1165,87,0
+6400A1,6400,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,19,22.04,0,Negative,2,Female,18.74927665,09/11/2015,09/11/2015,NA,NA,NA,109,6646,2174,56,NA
+6400A2,6400,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,22.43,NA,Negative,1,Male,18.90359168,30/03/2016,30/03/2016,153.6364,130.0406,174.1818,27,847,2131,108,1
+6404A1,6404,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,22,22.51,0,Negative,1,Male,24.24242424,19/10/2015,19/10/2015,NA,NA,NA,28,1520,1112,251,1
+6404A2,6404,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,22.93,NA,Negative,1,Male,25.4912764,21/03/2016,21/03/2016,210.9092,157.7594,161.4544,80,7089,2237,54,1
+6407A1,6407,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,47,46.51,0,Negative,2,Female,28.5119667,09/12/2015,10/12/2015,NA,NA,NA,53,3739,1630,NA,2
+6407A2,6407,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,46.86,NA,Negative,2,Female,27.30489074,13/04/2016,13/04/2016,192.727,146.8275,162.273,74,3520,2764,79,2
+6412A1,6412,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,30,29.88,0,Negative,1,Male,20.53259871,13/10/2015,13/10/2015,323.6365,204.5435,174.091,52,1901,1957,23,0
+6412A2,6412,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,30.31,NA,Negative,1,Male,20.56932966,04/03/2016,04/03/2016,174.5452,179.9614,208.1816,117,429,1946,NA,0
+6415A1,6415,Duodenal Aspirate,Pre-Intervention,0,Micronutrient,No Amino Acid,21,21.77,0,Negative,1,Male,19.10009183,15/10/2015,15/10/2015,NA,NA,NA,49,352,1398,173,2
+6415A2,6415,Duodenal Aspirate,Post-Intervention,1,Micronutrient,No Amino Acid,NA,22.19,NA,Negative,1,Male,18.47566575,17/03/2016,17/03/2016,NA,NA,NA,25,5089,1815,162,1
+6419A1,6419,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,38,37.52,1,Positive,1,Male,19.78464791,18/11/2015,18/11/2015,253.9393333,121.9403333,216.9693333,65,1153,1465,257,1
+6419A2,6419,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,NA,NA,Positive,1,Male,NA,31/03/2016,31/03/2016,245.4544167,168.484,198.63625,66,891,1834,349,1
+6422A1,6422,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,45,44.95,0,Negative,1,Male,21.30302232,23/11/2015,23/11/2015,226.515,202.9366667,242.2728333,0,376,914,415,1
+6422A2,6422,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,45.32,NA,Negative,1,Male,21.56648726,06/04/2016,06/04/2016,178.2517692,126.8446154,181.2588462,80,112,2008,484,NA
+6426A1,6426,Duodenal Aspirate,Pre-Intervention,0,Placebo,No Amino Acid,25,26.35,0,Negative,2,Female,22.42036011,19/11/2015,20/11/2015,196.590875,170.021125,221.363625,100,299,1635,20,2
+6426A2,6426,Duodenal Aspirate,Post-Intervention,1,Placebo,No Amino Acid,NA,26.73,NA,Negative,2,Female,NA,07/04/2016,07/04/2016,123.6364,114.3415,179.0002,98,2296,2437,564,0
+6427A1,6427,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,26,26.35,1,Positive,2,Female,23.62339271,23/11/2015,23/11/2015,216.5454,194.3676,270.3634,118,816,2940,326,0
+6427A2,6427,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,26.72,NA,Positive,2,Female,23.75154855,06/04/2016,06/04/2016,275.4545,156.535875,261.25,69,407,5045,539,1
+6428A1,6428,Duodenal Aspirate,Pre-Intervention,0,Amino Acid,Amino Acid,39,36.93,0,Negative,2,Female,24.8828125,02/12/2015,02/12/2015,229.8181,154.205,262.4547,168,2033,1640,132,0
+6428A2,6428,Duodenal Aspirate,Post-Intervention,1,Amino Acid,Amino Acid,NA,37.28,NA,Negative,2,Female,25.625,08/04/2016,08/04/2016,179.091,98.98,158.636,83,1948,2772,11,0
+6429A1,6429,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,23,21.93,0,Negative,2,Female,22.16668981,02/12/2015,02/12/2015,NA,NA,NA,55,261,1790,11,2
+6429A2,6429,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,22.28,NA,Negative,1,Male,23.32361516,08/04/2016,08/04/2016,NA,NA,NA,81,317,1578,NA,1
+6432A1,6432,Duodenal Aspirate,Pre-Intervention,0,Combined,Amino Acid,20,20.77,0,Negative,1,Male,20.14768285,04/12/2015,04/12/2015,179.091,131.8444444,181.0101111,69,135,1272,263,2
+6432A2,6432,Duodenal Aspirate,Post-Intervention,1,Combined,Amino Acid,NA,21.12,NA,Negative,1,Male,19.37919743,11/04/2016,11/04/2016,155,120.6135714,196.3636429,NA,173,1642,102,0
+6316A2,,Duodenal Aspirate,Post-Intervention,1,,No Amino Acid,,25,NA,Negative,2,Female,19,23/03/2016,23/03/2016,,,,121,NA,NA,NA,NA
+6319A1,,Duodenal Aspirate,Pre-Intervention,0,,,19,22,0,Negative,2,Female,30,01/10/2015,01/10/2015,,,,56,NA,NA,NA,NA
+6320A1,,Duodenal Aspirate,Pre-Intervention,0,,,29,30,0,Negative,2,Female,20,24/11/2015,24/11/2015,,,,80,NA,NA,NA,NA
+6321A2,,Duodenal Aspirate,Post-Intervention,1,,Amino Acid,,32,NA,Positive,2,Female,20,18/03/2016,18/03/2016,257,127,163,126,NA,NA,NA,NA
+6326A1,,Duodenal Aspirate,Pre-Intervention,0,,Amino Acid,30,31,1,Positive,2,Female,19,16/10/2015,16/10/2015,226,152,177,69,NA,NA,NA,NA
+6330A2,,Duodenal Aspirate,Post-Intervention,1,,Amino Acid,,31,NA,Positive,2,Female,18,22/03/2016,22/03/2016,214,171,215,189,NA,NA,NA,NA
+6333A2,,Duodenal Aspirate,Post-Intervention,1,,No Amino Acid,,46,NA,Positive,2,Female,,18/03/2016,18/03/2016,237,128,208,138,NA,NA,NA,NA
+6339A1,,Duodenal Aspirate,Pre-Intervention,0,,,54,54,0,Negative,1,Male,17,30/09/2015,30/09/2015,194,105,159,103,NA,NA,NA,NA
+6347A2,,Duodenal Aspirate,Post-Intervention,1,,No Amino Acid,,21,NA,Negative,2,Female,22,29/03/2016,29/03/2016,258,110,205,90,NA,NA,NA,NA
+6354A1,,Duodenal Aspirate,Pre-Intervention,0,,Amino Acid,28,28,0,Negative,2,Female,,29/09/2015,28/09/2015,294,128,170,17,NA,NA,NA,NA
+6356A1,,Duodenal Aspirate,Pre-Intervention,0,,Amino Acid,35,46,1,Positive,1,Male,20,21/10/2015,21/10/2015,241,339,101,28,NA,NA,NA,NA
+6365A1,,Duodenal Aspirate,Pre-Intervention,0,,Amino Acid,39,41,0,Negative,2,Female,24,27/10/2015,27/10/2015,247,204,258,112,NA,NA,NA,NA
+6372A2,,Duodenal Aspirate,Post-Intervention,1,,No Amino Acid,,28,NA,Negative,2,Female,28,29/03/2016,29/03/2016,,,,84,NA,NA,NA,NA
+6387A2,,Duodenal Aspirate,Post-Intervention,1,,Amino Acid,,21,NA,Negative,1,Male,19,04/03/2016,04/03/2016,228,172,208,113,NA,NA,NA,NA
+6394A2,,Duodenal Aspirate,Post-Intervention,1,,No Amino Acid,,44,NA,Negative,2,Female,27,04/03/2016,04/03/2016,170,179,128,11,NA,NA,NA,NA
+6408A1,,Duodenal Aspirate,Pre-Intervention,0,,No Amino Acid,34,35,0,Negative,1,Male,21,10/11/2015,10/11/2015,340,190,307,97,NA,NA,NA,NA
+6413A1,,Duodenal Aspirate,Pre-Intervention,0,,No Amino Acid,19,19,0,Negative,1,Male,21,13/10/2015,13/10/2015,,,,38,NA,NA,NA,NA
+6421A1,,Duodenal Aspirate,Pre-Intervention,0,,Amino Acid,28,28,0,Negative,1,Male,28,19/11/2015,19/11/2015,242,156,197,114,NA,NA,NA,NA
+6424A2,,Duodenal Aspirate,Post-Intervention,1,,Amino Acid,,36,NA,Negative,1,Male,18,14/04/2016,14/04/2016,224,139,229,88,NA,NA,NA,NA
+6430A1,,Duodenal Aspirate,Pre-Intervention,0,,No Amino Acid,35,35,0,Negative,2,Female,22,08/12/2015,08/12/2015,253,128,221,53,NA,NA,NA,NA

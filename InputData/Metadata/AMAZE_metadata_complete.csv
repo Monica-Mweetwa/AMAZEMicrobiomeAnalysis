@@ -1,0 +1,341 @@
+SampleID,Intervention_arm,Intervention_arm2,Timepoint,PID,Sample_Type,sex,anthro_date,endo_date,stool_date,Season,bmi_nustart,muac,HIV_Status,Age,bacterial_load,VW_mean,CD_mean,VH_mean,VP_sum,VP_mean,VA_sum,VA_mean,LEAK_PC_PK,TOTAL_LEAK_FIELDS_PK,LEAK_PC_JLA,TOTAL_LEAK_FIELDS_JLA,CLE_Fields
+6300A1,Amino acid,Amino acid,Pre-Intervention,6300,Duodenal Aspirate,1,29/09/2015,29/09/2015,05/08/2015,Dry Season,,24,Negative,18,1.02E+08,267,130,185,5712,1142,150443,30089,88,107,91,110,121
+6300A2,Amino acid,Amino acid,Post-Intervention,6300,Duodenal Aspirate,1,02/03/2016,26/02/2016,,Wet Season,19,24,Negative,18,4.95E+09,204,170,166,5170,739,167908,23987,88,90,93,95,102
+6300S1,Amino acid,Amino acid,Pre-Intervention,6300,Stool,1,29/09/2015,29/09/2015,05/08/2015,Dry Season,,24,Negative,18,,267,130,185,5712,1142,150443,30089,88,107,91,110,121
+6300S2,Amino acid,Amino acid,Post-Intervention,6300,Stool,1,02/03/2016,26/02/2016,,Wet Season,19,24,Negative,18,,204,170,166,5170,739,167908,23987,88,90,93,95,102
+6302A1,Amino acid,Amino acid,Pre-Intervention,6302,Duodenal Aspirate,1,20/10/2015,20/10/2015,05/08/2015,Dry Season,19,25,Positive,50,876000,364,178,218,6536,1634,196812,49203,19,25,23,31,135
+6302A2,Amino acid,Amino acid,Post-Intervention,6302,Duodenal Aspirate,1,09/03/2016,09/03/2016,,Wet Season,18,27,Positive,50,4.72E+08,286,184,183,10591,963,381896,34718,33,30,64,59,92
+6302S1,Amino acid,Amino acid,Pre-Intervention,6302,Stool,1,20/10/2015,20/10/2015,05/08/2015,Dry Season,19,25,Positive,50,,364,178,218,6536,1634,196812,49203,19,25,23,31,135
+6302S2,Amino acid,Amino acid,Post-Intervention,6302,Stool,1,09/03/2016,09/03/2016,,Wet Season,18,27,Positive,50,,286,184,183,10591,963,381896,34718,33,30,64,59,92
+6303A1,Amino acid,Amino acid,Pre-Intervention,6303,Duodenal Aspirate,1,19/11/2015,19/11/2015,05/08/2015,Wet Season,21,25,Negative,59,95800000,231,199,242,5442,1088,212189,42438,71,91,66,85,128
+6303A2,Amino acid,Amino acid,Post-Intervention,6303,Duodenal Aspirate,1,05/04/2016,05/04/2016,,Wet Season,22,26,Negative,59,2.86E+08,260,171,162,7064,785,249401,27711,42,93,56,124,220
+6303S1,Amino acid,Amino acid,Pre-Intervention,6303,Stool,1,19/11/2015,19/11/2015,05/08/2015,Wet Season,21,25,Negative,59,,231,199,242,5442,1088,212189,42438,71,91,66,85,128
+6303S2,Amino acid,Amino acid,Post-Intervention,6303,Stool,1,05/04/2016,05/04/2016,,Wet Season,22,26,Negative,59,,260,171,162,7064,785,249401,27711,42,93,56,124,220
+6304A1,Micronutrient,No Amino Acids,Pre-Intervention,6304,Duodenal Aspirate,1,05/10/2015,05/10/2015,05/08/2015,Dry Season,27,35,Negative,44,7.10E+07,221,105,291,3216,1072,103961,34654,7,8,6,6,109
+6304A2,Micronutrient,No Amino Acids,Post-Intervention,6304,Duodenal Aspirate,1,01/03/2016,01/03/2016,,Wet Season,26,32,Negative,44,3.06E+08,174,159,279,6293,899,227502,32500,,,,,
+6304S1,Micronutrient,No Amino Acids,Pre-Intervention,6304,Stool,1,05/10/2015,05/10/2015,05/08/2015,Dry Season,27,35,Negative,44,,221,105,291,3216,1072,103961,34654,7,8,6,6,109
+6304S2,Micronutrient,No Amino Acids,Post-Intervention,6304,Stool,1,01/03/2016,01/03/2016,,Wet Season,26,32,Negative,44,,174,159,279,6293,899,227502,32500,,,,,
+6305A1,Amino acid,Amino acid,Pre-Intervention,6305,Duodenal Aspirate,2,06/11/2015,06/11/2015,05/08/2015,Wet Season,28,35,Positive,60,7.71E+08,,,,,,,,97,76,97,76,78
+6305A2,Amino acid,Amino acid,Post-Intervention,6305,Duodenal Aspirate,2,14/03/2016,14/03/2016,,Wet Season,27,33,Positive,60,1.00E+10,,,,,,,,48,72,53,80,151
+6305S1,Amino acid,Amino acid,Pre-Intervention,6305,Stool,2,06/11/2015,06/11/2015,05/08/2015,Wet Season,28,35,Positive,60,,,,,,,,,97,76,97,76,78
+6305S2,Amino acid,Amino acid,Post-Intervention,6305,Stool,2,14/03/2016,14/03/2016,,Wet Season,27,33,Positive,60,,,,,,,,,48,72,53,80,151
+6306A1,Micronutrient,No Amino Acids,Pre-Intervention,6306,Duodenal Aspirate,2,12/11/2015,12/11/2015,05/08/2015,Wet Season,25,31,Positive,56,39100000,223,157,202,8090,1011,292455,36557,100,35,100,35,35
+6306A2,Micronutrient,No Amino Acids,Post-Intervention,6306,Duodenal Aspirate,2,14/04/2016,14/04/2016,,Wet Season,23,,Positive,56,1.85E+08,244,102,152,2476,619,109252,27313,,,,,
+6306S1,Micronutrient,No Amino Acids,Pre-Intervention,6306,Stool,2,12/11/2015,12/11/2015,05/08/2015,Wet Season,25,31,Positive,56,,223,157,202,8090,1011,292455,36557,100,35,100,35,35
+6306S2,Micronutrient,No Amino Acids,Post-Intervention,6306,Stool,2,14/04/2016,14/04/2016,,Wet Season,23,,Positive,56,,244,102,152,2476,619,109252,27313,,,,,
+6308A1,Micronutrient,No Amino Acids,Pre-Intervention,6308,Duodenal Aspirate,2,08/10/2015,08/10/2015,05/08/2015,Dry Season,32,33,Positive,37,1.08E+08,424,209,256,3031,1516,141233,70617,27,32,70,82,117
+6308A2,Micronutrient,No Amino Acids,Post-Intervention,6308,Duodenal Aspirate,2,02/03/2016,02/03/2016,,Wet Season,31,32,Positive,37,1.80E+09,324,150,278,4894,1223,196461,49115,85,62,84,61,73
+6308S1,Micronutrient,No Amino Acids,Pre-Intervention,6308,Stool,2,08/10/2015,08/10/2015,05/08/2015,Dry Season,32,33,Positive,37,,424,209,256,3031,1516,141233,70617,27,32,70,82,117
+6308S2,Micronutrient,No Amino Acids,Post-Intervention,6308,Stool,2,02/03/2016,02/03/2016,,Wet Season,31,32,Positive,37,,324,150,278,4894,1223,196461,49115,85,62,84,61,73
+6309A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6309,Duodenal Aspirate,2,01/10/2015,01/10/2015,05/08/2015,Dry Season,,25,Positive,32,1.00E+09,192,163,179,1405,702,46810,23405,90,44,100,49,49
+6309A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6309,Duodenal Aspirate,2,29/02/2016,29/02/2016,,Wet Season,17,22,Positive,32,6.38E+08,245,197,175,3420,1140,89800,29933,92,77,92,77,84
+6309S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6309,Stool,2,01/10/2015,01/10/2015,05/08/2015,Dry Season,,25,Positive,32,,192,163,179,1405,702,46810,23405,90,44,100,49,49
+6309S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6309,Stool,2,29/02/2016,29/02/2016,,Wet Season,17,22,Positive,32,,245,197,175,3420,1140,89800,29933,92,77,92,77,84
+6310A1,Placebo,No Amino Acids,Pre-Intervention,6310,Duodenal Aspirate,2,11/11/2015,11/11/2015,05/08/2015,Wet Season,21,26,Positive,55,1.17E+09,,,,,,,,90,64,100,71,71
+6310A2,Placebo,No Amino Acids,Post-Intervention,6310,Duodenal Aspirate,2,31/03/2016,31/03/2016,,Wet Season,21,25,Positive,55,8.50E+07,,,,,,,,94,85,92,83,90
+6310S1,Placebo,No Amino Acids,Pre-Intervention,6310,Stool,2,11/11/2015,11/11/2015,05/08/2015,Wet Season,21,26,Positive,55,,,,,,,,,90,64,100,71,71
+6310S2,Placebo,No Amino Acids,Post-Intervention,6310,Stool,2,31/03/2016,31/03/2016,,Wet Season,21,25,Positive,55,,,,,,,,,94,85,92,83,90
+6311A1,Placebo,No Amino Acids,Pre-Intervention,6311,Duodenal Aspirate,2,16/11/2015,17/11/2015,05/08/2015,Wet Season,26,30,Negative,57,2.60E+08,321,120,292,10049,1256,464758,58095,92,61,98,65,66
+6311A2,Placebo,No Amino Acids,Post-Intervention,6311,Duodenal Aspirate,2,04/04/2016,04/04/2016,,Wet Season,25,30,Negative,57,1.62E+08,169,114,180,11460,716,364202,22763,73,88,82,98,120
+6311S1,Placebo,No Amino Acids,Pre-Intervention,6311,Stool,2,16/11/2015,17/11/2015,05/08/2015,Wet Season,26,30,Negative,57,,321,120,292,10049,1256,464758,58095,92,61,98,65,66
+6311S2,Placebo,No Amino Acids,Post-Intervention,6311,Stool,2,04/04/2016,04/04/2016,,Wet Season,25,30,Negative,57,,169,114,180,11460,716,364202,22763,73,88,82,98,120
+6312A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6312,Duodenal Aspirate,2,16/11/2015,17/11/2015,05/08/2015,Wet Season,25,30,Negative,28,4.50E+09,253,163,214,10765,897,453637,37803,100,137,100,137,137
+6312A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6312,Duodenal Aspirate,2,04/04/2016,04/04/2016,,Wet Season,24,29,Negative,28,97400000,230,117,133,2284,571,91269,22817,97,138,98,139,142
+6312S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6312,Stool,2,16/11/2015,17/11/2015,05/08/2015,Wet Season,25,30,Negative,28,,253,163,214,10765,897,453637,37803,100,137,100,137,137
+6312S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6312,Stool,2,04/04/2016,04/04/2016,,Wet Season,24,29,Negative,28,,230,117,133,2284,571,91269,22817,97,138,98,139,142
+6313S1,,,,6313,Stool,,,,,NA,,,,,,,,,,,,,,,,,
+6315S1,,,Pre-Intervention,6315,Stool,2,05/11/2015,05/11/2015,05/08/2015,Wet Season,30,33,Positive,35,,224,131,184,2259,753,79464,26488,,,88,105,120
+6316A2,Placebo,No Amino Acids,Post-Intervention,6316,Duodenal Aspirate,2,23/03/2016,23/03/2016,,Wet Season,19,24,,24,88600000,,,,,,,,97,117,99,120,121
+6316S1,Placebo,No Amino Acids,Pre-Intervention,6316,Stool,2,10/11/2015,10/11/2015,05/08/2015,Wet Season,19,25,Negative,24,,,,,,,,,91,82,100,90,90
+6316S2,Placebo,No Amino Acids,Post-Intervention,6316,Stool,2,23/03/2016,23/03/2016,,Wet Season,19,24,Negative,24,,,,,,,,,97,117,99,120,121
+6318A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6318,Duodenal Aspirate,2,02/11/2015,02/11/2015,05/08/2015,Wet Season,20,27,Positive,51,57400000,369,163,472,2591,648,66842,16711,72,52,94,68,72
+6318A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6318,Duodenal Aspirate,2,18/03/2016,18/03/2016,,Wet Season,20,26,Positive,51,3.34E+08,,,,,,,,75,112,81,120,149
+6318S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6318,Stool,2,02/11/2015,02/11/2015,05/08/2015,Wet Season,20,27,Positive,51,,369,163,472,2591,648,66842,16711,72,52,94,68,72
+6318S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6318,Stool,2,18/03/2016,18/03/2016,,Wet Season,20,26,Positive,51,,,,,,,,,75,112,81,120,149
+6319A1,Placebo,No Amino Acids,Pre-Intervention,6319,Duodenal Aspirate,2,01/10/2015,01/10/2015,05/08/2015,Dry Season,30,34,Negative,19,1.33E+08,,,,,,,,,,100,56,56
+6319S1,Placebo,No Amino Acids,Pre-Intervention,6319,Stool,2,01/10/2015,01/10/2015,05/08/2015,Dry Season,30,34,Negative,19,,,,,,,,,,,100,56,56
+6320A1,Placebo,No Amino Acids,Pre-Intervention,6320,Duodenal Aspirate,2,24/11/2015,24/11/2015,05/08/2015,Wet Season,20,28,Negative,29,6740000,,,,,,,,,,100,80,80
+6320S1,Placebo,No Amino Acids,Pre-Intervention,6320,Stool,2,24/11/2015,24/11/2015,05/08/2015,Wet Season,20,28,Negative,29,,,,,,,,,,,100,80,80
+6321A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6321,Duodenal Aspirate,2,18/03/2016,18/03/2016,,Wet Season,20,25,,32,69500000,257,127,163,3294,823,129711,32428,82,103,87,109,126
+6321S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6321,Stool,2,03/11/2015,03/11/2015,05/08/2015,Wet Season,20,25,Positive,32,,,,,,,,,53,23,72,31,43
+6321S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6321,Stool,2,18/03/2016,18/03/2016,,Wet Season,20,25,Positive,32,,257,127,163,3294,823,129711,32428,82,103,87,109,126
+6322A1,Placebo,No Amino Acids,Pre-Intervention,6322,Duodenal Aspirate,2,27/10/2015,27/10/2015,05/08/2015,Dry Season,20,25,Positive,43,43700000,498,211,249,4753,2377,171722,85861,74,58,100,78,78
+6322A2,Placebo,No Amino Acids,Post-Intervention,6322,Duodenal Aspirate,2,17/03/2016,17/03/2016,,Wet Season,20,27,,43,2040000,257,146,168,1495,747,61236,30618,,,,,
+6322S1,Placebo,No Amino Acids,Pre-Intervention,6322,Stool,2,27/10/2015,27/10/2015,05/08/2015,Dry Season,20,25,Positive,43,,498,211,249,4753,2377,171722,85861,74,58,100,78,78
+6322S2,Placebo,No Amino Acids,Post-Intervention,6322,Stool,2,17/03/2016,17/03/2016,,Wet Season,20,27,Positive,43,,257,146,168,1495,747,61236,30618,,,,,
+6324A1,Micronutrient,No Amino Acids,Pre-Intervention,6324,Duodenal Aspirate,2,26/10/2015,26/10/2015,06/08/2015,Dry Season,36,31,Negative,56,4.10E+08,238,241,179,2127,1064,63997,31998,,,,,0
+6324A2,Micronutrient,No Amino Acids,Post-Intervention,6324,Duodenal Aspirate,2,16/03/2016,16/03/2016,,Wet Season,36,33,Negative,56,7.54E+08,164,132,192,8480,771,257717,23429,,,79,109,138
+6324S1,Micronutrient,No Amino Acids,Pre-Intervention,6324,Stool,2,26/10/2015,26/10/2015,06/08/2015,Dry Season,36,31,Negative,56,,238,241,179,2127,1064,63997,31998,,,,,0
+6324S2,Micronutrient,No Amino Acids,Post-Intervention,6324,Stool,2,16/03/2016,16/03/2016,,Wet Season,36,33,Negative,56,,164,132,192,8480,771,257717,23429,,,79,109,138
+6326A1,Amino acid,Amino acid,Pre-Intervention,6326,Duodenal Aspirate,2,16/10/2015,16/10/2015,06/08/2015,Dry Season,19,25,Positive,30,2.17E+08,226,152,177,3393,848,102901,25725,72,50,94,65,69
+6326S1,Amino acid,Amino acid,Pre-Intervention,6326,Stool,2,16/10/2015,16/10/2015,06/08/2015,Dry Season,19,25,Positive,30,,226,152,177,3393,848,102901,25725,72,50,94,65,69
+6326S2,Amino acid,Amino acid,Post-Intervention,6326,Stool,2,10/03/2016,10/03/2016,,Wet Season,18,24,Positive,30,,,,,,,,,72,73,68,69,101
+6327A1,Placebo,No Amino Acids,Pre-Intervention,6327,Duodenal Aspirate,2,22/10/2015,12/10/2015,06/08/2015,Dry Season,37,36,Negative,51,9320000,,,,,,,,66,78,100,118,118
+6327A2,Placebo,No Amino Acids,Post-Intervention,6327,Duodenal Aspirate,2,21/03/2016,21/03/2016,,Wet Season,36,36,Negative,51,2.80E+07,229,156,193,3938,984,127507,31877,59,98,51,84,165
+6327S1,Placebo,No Amino Acids,Pre-Intervention,6327,Stool,2,22/10/2015,12/10/2015,06/08/2015,Dry Season,37,36,Negative,51,,,,,,,,,66,78,100,118,118
+6327S2,Placebo,No Amino Acids,Post-Intervention,6327,Stool,2,21/03/2016,21/03/2016,,Wet Season,36,36,Negative,51,,229,156,193,3938,984,127507,31877,59,98,51,84,165
+6328A1,Placebo,No Amino Acids,Pre-Intervention,6328,Duodenal Aspirate,2,04/11/2015,04/11/2015,06/08/2015,Dry Season,22,28,Positive,39,31400000,131,162,235,1473,737,42823,21412,66,35,100,53,53
+6328A2,Placebo,No Amino Acids,Post-Intervention,6328,Duodenal Aspirate,2,23/03/2016,23/03/2016,,Wet Season,21,22,Positive,39,45300000,,,,,,,,24,28,24,28,116
+6328S1,Placebo,No Amino Acids,Pre-Intervention,6328,Stool,2,04/11/2015,04/11/2015,06/08/2015,Wet Season,22,28,Positive,39,,131,162,235,1473,737,42823,21412,66,35,100,53,53
+6328S2,Placebo,No Amino Acids,Post-Intervention,6328,Stool,2,23/03/2016,23/03/2016,,Wet Season,21,22,Positive,39,,,,,,,,,24,28,24,28,116
+6329A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6329,Duodenal Aspirate,2,05/10/2015,05/10/2015,06/08/2015,Dry Season,18,24,Negative,39,1.77E+09,228,121,107,1993,498,66056,16514,,,,,0
+6329A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6329,Duodenal Aspirate,2,01/03/2016,01/03/2016,,Wet Season,17,23,Negative,39,1.63E+08,257,152,206,8143,814,353180,35318,,,87,83,95
+6329S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6329,Stool,2,05/10/2015,05/10/2015,06/08/2015,Dry Season,18,24,Negative,39,,228,121,107,1993,498,66056,16514,,,,,0
+6329S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6329,Stool,2,01/03/2016,01/03/2016,,Wet Season,17,23,Negative,39,,257,152,206,8143,814,353180,35318,,,87,83,95
+6330A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6330,Duodenal Aspirate,2,22/03/2016,22/03/2016,,Wet Season,18,24,,31,12600000,214,171,215,8603,860,323360,32336,43,82,44,83,189
+6330S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6330,Stool,2,03/11/2015,03/11/2015,06/08/2015,Wet Season,19,24,Positive,31,,199,109,127,3815,636,108449,18075,93,90,77,75,97
+6330S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6330,Stool,2,22/03/2016,22/03/2016,,Wet Season,18,24,Positive,31,,214,171,215,8603,860,323360,32336,43,82,44,83,189
+6331A1,Placebo,No Amino Acids,Pre-Intervention,6331,Duodenal Aspirate,2,11/11/2015,11/11/2015,06/08/2015,Wet Season,37,38,Negative,54,2.93E+08,185,184,214,2514,838,84180,28060,99,85,99,85,86
+6331A2,Placebo,No Amino Acids,Post-Intervention,6331,Duodenal Aspirate,2,31/03/2016,31/03/2016,,Wet Season,34,35,Negative,54,1.81E+08,258,189,238,7065,1177,244975,40829,71,91,89,115,129
+6331S1,Placebo,No Amino Acids,Pre-Intervention,6331,Stool,2,11/11/2015,11/11/2015,06/08/2015,Wet Season,37,38,Negative,54,,185,184,214,2514,838,84180,28060,99,85,99,85,86
+6331S2,Placebo,No Amino Acids,Post-Intervention,6331,Stool,2,31/03/2016,31/03/2016,,Wet Season,34,35,Negative,54,,258,189,238,7065,1177,244975,40829,71,91,89,115,129
+6332A1,Amino acid,Amino acid,Pre-Intervention,6332,Duodenal Aspirate,2,19/11/2015,20/11/2015,06/08/2015,Wet Season,30,37,Positive,45,3.31E+08,210,141,190,7192,899,228406,28551,83,55,100,66,66
+6332A2,Amino acid,Amino acid,Post-Intervention,6332,Duodenal Aspirate,2,08/04/2016,08/04/2016,,Wet Season,30,,Positive,45,3.42E+08,253,118,163,6413,916,163657,23380,92,90,96,94,98
+6332S1,Amino acid,Amino acid,Pre-Intervention,6332,Stool,2,19/11/2015,20/11/2015,06/08/2015,Wet Season,30,37,Positive,45,,210,141,190,7192,899,228406,28551,83,55,100,66,66
+6332S2,Amino acid,Amino acid,Post-Intervention,6332,Stool,2,08/04/2016,08/04/2016,,Wet Season,30,,Positive,45,,253,118,163,6413,916,163657,23380,92,90,96,94,98
+6333A2,Micronutrient,No Amino Acids,Post-Intervention,6333,Duodenal Aspirate,2,18/03/2016,18/03/2016,,Wet Season,,24,,45,1.36E+08,237,128,208,5821,832,258638,36948,98,135,97,134,138
+6333S1,Micronutrient,No Amino Acids,Pre-Intervention,6333,Stool,2,27/10/2015,27/10/2015,06/08/2015,Dry Season,19,23,Positive,45,,,,,,,,,67,37,91,50,55
+6333S2,Micronutrient,No Amino Acids,Post-Intervention,6333,Stool,2,18/03/2016,18/03/2016,,Wet Season,,24,Positive,45,,237,128,208,5821,832,258638,36948,98,135,97,134,138
+6334A1,Micronutrient,No Amino Acids,Pre-Intervention,6334,Duodenal Aspirate,2,22/10/2015,22/10/2015,06/08/2015,Dry Season,25,36,Positive,45,3.74E+08,,,,,,,,100,77,100,77,77
+6334A2,Micronutrient,No Amino Acids,Post-Intervention,6334,Duodenal Aspirate,2,16/03/2016,16/03/2016,,Wet Season,26,35,Positive,45,7.34E+08,142,138,185,6187,687,164107,18234,92,60,94,61,65
+6334S1,Micronutrient,No Amino Acids,Pre-Intervention,6334,Stool,2,22/10/2015,22/10/2015,06/08/2015,Dry Season,25,36,Positive,45,,,,,,,,,100,77,100,77,77
+6334S2,Micronutrient,No Amino Acids,Post-Intervention,6334,Stool,2,16/03/2016,16/03/2016,,Wet Season,26,35,Positive,45,,142,138,185,6187,687,164107,18234,92,60,94,61,65
+6335A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6335,Duodenal Aspirate,1,18/11/2015,18/11/2015,07/08/2015,Wet Season,20,27,Negative,21,1770000,219,215,271,8950,1279,263501,37643,95,81,100,85,85
+6335A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6335,Duodenal Aspirate,1,01/04/2016,01/04/2016,,Wet Season,,26,Negative,21,2.67E+08,159,172,220,4850,808,151107,25185,40,43,51,55,107
+6335S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6335,Stool,1,18/11/2015,18/11/2015,07/08/2015,Wet Season,20,27,Negative,21,,219,215,271,8950,1279,263501,37643,95,81,100,85,85
+6335S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6335,Stool,1,01/04/2016,01/04/2016,,Wet Season,,26,Negative,21,,159,172,220,4850,808,151107,25185,40,43,51,55,107
+6336A1,Micronutrient,No Amino Acids,Pre-Intervention,6336,Duodenal Aspirate,1,19/10/2015,19/10/2015,07/08/2015,Dry Season,21,28,Negative,22,38200000,245,199,194,7971,886,299536,33282,43,36,71,59,83
+6336A2,Micronutrient,No Amino Acids,Post-Intervention,6336,Duodenal Aspirate,1,11/03/2016,11/03/2016,,Wet Season,23,29,Negative,22,5430000,227,156,221,3887,972,146595,36649,47,55,47,54,116
+6336S1,Micronutrient,No Amino Acids,Pre-Intervention,6336,Stool,1,19/10/2015,19/10/2015,07/08/2015,Dry Season,21,28,Negative,22,,245,199,194,7971,886,299536,33282,43,36,71,59,83
+6336S2,Micronutrient,No Amino Acids,Post-Intervention,6336,Stool,1,11/03/2016,11/03/2016,,Wet Season,23,29,Negative,22,,227,156,221,3887,972,146595,36649,47,55,47,54,116
+6337A1,Amino acid,Amino acid,Pre-Intervention,6337,Duodenal Aspirate,1,29/09/2015,29/09/2015,07/08/2015,Dry Season,,24,Negative,34,96600,264,181,160,6177,772,266860,33357,35,14,38,15,40
+6337A2,Amino acid,Amino acid,Post-Intervention,6337,Duodenal Aspirate,1,03/03/2016,26/02/2016,,Wet Season,21,27,Negative,34,7940000,143,141,130,3982,442,111321,12369,8,7,16,14,87
+6337S1,Amino acid,Amino acid,Pre-Intervention,6337,Stool,1,29/09/2015,29/09/2015,07/08/2015,Dry Season,,24,Negative,34,,264,181,160,6177,772,266860,33357,35,14,38,15,40
+6337S2,Amino acid,Amino acid,Post-Intervention,6337,Stool,1,03/03/2016,26/02/2016,,Wet Season,21,27,Negative,34,,143,141,130,3982,442,111321,12369,8,7,16,14,87
+6338A1,Micronutrient,No Amino Acids,Pre-Intervention,6338,Duodenal Aspirate,1,20/10/2015,20/10/2015,07/08/2015,Dry Season,,32,Positive,57,4.12E+08,218,165,200,3151,788,115536,28884,58,41,83,59,71
+6338A2,Micronutrient,No Amino Acids,Post-Intervention,6338,Duodenal Aspirate,1,10/03/2016,10/03/2016,,Wet Season,23,31,Positive,57,9.75E+08,306,169,205,8369,1196,324073,46296,21,35,33,54,165
+6338S1,Micronutrient,No Amino Acids,Pre-Intervention,6338,Stool,1,20/10/2015,20/10/2015,07/08/2015,Dry Season,,32,Positive,57,,218,165,200,3151,788,115536,28884,58,41,83,59,71
+6338S2,Micronutrient,No Amino Acids,Post-Intervention,6338,Stool,1,10/03/2016,10/03/2016,,Wet Season,23,31,Positive,57,,306,169,205,8369,1196,324073,46296,21,35,33,54,165
+6339A1,Placebo,No Amino Acids,Pre-Intervention,6339,Duodenal Aspirate,1,30/09/2015,30/09/2015,07/08/2015,Dry Season,17,23,Negative,54,7.19E+08,194,105,159,6029,754,146399,18300,,,,,103
+6339S1,Placebo,No Amino Acids,Pre-Intervention,6339,Stool,1,30/09/2015,30/09/2015,07/08/2015,Dry Season,17,23,Negative,54,,194,105,159,6029,754,146399,18300,,,,,103
+6342A1,Micronutrient,No Amino Acids,Pre-Intervention,6342,Duodenal Aspirate,1,21/10/2015,21/10/2015,07/08/2015,Dry Season,20,24,Negative,43,2.37E+08,375,135,160,2317,1158,64072,32036,3,2,11,8,75
+6342A2,Micronutrient,No Amino Acids,Post-Intervention,6342,Duodenal Aspirate,1,14/03/2016,14/03/2016,,Wet Season,20,23,Negative,43,5.28E+08,145,118,161,1826,609,51331,17110,40,47,38,45,118
+6342S1,Micronutrient,No Amino Acids,Pre-Intervention,6342,Stool,1,21/10/2015,21/10/2015,07/08/2015,Dry Season,20,24,Negative,43,,375,135,160,2317,1158,64072,32036,3,2,11,8,75
+6342S2,Micronutrient,No Amino Acids,Post-Intervention,6342,Stool,1,14/03/2016,14/03/2016,,Wet Season,20,23,Negative,43,,145,118,161,1826,609,51331,17110,40,47,38,45,118
+6345A1,Amino acid,Amino acid,Pre-Intervention,6345,Duodenal Aspirate,1,30/09/2015,30/09/2015,07/08/2015,Dry Season,19,27,Negative,48,63600000,216,193,153,5149,1030,128161,25632,9,6,12,8,66
+6345A2,Amino acid,Amino acid,Post-Intervention,6345,Duodenal Aspirate,1,29/02/2016,29/02/2016,,Wet Season,18,23,Negative,48,6.90E+07,152,152,217,5097,728,147695,21099,17,16,14,13,95
+6345S1,Amino acid,Amino acid,Pre-Intervention,6345,Stool,1,30/09/2015,30/09/2015,07/08/2015,Dry Season,19,27,Negative,48,,216,193,153,5149,1030,128161,25632,9,6,12,8,66
+6345S2,Amino acid,Amino acid,Post-Intervention,6345,Stool,1,29/02/2016,29/02/2016,,Wet Season,18,23,Negative,48,,152,152,217,5097,728,147695,21099,17,16,14,13,95
+6346A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6346,Duodenal Aspirate,2,11/11/2015,11/11/2015,07/08/2015,Wet Season,26,31,,49,5240000,202,172,215,3686,921,122839,30710,65,43,95,63,66
+6346A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6346,Duodenal Aspirate,2,04/04/2016,04/04/2016,,Wet Season,25,31,,49,62100000,232,107,141,4819,602,170845,21356,54,45,33,28,84
+6346S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6346,Stool,2,11/11/2015,11/11/2015,07/08/2015,Wet Season,26,31,,49,,202,172,215,3686,921,122839,30710,65,43,95,63,66
+6346S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6346,Stool,2,04/04/2016,04/04/2016,,Wet Season,25,31,,49,,232,107,141,4819,602,170845,21356,54,45,33,28,84
+6347A2,Placebo,No Amino Acids,Post-Intervention,6347,Duodenal Aspirate,2,29/03/2016,29/03/2016,,Wet Season,22,27,,20,2.89E+08,258,110,205,10248,1025,366535,36653,77,69,69,62,90
+6347S1,Placebo,No Amino Acids,Pre-Intervention,6347,Stool,2,05/11/2015,05/11/2015,07/08/2015,Wet Season,22,27,Negative,20,,210,149,204,5374,896,178079,29680,67,8,100,12,12
+6347S2,Placebo,No Amino Acids,Post-Intervention,6347,Stool,2,29/03/2016,29/03/2016,,Wet Season,22,27,Negative,20,,258,110,205,10248,1025,366535,36653,77,69,69,62,90
+6348A1,Micronutrient,No Amino Acids,Pre-Intervention,6348,Duodenal Aspirate,2,29/10/2015,29/10/2015,07/08/2015,Dry Season,33,38,Negative,42,6.29E+08,,,,,,,,91,41,93,42,45
+6348A2,Micronutrient,No Amino Acids,Post-Intervention,6348,Duodenal Aspirate,2,07/04/2016,07/04/2016,,Wet Season,32,35,Negative,42,1.12E+08,180,90,266,3167,1056,90457,30152,37,30,12,10,81
+6348S1,Micronutrient,No Amino Acids,Pre-Intervention,6348,Stool,2,29/10/2015,29/10/2015,07/08/2015,Dry Season,33,38,Negative,42,,,,,,,,,91,41,93,42,45
+6348S2,Micronutrient,No Amino Acids,Post-Intervention,6348,Stool,2,07/04/2016,07/04/2016,,Wet Season,32,35,Negative,42,,180,90,266,3167,1056,90457,30152,37,30,12,10,81
+6349A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6349,Duodenal Aspirate,2,19/11/2015,19/11/2015,07/08/2015,Wet Season,51,43,Negative,54,1.04E+09,,,,,,,,17,17,31,31,99
+6349A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6349,Duodenal Aspirate,2,06/04/2016,06/04/2016,,Wet Season,50,42,Negative,54,2.54E+08,202,118,205,13327,833,454842,28428,,,,,
+6349S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6349,Stool,2,19/11/2015,19/11/2015,07/08/2015,Wet Season,51,43,Negative,54,,,,,,,,,17,17,31,31,99
+6349S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6349,Stool,2,06/04/2016,06/04/2016,,Wet Season,50,42,Negative,54,,202,118,205,13327,833,454842,28428,,,,,
+6350A1,Placebo,No Amino Acids,Pre-Intervention,6350,Duodenal Aspirate,2,12/11/2015,12/11/2015,07/08/2015,Wet Season,25,29,Negative,20,6950000,,,,,,,,88,128,98,142,145
+6350A2,Placebo,No Amino Acids,Post-Intervention,6350,Duodenal Aspirate,2,30/03/2016,30/03/2016,,Wet Season,27,29,Negative,20,15800000,228,123,265,8911,1114,345715,43214,3,3,4,4,95
+6350S1,Placebo,No Amino Acids,Pre-Intervention,6350,Stool,2,12/11/2015,12/11/2015,07/08/2015,Wet Season,25,29,Negative,20,,,,,,,,,88,128,98,142,145
+6350S2,Placebo,No Amino Acids,Post-Intervention,6350,Stool,2,30/03/2016,30/03/2016,,Wet Season,27,29,Negative,20,,228,123,265,8911,1114,345715,43214,3,3,4,4,95
+6351A1,Micronutrient,No Amino Acids,Pre-Intervention,6351,Duodenal Aspirate,2,11/11/2015,11/11/2015,11/08/2016,Wet Season,27,31,Negative,56,30200000,,,,,,,,47,60,100,128,128
+6351A2,Micronutrient,No Amino Acids,Post-Intervention,6351,Duodenal Aspirate,2,31/03/2016,31/03/2016,,Wet Season,27,32,Negative,56,23600000,341,108,234,4397,1466,168316,56105,82,85,82,85,104
+6351S1,Micronutrient,No Amino Acids,Pre-Intervention,6351,Stool,2,11/11/2015,11/11/2015,11/08/2016,Wet Season,27,31,Negative,56,,,,,,,,,47,60,100,128,128
+6351S2,Micronutrient,No Amino Acids,Post-Intervention,6351,Stool,2,31/03/2016,31/03/2016,,Wet Season,27,32,Negative,56,,341,108,234,4397,1466,168316,56105,82,85,82,85,104
+6352A1,Amino acid,Amino acid,Pre-Intervention,6352,Duodenal Aspirate,2,13/11/2015,16/11/2015,11/08/2015,Wet Season,31,33,Negative,58,1.49E+09,308,196,252,2886,1443,89846,44923,83,43,98,51,52
+6352A2,Amino acid,Amino acid,Post-Intervention,6352,Duodenal Aspirate,2,01/04/2016,01/04/2016,,Wet Season,32,34,Negative,58,57600000,205,153,218,3532,883,128247,32062,100,82,100,82,82
+6352S1,Amino acid,Amino acid,Pre-Intervention,6352,Stool,2,13/11/2015,16/11/2015,11/08/2015,Wet Season,31,33,Negative,58,,308,196,252,2886,1443,89846,44923,83,43,98,51,52
+6352S2,Amino acid,Amino acid,Post-Intervention,6352,Stool,2,01/04/2016,01/04/2016,,Wet Season,32,34,Negative,58,,205,153,218,3532,883,128247,32062,100,82,100,82,82
+6354A1,Amino acid,Amino acid,Pre-Intervention,6354,Duodenal Aspirate,2,29/09/2015,28/09/2015,11/08/2015,Dry Season,,31,Negative,28,3.03E+08,294,128,170,4358,1090,140963,35241,82,14,100,17,17
+6354S1,Amino acid,Amino acid,Pre-Intervention,6354,Stool,2,29/09/2015,28/09/2015,11/08/2015,Dry Season,,31,Negative,28,,294,128,170,4358,1090,140963,35241,82,14,100,17,17
+6354S2,Amino acid,Amino acid,Post-Intervention,6354,Stool,2,29/02/2016,26/02/2016,,Wet Season,24,30,Negative,38,,300,197,262,3807,1269,174218,58073,100,84,100,84,84
+6355A1,Placebo,No Amino Acids,Pre-Intervention,6355,Duodenal Aspirate,2,13/11/2015,16/11/2015,11/08/2015,Wet Season,29,32,Negative,38,4.66E+08,170,168,292,2995,998,108902,36301,54,61,97,111,114
+6355A2,Placebo,No Amino Acids,Post-Intervention,6355,Duodenal Aspirate,2,01/04/2016,01/04/2016,,Wet Season,29,31,Negative,38,17100000,630,222,366,6712,3356,297376,148688,58,76,47,61,130
+6355S1,Placebo,No Amino Acids,Pre-Intervention,6355,Stool,2,13/11/2015,16/11/2015,11/08/2015,Wet Season,29,32,Negative,38,,170,168,292,2995,998,108902,36301,54,61,97,111,114
+6355S2,Placebo,No Amino Acids,Post-Intervention,6355,Stool,2,01/04/2016,01/04/2016,,Wet Season,29,31,Negative,38,,630,222,366,6712,3356,297376,148688,58,76,47,61,130
+6356A1,Amino acid,Amino acid,Pre-Intervention,6356,Duodenal Aspirate,1,21/10/2015,21/10/2015,11/08/2015,Dry Season,20,26,Positive,35,24900000,241,339,101,3459,865,83567,20892,32,9,25,7,28
+6356S1,Amino acid,Amino acid,Pre-Intervention,6356,Stool,1,21/10/2015,21/10/2015,11/08/2015,Wet Season,20,26,Positive,35,,241,339,101,3459,865,83567,20892,32,9,25,7,28
+6356S2,Amino acid,Amino acid,Post-Intervention,6356,Stool,1,11/03/2016,11/03/2016,,Dry Season,20,30,Positive,35,,,,,,,,,58,57,61,60,98
+6357A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6357,Duodenal Aspirate,2,03/11/2015,03/11/2015,11/08/2015,Wet Season,23,27,Negative,28,25100000,207,198,197,1948,974,56201,28100,90,9,90,9,10
+6357A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6357,Duodenal Aspirate,2,22/03/2016,22/03/2016,,Wet Season,22,28,Negative,28,16200000,243,171,225,2879,960,96803,32268,66,77,70,82,117
+6357S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6357,Stool,2,03/11/2015,03/11/2015,11/08/2015,Wet Season,23,27,Negative,28,,207,198,197,1948,974,56201,28100,90,9,90,9,10
+6358S1,,,Pre-Intervention,6358,Stool,2,29/09/2015,28/09/2015,11/08/2015,Dry Season,,24,Negative,26,,,,,,,,,,,98,96,98
+6359A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6359,Duodenal Aspirate,2,02/11/2015,02/11/2015,11/08/2015,Wet Season,25,28,Negative,47,1.64E+08,200,140,130,10747,672,323089,20193,90,70,100,78,78
+6359A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6359,Duodenal Aspirate,2,21/03/2016,21/03/2016,,Wet Season,25,27,Negative,47,3.52E+08,275,143,159,1495,748,63629,31814,31,33,44,47,108
+6359S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6359,Stool,2,02/11/2015,02/11/2015,11/08/2015,Wet Season,25,28,Negative,47,,200,140,130,10747,672,323089,20193,90,70,100,78,78
+6359S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6359,Stool,2,21/03/2016,21/03/2016,,Wet Season,25,27,Negative,47,,275,143,159,1495,748,63629,31814,31,33,44,47,108
+6360A1,Placebo,No Amino Acids,Pre-Intervention,6360,Duodenal Aspirate,2,22/10/2015,22/10/2015,11/08/2015,Dry Season,26,28,Positive,42,91600000,146,199,214,2884,721,87869,21967,49,27,100,55,55
+6360A2,Placebo,No Amino Acids,Post-Intervention,6360,Duodenal Aspirate,2,16/03/2016,16/03/2016,,Wet Season,26,30,Positive,42,2.30E+08,175,138,184,5905,656,215267,23919,,,,,6
+6360S1,Placebo,No Amino Acids,Pre-Intervention,6360,Stool,2,22/10/2015,22/10/2015,11/08/2015,Dry Season,26,28,Positive,42,,146,199,214,2884,721,87869,21967,49,27,100,55,55
+6360S2,Placebo,No Amino Acids,Post-Intervention,6360,Stool,2,16/03/2016,16/03/2016,,Wet Season,26,30,Positive,42,,175,138,184,5905,656,215267,23919,,,,,6
+6361A1,Micronutrient,No Amino Acids,Pre-Intervention,6361,Duodenal Aspirate,2,23/10/2015,23/10/2015,12/08/2015,Dry Season,22,28,Negative,34,9.17E+08,197,150,252,7687,961,248043,31005,63,44,99,69,70
+6361A2,Micronutrient,No Amino Acids,Post-Intervention,6361,Duodenal Aspirate,2,14/03/2016,14/03/2016,,Wet Season,23,28,Negative,34,1.05E+09,259,92,208,6484,926,240693,34385,46,66,56,80,143
+6361S1,Micronutrient,No Amino Acids,Pre-Intervention,6361,Stool,2,23/10/2015,23/10/2015,12/08/2015,Dry Season,22,28,Negative,34,,197,150,252,7687,961,248043,31005,63,44,99,69,70
+6361S2,Micronutrient,No Amino Acids,Post-Intervention,6361,Stool,2,14/03/2016,14/03/2016,,Wet Season,23,28,Negative,34,,259,92,208,6484,926,240693,34385,46,66,56,80,143
+6362A1,Placebo,No Amino Acids,Pre-Intervention,6362,Duodenal Aspirate,2,23/10/2015,23/10/2015,11/08/2015,Dry Season,33,35,Negative,23,89500000,250,196,203,11134,928,389856,32488,79,103,97,126,130
+6362A2,Placebo,No Amino Acids,Post-Intervention,6362,Duodenal Aspirate,2,15/03/2016,15/03/2016,,Wet Season,34,39,Negative,23,7.74E+08,291,125,199,2434,1217,78487,39243,78,40,78,40,51
+6362S1,Placebo,No Amino Acids,Pre-Intervention,6362,Stool,2,23/10/2015,23/10/2015,11/08/2015,Dry Season,33,35,Negative,23,,250,196,203,11134,928,389856,32488,79,103,97,126,130
+6362S2,Placebo,No Amino Acids,Post-Intervention,6362,Stool,2,15/03/2016,15/03/2016,,Wet Season,34,39,Negative,23,,291,125,199,2434,1217,78487,39243,78,40,78,40,51
+6365A1,Amino acid,Amino acid,Pre-Intervention,6365,Duodenal Aspirate,2,27/10/2015,27/10/2015,11/08/2015,Dry Season,24,29,Negative,39,7.79E+08,247,204,258,3901,975,148801,37200,26,29,93,104,112
+6365S1,Amino acid,Amino acid,Pre-Intervention,6365,Stool,2,27/10/2015,27/10/2015,11/08/2015,Dry Season,24,29,Negative,39,,247,204,258,3901,975,148801,37200,26,29,93,104,112
+6365S2,Amino acid,Amino acid,Post-Intervention,6365,Stool,2,17/03/2016,17/03/2016,,Wet Season,24,29,Negative,39,,,,,,,,,,,,0,
+6366A1,Amino acid,Amino acid,Pre-Intervention,6366,Duodenal Aspirate,2,07/10/2015,07/10/2015,11/08/2015,Dry Season,24,33,Negative,39,10600000,,,,,,,,86,75,97,84,87
+6366A2,Amino acid,Amino acid,Post-Intervention,6366,Duodenal Aspirate,2,11/03/2016,11/03/2016,,Wet Season,25,31,Negative,32,1.80E+07,201,132,179,4211,702,140045,23341,93,97,100,104,104
+6366S1,Amino acid,Amino acid,Pre-Intervention,6366,Stool,2,07/10/2015,07/10/2015,11/08/2015,Dry Season,24,33,Negative,32,,,,,,,,,86,75,97,84,87
+6366S2,Amino acid,Amino acid,Post-Intervention,6366,Stool,2,11/03/2016,11/03/2016,,Wet Season,25,31,Negative,32,,201,132,179,4211,702,140045,23341,93,97,100,104,104
+6367A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6367,Duodenal Aspirate,2,29/10/2015,29/10/2015,11/08/2015,Dry Season,23,28,Positive,40,3.31E+08,285,156,198,2931,977,102397,34132,58,42,85,61,72
+6367A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6367,Duodenal Aspirate,2,24/03/2016,24/03/2016,,Wet Season,22,26,Positive,40,2.50E+08,,,,,,,,0,0,0,0,126
+6367S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6367,Stool,2,29/10/2015,29/10/2015,11/08/2015,Dry Season,23,28,Positive,40,,285,156,198,2931,977,102397,34132,58,42,85,61,72
+6367S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6367,Stool,2,24/03/2016,24/03/2016,,Wet Season,22,26,Positive,40,,,,,,,,,0,0,0,0,126
+6368A1,Micronutrient,No Amino Acids,Pre-Intervention,6368,Duodenal Aspirate,2,06/11/2015,06/11/2015,12/08/2015,Wet Season,20,25,Negative,54,1.49E+08,212,152,188,1702,851,50749,25374,44,34,66,51,77
+6368A2,Micronutrient,No Amino Acids,Post-Intervention,6368,Duodenal Aspirate,2,24/03/2016,24/03/2016,,Wet Season,20,24,Negative,54,2.08E+08,,,,,,,,62,53,98,84,86
+6368S1,Micronutrient,No Amino Acids,Pre-Intervention,6368,Stool,2,06/11/2015,06/11/2015,12/08/2015,Wet Season,20,25,Negative,54,,212,152,188,1702,851,50749,25374,44,34,66,51,77
+6368S2,Micronutrient,No Amino Acids,Post-Intervention,6368,Stool,2,24/03/2016,24/03/2016,,Wet Season,20,24,Negative,54,,,,,,,,,62,53,98,84,86
+6369A1,Micronutrient,No Amino Acids,Pre-Intervention,6369,Duodenal Aspirate,2,14/10/2015,14/10/2015,12/08/2015,Dry Season,19,24,Positive,40,3.64E+08,196,116,205,4655,931,118095,23619,47,7,67,10,15
+6369A2,Micronutrient,No Amino Acids,Post-Intervention,6369,Duodenal Aspirate,2,09/03/2016,09/03/2016,,Wet Season,19,24,Positive,40,7.60E+07,,,,,,,,100,76,100,76,76
+6369S2,Micronutrient,No Amino Acids,Post-Intervention,6369,Stool,2,09/03/2016,09/03/2016,,Wet Season,19,24,,40,,,,,,,,,100,76,100,76,76
+6370S1,,,Pre-Intervention,6370,Stool,2,04/11/2015,04/11/2015,20/08/2015,Wet Season,25,27,Negative,42,,,,,,,,,,,42,60,143
+6371S1,,,Pre-Intervention,6371,Stool,2,07/10/2015,07/10/2015,12/08/2015,Dry Season,23,29,Negative,28,,242,149,264,2149,1074,79694,39847,,,96,46,48
+6372A2,Placebo,No Amino Acids,Post-Intervention,6372,Duodenal Aspirate,2,29/03/2016,29/03/2016,,Wet Season,28,32,,27,9350000,,,,,,,,94,79,100,84,84
+6372S1,Placebo,No Amino Acids,Pre-Intervention,6372,Stool,2,05/11/2015,05/11/2015,12/08/2015,Wet Season,28,32,Negative,27,,,,,,,,,84,72,88,76,86
+6372S2,Placebo,No Amino Acids,Post-Intervention,6372,Stool,2,29/03/2016,29/03/2016,,Wet Season,28,32,Negative,27,,,,,,,,,94,79,100,84,84
+6374S1,,,Pre-Intervention,6374,Stool,1,06/10/2015,06/10/2015,12/08/2015,Dry Season,21,28,Negative,19,,,,,,,,,,,100,21,21
+6376S1,,,Pre-Intervention,6376,Stool,2,10/11/2015,10/11/2015,12/08/2015,Wet Season,31,33,Negative,22,,195,164,175,4088,681,156495,26083,,,95,56,59
+6377A1,Amino acid,Amino acid,Pre-Intervention,6377,Duodenal Aspirate,2,22/10/2015,12/10/2015,12/08/2015,Dry Season,25,29,Negative,54,2.12E+08,138,241,138,921,460,30788,15394,73,56,100,77,77
+6377A2,Amino acid,Amino acid,Post-Intervention,6377,Duodenal Aspirate,2,15/03/2016,15/03/2016,,Wet Season,25,30,Negative,54,3.42E+09,,,,,,,,85,40,94,44,47
+6377S1,Amino acid,Amino acid,Pre-Intervention,6377,Stool,2,22/10/2015,12/10/2015,12/08/2015,Dry Season,25,29,Negative,54,,138,241,138,921,460,30788,15394,73,56,100,77,77
+6377S2,Amino acid,Amino acid,Post-Intervention,6377,Stool,2,15/03/2016,15/03/2016,,Wet Season,25,30,Negative,54,,,,,,,,,85,40,94,44,47
+6378A1,Micronutrient,No Amino Acids,Pre-Intervention,6378,Duodenal Aspirate,2,26/10/2015,26/10/2015,13/08/2015,Dry Season,39,40,Positive,45,3.87E+08,,,,,,,,15,7,35,17,48
+6378A2,Micronutrient,No Amino Acids,Post-Intervention,6378,Duodenal Aspirate,2,15/03/2016,15/03/2016,,Wet Season,38,37,Positive,45,7.23E+08,288,118,196,4241,848,199028,39806,44,57,57,74,130
+6378S1,Micronutrient,No Amino Acids,Pre-Intervention,6378,Stool,2,26/10/2015,26/10/2015,13/08/2015,Dry Season,39,40,Positive,45,,,,,,,,,15,7,35,17,48
+6379A1,Micronutrient,No Amino Acids,Pre-Intervention,6379,Duodenal Aspirate,2,27/10/2015,27/10/2015,13/08/2015,Dry Season,21,29,Positive,38,2.25E+08,208,154,212,7370,921,257360,32170,14,11,99,80,81
+6379A2,Micronutrient,No Amino Acids,Post-Intervention,6379,Duodenal Aspirate,2,17/03/2016,17/03/2016,,Wet Season,22,30,Positive,38,30500000,156,113,135,3431,572,89524,14921,52,12,43,10,23
+6379S1,Micronutrient,No Amino Acids,Pre-Intervention,6379,Stool,2,27/10/2015,27/10/2015,13/08/2015,Dry Season,21,29,Positive,38,,208,154,212,7370,921,257360,32170,14,11,99,80,81
+6379S2,Micronutrient,No Amino Acids,Post-Intervention,6379,Stool,2,17/03/2016,17/03/2016,,Wet Season,22,30,Positive,38,,156,113,135,3431,572,89524,14921,52,12,43,10,23
+6380A1,Micronutrient,No Amino Acids,Pre-Intervention,6380,Duodenal Aspirate,2,19/11/2015,19/11/2015,13/08/2015,Wet Season,23,29,Positive,50,76400000,289,222,251,5551,1110,266125,53225,73,22,77,23,30
+6380A2,Micronutrient,No Amino Acids,Post-Intervention,6380,Duodenal Aspirate,2,13/04/2016,13/04/2016,,Wet Season,24,31,Positive,50,33200000,208,147,103,1818,454,64507,16127,93,40,93,40,43
+6380S1,Micronutrient,No Amino Acids,Pre-Intervention,6380,Stool,2,19/11/2015,19/11/2015,13/08/2015,Wet Season,23,29,Positive,50,,289,222,251,5551,1110,266125,53225,73,22,77,23,30
+6380S2,Micronutrient,No Amino Acids,Post-Intervention,6380,Stool,2,13/04/2016,13/04/2016,,Wet Season,24,31,Positive,50,,208,147,103,1818,454,64507,16127,93,40,93,40,43
+6382A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6382,Duodenal Aspirate,2,12/10/2015,12/10/2015,13/08/2015,Dry Season,30,34,Positive,41,1.12E+08,,,,,,,,67,8,100,12,12
+6382A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6382,Duodenal Aspirate,2,03/03/2016,03/03/2016,,Wet Season,29,35,Positive,41,2.24E+08,264,149,255,2299,1150,92966,46483,7,7,8,9,106
+6382S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6382,Stool,2,12/10/2015,12/10/2015,13/08/2015,Dry Season,30,34,Positive,41,,,,,,,,,67,8,100,12,12
+6382S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6382,Stool,2,03/03/2016,03/03/2016,,Wet Season,29,35,Positive,41,,264,149,255,2299,1150,92966,46483,7,7,8,9,106
+6383A1,Placebo,No Amino Acids,Pre-Intervention,6383,Duodenal Aspirate,1,20/10/2015,20/10/2015,13/08/2015,Dry Season,20,27,Negative,39,7.48E+08,196,152,159,2231,744,59734,19911,78,78,99,99,100
+6383A2,Placebo,No Amino Acids,Post-Intervention,6383,Duodenal Aspirate,1,10/03/2016,10/03/2016,,Wet Season,19,25,Negative,39,1.20E+08,,,,,,,,100,102,100,102,102
+6383S1,Placebo,No Amino Acids,Pre-Intervention,6383,Stool,1,20/10/2015,20/10/2015,13/08/2015,Dry Season,20,27,Negative,39,,196,152,159,2231,744,59734,19911,78,78,99,99,100
+6383S2,Placebo,No Amino Acids,Post-Intervention,6383,Stool,1,10/03/2016,10/03/2016,,Wet Season,19,25,Negative,39,,,,,,,,,100,102,100,102,102
+6384A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6384,Duodenal Aspirate,1,09/10/2015,09/10/2015,13/08/2015,Dry Season,19,26,Negative,39,1.90E+08,,,,,,,,84,64,86,65,76
+6384A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6384,Duodenal Aspirate,1,03/03/2016,03/03/2016,,Wet Season,18,24,Negative,39,2080000,185,164,216,7145,715,235808,23581,89,59,92,61,66
+6384S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6384,Stool,1,09/10/2015,09/10/2015,13/08/2015,Dry Season,19,26,Negative,39,,,,,,,,,84,64,86,65,76
+6384S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6384,Stool,1,03/03/2016,03/03/2016,,Wet Season,18,24,Negative,39,,185,164,216,7145,715,235808,23581,89,59,92,61,66
+6385A1,Amino acid,Amino acid,Pre-Intervention,6385,Duodenal Aspirate,2,14/10/2015,14/10/2015,13/08/2015,Dry Season,25,30,Negative,24,6.44E+08,378,160,210,7743,1549,240061,48012,41,14,56,19,34
+6385A2,Amino acid,Amino acid,Post-Intervention,6385,Duodenal Aspirate,2,07/03/2016,07/03/2016,,Wet Season,27,32,Negative,24,10100000,455,118,194,3763,1254,166160,55387,49,49,78,78,100
+6385S1,Amino acid,Amino acid,Pre-Intervention,6385,Stool,2,14/10/2015,14/10/2015,13/08/2015,Dry Season,25,30,Negative,24,,378,160,210,7743,1549,240061,48012,41,14,56,19,34
+6385S2,Amino acid,Amino acid,Post-Intervention,6385,Stool,2,07/03/2016,07/03/2016,,Wet Season,27,32,Negative,24,,455,118,194,3763,1254,166160,55387,49,49,78,78,100
+6386A1,Amino acid,Amino acid,Pre-Intervention,6386,Duodenal Aspirate,1,06/10/2015,06/10/2015,13/08/2015,Dry Season,20,27,Negative,19,4.03E+09,225,136,134,1041,520,45659,22829,,,,,0
+6386A2,Amino acid,Amino acid,Post-Intervention,6386,Duodenal Aspirate,1,01/03/2016,01/03/2016,,Wet Season,19,25,Negative,19,37800000,241,143,208,6005,1001,196317,32720,,,70,72,103
+6386S1,Amino acid,Amino acid,Pre-Intervention,6386,Stool,1,06/10/2015,06/10/2015,13/08/2015,Dry Season,20,27,Negative,19,,225,136,134,1041,520,45659,22829,,,,,0
+6386S2,Amino acid,Amino acid,Post-Intervention,6386,Stool,1,01/03/2016,01/03/2016,,Wet Season,19,25,Negative,19,,241,143,208,6005,1001,196317,32720,,,70,72,103
+6387A2,Amino acid,Amino acid,Post-Intervention,6387,Duodenal Aspirate,1,04/03/2016,04/03/2016,,Wet Season,19,26,,20,24900000,228,172,208,5853,976,210983,35164,96,108,100,113,113
+6387S1,Amino acid,Amino acid,Pre-Intervention,6387,Stool,1,13/10/2015,13/10/2015,13/08/2015,Dry Season,19,28,Negative,20,,231,195,154,5951,744,199138,24892,81,69,81,69,85
+6387S2,Amino acid,Amino acid,Post-Intervention,6387,Stool,1,04/03/2016,04/03/2016,,Wet Season,19,26,Negative,20,,228,172,208,5853,976,210983,35164,96,108,100,113,113
+6390S1,,,Pre-Intervention,6390,Stool,1,18/11/2015,18/11/2015,14/10/2015,Wet Season,20,26,Negative,21,,,,,,,,,,,79,52,66
+6391A1,Placebo,No Amino Acids,Pre-Intervention,6391,Duodenal Aspirate,1,09/10/2015,09/10/2015,15/09/2015,Dry Season,26,31,Negative,47,49500000,,,,,,,,41,15,76,28,37
+6391A2,Placebo,No Amino Acids,Post-Intervention,6391,Duodenal Aspirate,1,03/03/2016,03/03/2016,,Wet Season,25,31,Negative,47,3.73E+08,334,224,177,4621,1540,163442,54481,94,46,96,47,49
+6391S1,Placebo,No Amino Acids,Pre-Intervention,6391,Stool,1,09/10/2015,09/10/2015,15/09/2015,Dry Season,26,31,Negative,47,,,,,,,,,41,15,76,28,37
+6391S2,Placebo,No Amino Acids,Post-Intervention,6391,Stool,1,03/03/2016,03/03/2016,,Wet Season,25,31,Negative,47,,334,224,177,4621,1540,163442,54481,94,46,96,47,49
+6392A1,Placebo,No Amino Acids,Pre-Intervention,6392,Duodenal Aspirate,1,08/10/2015,08/10/2015,15/09/2015,Dry Season,20,25,Negative,20,15900000,242,153,232,8107,1013,303097,37887,20,16,78,63,81
+6392A2,Placebo,No Amino Acids,Post-Intervention,6392,Duodenal Aspirate,1,02/03/2016,02/03/2016,,Wet Season,20,24,Negative,20,32800000,363,158,257,4666,1166,231895,57974,84,102,89,108,121
+6392S1,Placebo,No Amino Acids,Pre-Intervention,6392,Stool,1,08/10/2015,08/10/2015,15/09/2015,Dry Season,20,25,Negative,20,,242,153,232,8107,1013,303097,37887,20,16,78,63,81
+6392S2,Placebo,No Amino Acids,Post-Intervention,6392,Stool,1,02/03/2016,02/03/2016,,Wet Season,20,24,Negative,20,,363,158,257,4666,1166,231895,57974,84,102,89,108,121
+6393S1,,,Pre-Intervention,6393,Stool,1,15/10/2015,15/10/2015,15/09/2015,Dry Season,,22,Negative,22,,,,,,,,,,,96,103,107
+6394A2,Placebo,No Amino Acids,Post-Intervention,6394,Duodenal Aspirate,2,04/03/2016,04/03/2016,,Wet Season,27,37,,43,2.12E+08,170,179,128,1386,462,43487,14496,,,100,11,11
+6394S1,Placebo,No Amino Acids,Pre-Intervention,6394,Stool,2,12/10/2015,12/10/2015,15/09/2015,Dry Season,28,33,Negative,43,,205,124,190,5869,838,194016,27717,83,45,87,47,54
+6397A1,Micronutrient,No Amino Acids,Pre-Intervention,6397,Duodenal Aspirate,2,10/11/2015,10/11/2015,15/09/2015,Wet Season,28,30,Negative,21,2.00E+08,,,,,,,,66,55,89,74,83
+6397A2,Micronutrient,No Amino Acids,Post-Intervention,6397,Duodenal Aspirate,2,23/03/2016,23/03/2016,,Wet Season,29,32,Negative,21,1.61E+08,,,,,,,,28,29,27,28,103
+6397S1,Micronutrient,No Amino Acids,Pre-Intervention,6397,Stool,2,10/11/2015,10/11/2015,15/09/2015,Wet Season,28,30,Negative,21,,,,,,,,,66,55,89,74,83
+6397S2,Micronutrient,No Amino Acids,Post-Intervention,6397,Stool,2,23/03/2016,23/03/2016,,Wet Season,29,32,Negative,21,,,,,,,,,28,29,27,28,103
+6398A1,Placebo,No Amino Acids,Pre-Intervention,6398,Duodenal Aspirate,2,05/11/2015,05/11/2015,15/09/2015,Wet Season,21,26,Negative,24,36200000,283,163,226,2883,1441,97458,48729,78,80,96,98,102
+6398A2,Placebo,No Amino Acids,Post-Intervention,6398,Duodenal Aspirate,2,30/03/2016,30/03/2016,,Wet Season,21,25,Negative,24,8370000,,,,,,,,,,86,12,14
+6398S1,Placebo,No Amino Acids,Pre-Intervention,6398,Stool,2,05/11/2015,05/11/2015,15/09/2015,Wet Season,21,26,Negative,24,,283,163,226,2883,1441,97458,48729,78,80,96,98,102
+6398S2,Placebo,No Amino Acids,Post-Intervention,6398,Stool,2,30/03/2016,30/03/2016,,Wet Season,21,25,Negative,24,,,,,,,,,,,86,12,14
+6399A1,Amino acid,Amino acid,Pre-Intervention,6399,Duodenal Aspirate,2,16/10/2015,16/10/2015,15/09/2015,Dry Season,25,29,Negative,20,76800000,172,188,175,1073,536,47804,23902,62,76,100,122,122
+6399A2,Amino acid,Amino acid,Post-Intervention,6399,Duodenal Aspirate,2,07/03/2016,07/03/2016,,Wet Season,25,29,Negative,20,15400000,,,,,,,,89,63,94,67,71
+6399S1,Amino acid,Amino acid,Pre-Intervention,6399,Stool,2,16/10/2015,16/10/2015,15/09/2015,Dry Season,25,29,Negative,20,,172,188,175,1073,536,47804,23902,62,76,100,122,122
+6399S2,Amino acid,Amino acid,Post-Intervention,6399,Stool,2,07/03/2016,07/03/2016,,Wet Season,25,29,Negative,20,,,,,,,,,89,63,94,67,71
+6400A1,Placebo,No Amino Acids,Pre-Intervention,6400,Duodenal Aspirate,2,09/11/2015,09/11/2015,15/09/2015,Wet Season,19,23,Negative,19,46100000,,,,,,,,53,58,100,109,109
+6400A2,Placebo,No Amino Acids,Post-Intervention,6400,Duodenal Aspirate,2,30/03/2016,30/03/2016,,Wet Season,19,23,Negative,19,11100000,154,130,174,3023,605,93980,18796,100,27,100,27,27
+6400S2,Placebo,No Amino Acids,Post-Intervention,6400,Stool,,30/03/2016,30/03/2016,,Wet Season,19,23,,19,,154,130,174,3023,605,93980,18796,100,27,100,27,27
+6403S1,,,,6403,Stool,,,,,NA,,,,,,,,,,,,,,,,,
+6404A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6404,Duodenal Aspirate,1,19/10/2015,19/10/2015,24/09/2015,Dry Season,24,30,Negative,22,27200000,,,,,,,,96,27,100,28,28
+6404A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6404,Duodenal Aspirate,1,21/03/2016,21/03/2016,,Wet Season,25,31,Negative,22,38900000,211,158,161,4026,805,108427,21685,96,77,99,79,80
+6404S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6404,Stool,1,19/10/2015,19/10/2015,24/09/2015,Dry Season,24,30,Negative,22,,,,,,,,,96,27,100,28,28
+6404S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6404,Stool,1,21/03/2016,21/03/2016,,Wet Season,25,31,Negative,22,,211,158,161,4026,805,108427,21685,96,77,99,79,80
+6407A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6407,Duodenal Aspirate,2,09/12/2015,10/12/2015,17/09/2015,Wet Season,29,33,Negative,47,1.23E+08,,,,,,,,83,44,91,48,53
+6407A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6407,Duodenal Aspirate,2,13/04/2016,13/04/2016,,Wet Season,27,31,Negative,47,38900000,193,147,162,1655,828,43438,21719,35,26,16,12,74
+6407S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6407,Stool,2,09/12/2015,10/12/2015,17/09/2015,Wet Season,29,33,Negative,47,,,,,,,,,83,44,91,48,53
+6407S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6407,Stool,2,13/04/2016,13/04/2016,,Wet Season,27,31,Negative,47,,193,147,162,1655,828,43438,21719,35,26,16,12,74
+6408A1,Micronutrient,No Amino Acids,Pre-Intervention,6408,Duodenal Aspirate,1,10/11/2015,10/11/2015,24/09/2015,Wet Season,21,25,Negative,34,72700000,340,190,307,2690,1345,137540,68770,32,31,40,39,97
+6408S1,Micronutrient,No Amino Acids,Pre-Intervention,6408,Stool,1,10/11/2015,10/11/2015,24/09/2015,Wet Season,21,25,Negative,34,,340,190,307,2690,1345,137540,68770,32,31,40,39,97
+6408S2,Micronutrient,No Amino Acids,Post-Intervention,6408,Stool,1,24/03/2016,24/03/2016,,Dry Season,19,23,Negative,34,,291,131,154,4434,887,133879,26776,23,23,38,39,102
+6411S1,,,,6411,Stool,,,,,NA,,,,,,,,,,,,,,,,,
+6412A1,Amino acid,Amino acid,Pre-Intervention,6412,Duodenal Aspirate,1,13/10/2015,13/10/2015,24/09/2015,Dry Season,21,25,Negative,30,19100000,324,205,174,1658,829,68526,34263,85,44,94,49,52
+6412A2,Amino acid,Amino acid,Post-Intervention,6412,Duodenal Aspirate,1,04/03/2016,04/03/2016,,Wet Season,21,32,Negative,30,3690000,175,180,208,3583,717,106391,21278,60,70,54,63,117
+6412S1,Amino acid,Amino acid,Pre-Intervention,6412,Stool,1,13/10/2015,13/10/2015,24/09/2015,Dry Season,21,25,Negative,30,,324,205,174,1658,829,68526,34263,85,44,94,49,52
+6412S2,Amino acid,Amino acid,Post-Intervention,6412,Stool,1,04/03/2016,04/03/2016,,Wet Season,21,32,Negative,30,,175,180,208,3583,717,106391,21278,60,70,54,63,117
+6413A1,Micronutrient,No Amino Acids,Pre-Intervention,6413,Duodenal Aspirate,1,13/10/2015,13/10/2015,24/09/2015,Dry Season,21,28,Negative,19,6.43E+08,,,,,,,,39,15,11,4,38
+6413S1,Micronutrient,No Amino Acids,Pre-Intervention,6413,Stool,1,13/10/2015,13/10/2015,24/09/2015,Dry Season,21,28,Negative,19,,,,,,,,,39,15,11,4,38
+6414S1,,,Pre-Intervention,6414,Stool,1,15/10/2015,15/10/2015,24/09/2015,Dry Season,19,27,Negative,21,,,,,,,,,,,97,84,87
+6415A1,Micronutrient,No Amino Acids,Pre-Intervention,6415,Duodenal Aspirate,1,15/10/2015,15/10/2015,24/09/2015,Dry Season,19,25,Negative,21,8.53E+08,,,,,,,,94,46,100,49,49
+6415A2,Micronutrient,No Amino Acids,Post-Intervention,6415,Duodenal Aspirate,1,17/03/2016,17/03/2016,,Wet Season,18,27,Negative,21,1.63E+08,,,,,,,,92,23,96,24,25
+6415S1,Micronutrient,No Amino Acids,Pre-Intervention,6415,Stool,1,15/10/2015,15/10/2015,24/09/2015,Dry Season,19,25,Negative,21,,,,,,,,,94,46,100,49,49
+6415S2,Micronutrient,No Amino Acids,Post-Intervention,6415,Stool,1,17/03/2016,17/03/2016,,Wet Season,18,27,Negative,21,,,,,,,,,92,23,96,24,25
+6416S1,,,Pre-Intervention,6416,Stool,2,17/11/2015,17/11/2015,02/11/2015,Wet Season,19,25,Negative,18,,187,145,201,3694,739,119716,23943,,,100,52,52
+6417S1,,,Pre-Intervention,6417,Stool,2,09/11/2015,09/11/2015,16/10/2015,Wet Season,19,26,Negative,18,,254,135,178,2204,735,96645,32215,,,100,99,99
+6419A1,Amino acid,Amino acid,Pre-Intervention,6419,Duodenal Aspirate,1,18/11/2015,18/11/2015,29/10/2015,Wet Season,20,26,Positive,38,3.43E+08,254,122,217,2485,828,103797,34599,94,61,100,65,65
+6419A2,Amino acid,Amino acid,Post-Intervention,6419,Duodenal Aspirate,1,31/03/2016,31/03/2016,,Wet Season,,25,Positive,38,2.89E+08,245,168,199,10264,855,374417,31201,92,61,94,62,66
+6419S1,Amino acid,Amino acid,Pre-Intervention,6419,Stool,1,18/11/2015,18/11/2015,29/10/2015,Wet Season,20,26,Positive,38,,254,122,217,2485,828,103797,34599,94,61,100,65,65
+6419S2,Amino acid,Amino acid,Post-Intervention,6419,Stool,1,31/03/2016,31/03/2016,,Wet Season,,25,Positive,38,,245,168,199,10264,855,374417,31201,92,61,94,62,66
+6421A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6421,Duodenal Aspirate,1,19/11/2015,19/11/2015,02/11/2015,Wet Season,28,35,Negative,28,1.74E+08,242,156,197,6475,809,240488,30061,84,96,96,110,114
+6421S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6421,Stool,1,19/11/2015,19/11/2015,02/11/2015,Wet Season,28,35,Negative,28,,242,156,197,6475,809,240488,30061,84,96,96,110,114
+6421S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6421,Stool,1,11/04/2016,11/04/2016,,Wet Season,29,36,Negative,28,,206,131,172,5556,794,159593,22799,,,,,
+6422A1,Placebo,No Amino Acids,Pre-Intervention,6422,Duodenal Aspirate,1,23/11/2015,23/11/2015,02/11/2015,Wet Season,21,27,Negative,45,1.66E+08,227,203,242,7251,1209,208815,34802,,,,,0
+6422A2,Placebo,No Amino Acids,Post-Intervention,6422,Duodenal Aspirate,1,06/04/2016,06/04/2016,,Wet Season,22,26,Negative,45,2.47E+08,178,127,181,8841,680,307008,23616,,,23,18,80
+6422S1,Placebo,No Amino Acids,Pre-Intervention,6422,Stool,1,23/11/2015,23/11/2015,02/11/2015,Wet Season,21,27,Negative,45,,227,203,242,7251,1209,208815,34802,,,,,0
+6422S2,Placebo,No Amino Acids,Post-Intervention,6422,Stool,1,06/04/2016,06/04/2016,,Wet Season,22,26,Negative,45,,178,127,181,8841,680,307008,23616,,,23,18,80
+6424A2,Amino acid,Amino acid,Post-Intervention,6424,Duodenal Aspirate,1,14/04/2016,14/04/2016,,Wet Season,18,22,,36,355000,224,139,229,6271,896,244098,34871,76,67,88,77,88
+6424S1,Amino acid,Amino acid,Pre-Intervention,6424,Stool,1,24/11/2015,24/11/2015,19/11/2015,Wet Season,19,24,Negative,36,,210,207,138,1304,652,44428,22214,96,92,96,92,96
+6424S2,Amino acid,Amino acid,Post-Intervention,6424,Stool,1,14/04/2016,14/04/2016,,Wet Season,18,22,Negative,36,,224,139,229,6271,896,244098,34871,76,67,88,77,88
+6426A1,Placebo,No Amino Acids,Pre-Intervention,6426,Duodenal Aspirate,2,19/11/2015,20/11/2015,13/11/2015,Wet Season,22,26,Negative,25,35700000,197,170,221,7800,975,223406,27926,89,89,99,99,100
+6426A2,Placebo,No Amino Acids,Post-Intervention,6426,Duodenal Aspirate,2,07/04/2016,07/04/2016,,Wet Season,,27,Negative,25,4.11E+08,124,114,179,5143,514,156735,15673,10,10,17,17,98
+6426S1,Placebo,No Amino Acids,Pre-Intervention,6426,Stool,2,19/11/2015,20/11/2015,13/11/2015,Wet Season,22,26,Negative,25,,197,170,221,7800,975,223406,27926,89,89,99,99,100
+6426S2,Placebo,No Amino Acids,Post-Intervention,6426,Stool,2,07/04/2016,07/04/2016,,Wet Season,,27,Negative,25,,124,114,179,5143,514,156735,15673,10,10,17,17,98
+6427A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6427,Duodenal Aspirate,2,23/11/2015,23/11/2015,16/11/2015,Wet Season,24,30,Positive,26,1.79E+08,217,194,270,6267,1253,202732,40546,91,107,92,108,118
+6427A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6427,Duodenal Aspirate,2,06/04/2016,06/04/2016,,Wet Season,24,31,Positive,26,3.64E+08,275,157,261,9094,1137,404798,50600,78,54,78,54,69
+6427S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6427,Stool,2,23/11/2015,23/11/2015,16/11/2015,Wet Season,24,30,Positive,26,,217,194,270,6267,1253,202732,40546,91,107,92,108,118
+6427S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6427,Stool,2,06/04/2016,06/04/2016,,Wet Season,24,31,Positive,26,,275,157,261,9094,1137,404798,50600,78,54,78,54,69
+6428A1,Amino acid,Amino acid,Pre-Intervention,6428,Duodenal Aspirate,2,02/12/2015,02/12/2015,25/11/2015,Wet Season,25,29,Negative,39,2.60E+07,230,154,262,10102,1010,371782,37178,5,9,10,17,168
+6428A2,Amino acid,Amino acid,Post-Intervention,6428,Duodenal Aspirate,2,08/04/2016,08/04/2016,,Wet Season,26,29,Negative,39,1470000,179,99,159,1365,683,41841,20921,88,73,83,69,83
+6428S1,Amino acid,Amino acid,Pre-Intervention,6428,Stool,2,02/12/2015,02/12/2015,25/11/2015,Wet Season,25,29,Negative,39,,230,154,262,10102,1010,371782,37178,5,9,10,17,168
+6428S2,Amino acid,Amino acid,Post-Intervention,6428,Stool,2,08/04/2016,08/04/2016,,Wet Season,26,29,Negative,39,,179,99,159,1365,683,41841,20921,88,73,83,69,83
+6429A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6429,Duodenal Aspirate,2,02/12/2015,02/12/2015,25/11/2015,Wet Season,22,27,Negative,23,34700000,,,,,,,,65,36,100,55,55
+6429A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6429,Duodenal Aspirate,2,08/04/2016,08/04/2016,,Wet Season,23,27,Negative,23,12500000,,,,,,,,68,55,81,66,81
+6429S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6429,Stool,2,02/12/2015,02/12/2015,25/11/2015,Wet Season,22,27,Negative,23,,,,,,,,,65,36,100,55,55
+6429S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6429,Stool,2,08/04/2016,08/04/2016,,Wet Season,23,27,Negative,23,,,,,,,,,68,55,81,66,81
+6430A1,Micronutrient,No Amino Acids,Pre-Intervention,6430,Duodenal Aspirate,2,08/12/2015,08/12/2015,01/12/2015,Wet Season,22,30,Negative,35,29300000,253,128,221,5081,1016,211490,42298,40,21,11,6,53
+6430S1,Micronutrient,No Amino Acids,Pre-Intervention,6430,Stool,2,08/12/2015,08/12/2015,01/12/2015,Wet Season,22,30,Negative,35,,253,128,221,5081,1016,211490,42298,40,21,11,6,53
+6430S2,Micronutrient,No Amino Acids,Post-Intervention,6430,Stool,2,13/04/2016,13/04/2016,,Wet Season,22,30,Negative,35,,197,127,173,6068,674,206383,22931,85,28,85,28,33
+6431S1,,,Pre-Intervention,6431,Stool,1,04/12/2015,04/12/2015,26/11/2015,Wet Season,22,28,Negative,25,,214,151,247,5322,887,212263,35377,,,34,16,47
+6432A1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6432,Duodenal Aspirate,1,04/12/2015,04/12/2015,26/11/2015,Wet Season,20,25,Negative,25,46100000,179,132,181,6975,775,207321,23036,28,19,35,24,69
+6432A2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6432,Duodenal Aspirate,1,11/04/2016,11/04/2016,,Wet Season,19,26,Negative,20,23900000,155,121,196,10118,723,304197,21728,,,,,
+6432S1,Amino acid & Micronutrient,Amino acid,Pre-Intervention,6432,Stool,1,04/12/2015,04/12/2015,26/11/2015,Wet Season,20,25,Negative,20,,179,132,181,6975,775,207321,23036,28,19,35,24,69
+6432S2,Amino acid & Micronutrient,Amino acid,Post-Intervention,6432,Stool,1,11/04/2016,11/04/2016,,Wet Season,19,26,Negative,20,,155,121,196,10118,723,304197,21728,,,,,
+6433S1,,,Pre-Intervention,6433,Stool,2,08/12/2015,08/12/2015,30/11/2015,Wet Season,25,27,Negative,20,,217,147,270,3260,1087,112184,37395,,,97,57,59
+6434S1,,,Pre-Intervention,6434,Stool,2,03/12/2015,03/12/2015,26/11/2015,Wet Season,27,30,Positive,32,,348,203,427,4984,831,193197,32199,,,64,34,53
