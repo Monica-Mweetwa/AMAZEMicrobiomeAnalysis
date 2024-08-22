@@ -382,8 +382,8 @@ lm_mod_func = function(var,data){
                   trans_args = list(zero_replace = "halfmin"),
                   variables = c(var, "hiv_status", "baseline_age"))
   lm_stats <- taxatree_models2stats(mod_lm)
-  lm_stats <- taxatree_stats_p_adjust(data = lm_stats, method = "BY", grouping = "rank")
-  lm_stats2 <- lm_stats %>% taxatree_stats_get() %>% filter(p.adj.BY.rank < 0.05) %>% filter(term == var)
+  lm_stats <- taxatree_stats_p_adjust(data = lm_stats, method = "BH", grouping = "rank")
+  lm_stats2 <- lm_stats %>% taxatree_stats_get() %>% filter(p.adj.BH.rank < 0.05) %>% filter(term == var)
   print(lm_stats2)
 }
 
@@ -400,7 +400,7 @@ vw_lm <- lm_mod_func(var = "VW_mean", data = amaze_dup_base_duod)
 cle_lm <- lm_mod_func(var = "CLE_Fields", data = amaze_dup_base_duod)
 #merge the data and save
 df_list <- list(crp_lm, scd14_lm, lps_lm, vh_lm, cd_lm, vw_lm, cle_lm)
-lm_biomarkers_duod <- reduce(df_list,full_join)
+lm_biomarkers_duod <- reduce(df_list,full_join) #CRP is the only one with data
 write.csv(lm_biomarkers_duod, "Outputs/2. Baseline/biomarker_morph_assoc_duod.csv")
 
 
@@ -416,9 +416,107 @@ vw_lm <- lm_mod_func(var = "VW_mean", data = amaze_dup_base_stool)
 cle_lm <- lm_mod_func(var = "CLE_Fields", data = amaze_dup_base_stool)
 #merge the data and save
 df_list <- list(crp_lm, scd14_lm, lps_lm, vh_lm, cd_lm, vw_lm, cle_lm)
-lm_biomarkers_stool <- reduce(df_list,full_join)
+lm_biomarkers_stool <- reduce(df_list,full_join) #CRP is the only one with data
 write.csv(lm_biomarkers_stool, "Outputs/2. Baseline/biomarker_morph_assoc_stool.csv")
 ```
+
+Plot significant associations i.e 
+CRP with Capnocytophaga & Bergeyella in duodenum 
+CRP with Intestinibacter & Flavonifractor in stool
+```{r}
+plot_data <- amaze_dup_base_duod %>%
+  tax_fix() %>%
+  tax_transform("compositional", rank = "Genus") %>%
+  tax_transform("log2", zero_replace = "halfmin", chain = TRUE) %>%
+  ps_get() %>%
+  ps_otu2samdat(c("Capnocytophaga", "Bergeyella")) %>% # adds Capnocytophaga as sample data!
+  samdat_tbl()
+
+Capno_duod <- ggplot(plot_data, aes(x = CRP, y = Capnocytophaga)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE) +
+  scale_y_continuous(
+    breaks = log2(1 / 2^(0:15)),
+    labels = function(x) paste0(100 * round(2^x, digits = 5), "%"),
+    limits = c(log2(0.00005), log2(0.25))
+  ) +
+  labs(y = "Capnocytophaga Abundance\nin Duodenal Aspirate") +
+  #scale_x_log10() +
+  annotate("text", 
+           x = 10000, 
+           y = log2(0.22), 
+           label = paste("p = 0.002"),
+           size = 5) +
+  theme_classic()
+
+Berge_duod <- ggplot(plot_data, aes(x = CRP, y = Bergeyella)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE) +
+  scale_y_continuous(
+    breaks = log2(1 / 2^(0:15)),
+    labels = function(x) paste0(100 * round(2^x, digits = 5), "%"),
+    limits = c(log2(0.00005), log2(0.25))
+  ) +
+  labs(y = "Bergeyella Abundance in\nDuodenal Aspirate") +
+  #scale_x_log10() +
+  annotate("text", 
+           x = 10000, 
+           y = log2(0.22), 
+           label = paste("p = 0.047"),
+           size = 5) +
+  theme_classic()
+
+
+plot_data <- amaze_dup_base_stool %>%
+  tax_fix() %>%
+  tax_transform("compositional", rank = "Genus") %>%
+  tax_transform("log2", zero_replace = "halfmin", chain = TRUE) %>%
+  ps_get() %>%
+  ps_otu2samdat(c("Intestinibacter", "Flavonifractor")) %>% # adds Intestinibacter as sample data!
+  samdat_tbl()
+
+intest_stool <- ggplot(plot_data, aes(x = CRP, y = Intestinibacter)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE) +
+  scale_y_continuous(
+    breaks = log2(1 / 2^(0:16)),
+    labels = function(x) paste0(100 * round(2^x, digits = 5), "%"),
+    limits = c(log2(0.00005), log2(0.25))
+  ) +
+  labs(y = "Intestinibacter Abundance\nin Stool") +
+  scale_x_log10() +
+  annotate("text", 
+           x = 1000, 
+           y = log2(0.22), 
+           label = paste("p = 0.005"),
+           size = 5) +
+  theme_classic()
+
+flav_stool <- ggplot(plot_data, aes(x = CRP, y = Flavonifractor)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = TRUE) +
+  scale_y_continuous(
+    breaks = log2(1 / 2^(0:16)),
+    labels = function(x) paste0(100 * round(2^x, digits = 5), "%"),
+    limits = c(log2(0.00005), log2(0.25))
+  ) +
+  labs(y = "Flavonifractor Abundance\nin Stool") +
+  scale_x_log10() +
+  annotate("text", 
+           x = 1000, 
+           y = log2(0.22), 
+           label = paste("p = 0.046"),
+           size = 5) +
+  theme_classic()
+
+
+biomarker_lot <- ggpubr::ggarrange(ggarrange(Capno_duod, Berge_duod),
+                                   ggarrange(intest_stool, flav_stool), 
+                                   labels = c("A", "B"),
+                                   nrow = 2)
+ggsave("Outputs/2. Baseline/SuppFig5.png", plot = biomarker_lot, dpi = 600, device = "png", width = 24, height = 15, units = "cm")
+```
+
 
 6. Differential abundance of genera  for HIV status in stool samples - Maaslin2
 ```{r}
@@ -432,7 +530,7 @@ mas_P <- Maaslin2(
   input_metadata = data.frame(sample_data(ps_stool.pre)),
   output = "Outputs/2. Baseline/DiffStool_HIV_Status",
   min_abundance = 0.001,
-  min_prevalence = 0.05,
+  min_prevalence = 0.1,
   normalization = "TMM",
   transform = "NONE",
   analysis_method = "NEGBIN",
@@ -471,7 +569,6 @@ ggsave("Outputs/2. Baseline/SuppFig4.png", plot = lda.hivstatus, dpi = 600, devi
 
 Duodenal and Stool microbial correlations
 ```{r}
-
 load("Inputs/RData/AMAZE_ps_filtered.RData")
 
 library(ggplot2)
@@ -480,9 +577,14 @@ library(tidyverse)
 library(microbiome)
 library(microViz)
 amaze_dup2 <- subset_samples(ps_filtered, Timepoint == "Pre-Intervention")
+# Define the threshold: 20% of the total number of samples
+threshold <- 0.2 * nsamples(amaze_dup2)
+# Filter taxa based on presence in at least 20% of samples
+physeq_filtered <- prune_taxa(taxa_sums(amaze_dup2) > 0 & rowSums(otu_table(amaze_dup2) > 0) >= threshold, amaze_dup2)
+# physeq_filtered now contains only the taxa present in at least 20% of the samples
 
-tax_t <- as.data.frame(amaze_dup2@otu_table) 
-met_t <- as.data.frame(amaze_dup2@sam_data)
+tax_t <- as.data.frame(physeq_filtered@otu_table) 
+met_t <- as.data.frame(physeq_filtered@sam_data)
 
 
 tax_2 <- tax_t %>%
@@ -527,7 +629,7 @@ forcorr2_t <- t(forcorr3)
 #Calculate correlation coefficient
 library(psych)
 library(tidyverse)
-adj.dat <- corr.test(forcorr2_t, method = "spearman", adjust = "holm")
+adj.dat <- corr.test(forcorr2_t, method = "spearman", adjust = "BY")
 write.csv(adj.dat$ci, "Outputs/2. Baseline/SpearmanCorr/microbe_cor_pval.csv")
 write.csv(adj.dat$ci2, "Outputs/2. Baseline/SpearmanCorr/microbe_cor_pval_adjust.csv")
 write.csv(adj.dat$r, "Outputs/2. Baseline/SpearmanCorr/microbe_cor_rvalues.csv")
@@ -563,5 +665,28 @@ data_fin2 <- data_fin2%>%
            (str_detect(tax, term2) & str_detect(tax2, term1)))
 
 write.csv(data_fin2, "Outputs/2. Baseline/microbe_cor_sig_duod_stool.csv")
+
+#Correlation plot
+#filter correlation matrix for correlations between duodenal and stool microbes only
+corrs <- readxl::read_excel("Outputs/2. Baseline/SpearmanCorr/microbe_corrplot.xlsx")
+#mat <- adj.dat$r
+#filtered_mat <- mat[rownames(mat) %in% corrs$tx, ]
+#filtered_mat2 <- mat[, colnames(filtered_mat) %in% corrs$tx2]
+
+# Plot
+library(ggplot2)
+cr_plot <- ggplot(data = corrs, aes(x=fct_reorder(Duod,r), y=fct_reorder(Stool,r), fill=r)) + 
+  geom_tile(color = "white")+
+ scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+   midpoint = 0, limit = c(-1,1), space = "Lab", 
+   name="Spearson\nCorrelation") +
+  theme_minimal() + 
+  labs(y = "Stool Genera", x = "Duodenal Genera") +
+ theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+    size = 12, hjust = 1)) +
+ coord_fixed()
+
+ggsave("Outputs/2. Baseline/SuppFig6.png", plot = cr_plot, dpi = 300, device = "png", width = 55, height = 75, units = "cm")
 ```
+
 
