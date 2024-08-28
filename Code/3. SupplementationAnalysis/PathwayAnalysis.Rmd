@@ -6,8 +6,8 @@ Date: 20th May 2024
 
 1. Set working directory
 ```{r setup}
-    #knitr::opts_knit$set(root.dir = normalizePath("C:/Users/Monica/Dropbox/AMAZE")) 
-    knitr::opts_knit$set(root.dir = normalizePath("~/Library/CloudStorage/Dropbox/AMAZE")) 
+    knitr::opts_knit$set(root.dir = normalizePath("C:/Users/Monica/Dropbox/AMAZE")) 
+    #knitr::opts_knit$set(root.dir = normalizePath("~/Library/CloudStorage/Dropbox/AMAZE")) 
 ```
 
 2. Load necessary packages 
@@ -52,6 +52,7 @@ path_df <- pathway_annotation(
 )
 
 #add pathway description to file
+library(tidyverse)
 feature_ann <- path_df %>% select(pathway, description) %>% mutate(pathID = pathway) %>%column_to_rownames(var = "pathway")
 ```
 
@@ -92,24 +93,26 @@ write_csv(notsig2, "Outputs/3. SupplementationAnalysis/PathwayAnalysis/lda_pathw
 
 
 
-Create MicrobiomeStat Object
+Placebo as reference
 ```{r}
 library(MicrobiomeStat)
 
 #1. duodenal samples
-metadata_duod <- metadata %>% filter(Sample_Type == "Duodenal Aspirate")
+metadata_duod <- metadata %>% filter(Sample.Type == "Duodenal Aspirate")
 MicrobiomeData_duod <- list(
   feature.tab = as.matrix(pathway_dat),
   meta.dat = metadata_duod,
   feature.ann = as.matrix(feature_ann)
 )
 
+#add time variable with pre-intervention as 0
+MicrobiomeData_duod[["meta.dat"]]$InterventionArm3 <- ifelse(MicrobiomeData_duod[["meta.dat"]]$InterventionArm == "Placebo", "_Placebo", MicrobiomeData_duod[["meta.dat"]]$InterventionArm)
 #Create models : pathway change test pair
 test.list_duod <- generate_taxa_change_test_pair(
   data.obj = MicrobiomeData_duod,
   subject.var = "PID",
   time.var = "Timepoint",
-  group.var = "Intervention_arm",
+  group.var = "InterventionArm3",
   adj.vars = NULL,
   change.base = "Pre-Intervention",
   feature.change.func = "log fold change",
@@ -122,19 +125,21 @@ test.list_duod <- generate_taxa_change_test_pair(
 #No significant pathways between intervention arms
 
 #2. stool samples
-metadata_stool <- metadata %>% filter(Sample_Type == "Stool")
+metadata_stool <- metadata %>% filter(Sample.Type == "Stool")
 MicrobiomeData_stool <- list(
   feature.tab = as.matrix(pathway_dat),
   meta.dat = metadata_stool,
   feature.ann = as.matrix(feature_ann)
 )
+#add time variable with pre-intervention as 0
+MicrobiomeData_stool[["meta.dat"]]$InterventionArm3 <- ifelse(MicrobiomeData_stool[["meta.dat"]]$InterventionArm == "Placebo", "_Placebo", MicrobiomeData_stool[["meta.dat"]]$InterventionArm)
 
 #Create models : pathway change test pair
 test.list_stool <- generate_taxa_change_test_pair(
   data.obj = MicrobiomeData_stool,
   subject.var = "PID",
   time.var = "Timepoint",
-  group.var = "Intervention_arm",
+  group.var = "InterventionArm3",
   adj.vars = NULL,
   change.base = "Pre-Intervention",
   feature.change.func = "log fold change",
@@ -146,5 +151,192 @@ test.list_stool <- generate_taxa_change_test_pair(
 
 #Miconutrient had 1 pathway significant after intervention compared to Placebo
 #save results:
-save(test.list_duod, test.list_stool, file = "Outputs/3. SupplementationAnalysis/Picrust2/LDA_Pathway.RData")
+#save(test.list_duod, test.list_stool, file = "Outputs/3. SupplementationAnalysis/LDA_Pathway.RData")
+
+#library(writexl)
+#write.xlsx(test.list_duod, "Outputs/3. SupplementationAnalysis/LDA_Pathway_duod.xlsx")
+#write.xlsx(test.list_stool, "Outputs/3. SupplementationAnalysis/LDA_Pathway_stool.xlsx")
+
+
 ```
+Mironutrient as reference
+```{r}
+library(MicrobiomeStat)
+
+#1. duodenal samples
+metadata_duod <- metadata %>% filter(Sample.Type == "Duodenal Aspirate")
+MicrobiomeData_duod <- list(
+  feature.tab = as.matrix(pathway_dat),
+  meta.dat = metadata_duod,
+  feature.ann = as.matrix(feature_ann)
+)
+
+#add time variable with pre-intervention as 0
+MicrobiomeData_duod[["meta.dat"]]$InterventionArm3 <- ifelse(MicrobiomeData_duod[["meta.dat"]]$InterventionArm == "Micronutrient", "_Micronutrient", MicrobiomeData_duod[["meta.dat"]]$InterventionArm)
+#Create models : pathway change test pair
+test.list_duod_mm <- generate_taxa_change_test_pair(
+  data.obj = MicrobiomeData_duod,
+  subject.var = "PID",
+  time.var = "Timepoint",
+  group.var = "InterventionArm3",
+  adj.vars = NULL,
+  change.base = "Pre-Intervention",
+  feature.change.func = "log fold change",
+  feature.level = "pathID",
+  prev.filter = 0.01,
+  abund.filter = 0.001,
+  feature.dat.type = "count"
+)
+
+#No significant pathways between intervention arms
+
+#2. stool samples
+metadata_stool <- metadata %>% filter(Sample.Type == "Stool")
+MicrobiomeData_stool <- list(
+  feature.tab = as.matrix(pathway_dat),
+  meta.dat = metadata_stool,
+  feature.ann = as.matrix(feature_ann)
+)
+#add time variable with pre-intervention as 0
+MicrobiomeData_stool[["meta.dat"]]$InterventionArm3 <- ifelse(MicrobiomeData_stool[["meta.dat"]]$InterventionArm == "Micronutrient", "_Micronutrient", MicrobiomeData_stool[["meta.dat"]]$InterventionArm)
+
+#Create models : pathway change test pair
+test.list_stool_mm <- generate_taxa_change_test_pair(
+  data.obj = MicrobiomeData_stool,
+  subject.var = "PID",
+  time.var = "Timepoint",
+  group.var = "InterventionArm3",
+  adj.vars = NULL,
+  change.base = "Pre-Intervention",
+  feature.change.func = "log fold change",
+  feature.level = "pathID",
+  prev.filter = 0.01,
+  abund.filter = 0.001,
+  feature.dat.type = "count"
+)
+```
+
+Combined as reference
+```{r}
+library(MicrobiomeStat)
+
+#1. duodenal samples
+metadata_duod <- metadata %>% filter(Sample.Type == "Duodenal Aspirate")
+MicrobiomeData_duod <- list(
+  feature.tab = as.matrix(pathway_dat),
+  meta.dat = metadata_duod,
+  feature.ann = as.matrix(feature_ann)
+)
+
+#add time variable with pre-intervention as 0
+MicrobiomeData_duod[["meta.dat"]]$InterventionArm3 <- ifelse(MicrobiomeData_duod[["meta.dat"]]$InterventionArm == "Combined", "_Micronutrient", MicrobiomeData_duod[["meta.dat"]]$InterventionArm)
+#Create models : pathway change test pair
+test.list_duod_cc <- generate_taxa_change_test_pair(
+  data.obj = MicrobiomeData_duod,
+  subject.var = "PID",
+  time.var = "Timepoint",
+  group.var = "InterventionArm3",
+  adj.vars = NULL,
+  change.base = "Pre-Intervention",
+  feature.change.func = "log fold change",
+  feature.level = "pathID",
+  prev.filter = 0.01,
+  abund.filter = 0.001,
+  feature.dat.type = "count"
+)
+
+#No significant pathways between intervention arms
+
+#2. stool samples
+metadata_stool <- metadata %>% filter(Sample.Type == "Stool")
+MicrobiomeData_stool <- list(
+  feature.tab = as.matrix(pathway_dat),
+  meta.dat = metadata_stool,
+  feature.ann = as.matrix(feature_ann)
+)
+#add time variable with pre-intervention as 0
+MicrobiomeData_stool[["meta.dat"]]$InterventionArm3 <- ifelse(MicrobiomeData_stool[["meta.dat"]]$InterventionArm == "Combined", "_Combined", MicrobiomeData_stool[["meta.dat"]]$InterventionArm)
+
+#Create models : pathway change test pair
+test.list_stool_cc <- generate_taxa_change_test_pair(
+  data.obj = MicrobiomeData_stool,
+  subject.var = "PID",
+  time.var = "Timepoint",
+  group.var = "InterventionArm3",
+  adj.vars = NULL,
+  change.base = "Pre-Intervention",
+  feature.change.func = "log fold change",
+  feature.level = "pathID",
+  prev.filter = 0.01,
+  abund.filter = 0.001,
+  feature.dat.type = "count"
+)
+```
+
+Generate volcano plots
+```{r}
+# Stool
+plot.list <- generate_taxa_volcano_single(
+  data.obj = MicrobiomeData_stool,
+  group.var = "InterventionArm3",
+  test.list = test.list_stool,
+  feature.sig.level = 0.05,
+  feature.mt.method = "fdr"
+)
+#duodenum
+plot.list1 <- generate_taxa_volcano_single(
+  data.obj = MicrobiomeData_duod,
+  group.var = "InterventionArm3",
+  test.list = test.list_duod,
+  feature.sig.level = 0.05,
+  feature.mt.method = "fdr"
+)
+library(ggpubr)
+g1 <- ggarrange(ggarrange(plot.list1[["pathID"]][["Amino Acid vs _Placebo (Reference)"]],
+                            plot.list1[["pathID"]][["Combined vs _Placebo (Reference)"]],
+                            plot.list1[["pathID"]][["Micronutrient vs _Placebo (Reference)"]],
+                            nrow = 1,
+                          common.legend = T,
+                          legend = "right"),
+                ggarrange(plot.list[["pathID"]][["Amino Acid vs _Placebo (Reference)"]],
+                          plot.list[["pathID"]][["Combined vs _Placebo (Reference)"]],
+                          plot.list[["pathID"]][["Micronutrient vs _Placebo (Reference)"]],
+                          nrow = 1,
+                          common.legend = T,
+                          legend = "right"),
+                nrow = 2,
+                common.legend = T,
+                legend = "right")
+
+ggsave(plot = g1, filename = "Outputs/3. SupplementationAnalysis/PathwayAnalysis/ALLvsPlacebo2.png", dpi = 600, width = 45, height = 20, units = "cm")
+```
+
+Indivdual pathways boxplot
+```{r}
+generate_taxa_indiv_boxplot_long(
+   data.obj = MicrobiomeData_stool,
+   subject.var = "PID",
+   time.var = "Timepoint",
+   t0.level = "Pre-Intervention",
+   ts.levels = "Post-Intervention",
+   group.var = "InterventionArm",
+   #strata.var = "sex",
+   feature.level = c("pathID"),
+   feature.dat.type = "count",
+   features.plot = NULL,
+   top.k.plot = NULL,
+   top.k.func = NULL,
+   transform = "log",
+   prev.filter = 0.1,
+   abund.filter = 0.001,
+   base.size = 20,
+   theme.choice = "bw",
+   custom.theme = NULL,
+   palette = NULL,
+   pdf = TRUE,
+   file.ann = NULL,
+   pdf.wid = 11,
+   pdf.hei = 8.5
+)
+```
+

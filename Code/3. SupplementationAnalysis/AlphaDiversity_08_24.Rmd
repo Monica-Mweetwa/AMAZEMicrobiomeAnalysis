@@ -1,0 +1,209 @@
+---
+title: "2. Alpha diversity"
+Author: Monica Mweetwa
+Date: 20th May 2024
+---
+
+1. Set working directory
+```{r setup}
+    #knitr::opts_knit$set(root.dir = normalizePath("C:/Users/Monica/Dropbox/AMAZE")) 
+    knitr::opts_knit$set(root.dir = normalizePath("~/Library/CloudStorage/Dropbox/AMAZE")) 
+```
+
+2. Load necessary packages 
+```{r include=FALSE}
+library(btools)
+library(ggpubr) 
+library(ggh4x)
+library(ggplot2)
+library(ggbeeswarm)
+library(microViz)
+library(phyloseq)
+library(patchwork)
+library(tidyverse)
+```
+
+3. Load data
+```{r}
+load("Inputs/RData/AMAZE_ps_filtered_pairs.RData")
+ps_filtered
+```
+
+```{r}
+##Estimate Faith's PD Richness that also takes into account phylogenetic relationship 
+library(btools)
+library(tidyverse)
+pd <- estimate_pd(ps_filtered)
+##combine with metadata 
+ad = sample_data(ps_filtered)
+AlphaDiv = merge(pd, ad, by = 'row.names')
+
+write.csv(AlphaDiv, "Outputs/3. SupplementationAnalysis/AlphaDiversity/Alpha_div.csv")
+```
+
+
+2-way ANOVA
+```{r}
+#Duodenum
+library(ez)
+
+# remove missing rows
+data_clean <- AlphaDiv %>%
+  filter(Sample.Type == "Duodenal Aspirate") %>%
+  filter(!is.na(PD)) %>%
+  filter(duplicated(PID) | duplicated(PID, fromLast = TRUE))
+
+result <- ezANOVA(
+  data = data_clean,
+  dv = PD,
+  wid = PID,
+  between = .(InterventionArm),
+  within = .(Timepoint),
+  type = 3
+)
+
+print(result)
+
+#Stool
+library(ez)
+# remove missing rows
+data_clean <- AlphaDiv %>%
+  filter(Sample.Type == "Stool") %>%
+  filter(!is.na(PD)) %>%
+  filter(duplicated(PID) | duplicated(PID, fromLast = TRUE))
+
+result <- ezANOVA(
+  data = data_clean,
+  dv = PD,
+  wid = PID,
+  between = .(InterventionArm),
+  within = .(Timepoint),
+  type = 3
+)
+
+print(result)
+```
+
+Plot with anova output added
+```{r}
+#Plot alpha diversity
+cols2 <- c("Pre-Intervention" = "orange", "Post-Intervention" = "blue")
+int_names <- c("AA", "AA+MM", "MM", "PP")
+library(ggplot2)
+library(ggbeeswarm) #for geom_quasirandom
+library(ggpubr) #for stat_compare_means
+alpha.plot_duod <- ggplot(AlphaDiv %>% filter(Sample.Type == "Duodenal Aspirate"), 
+                     aes(InterventionArm, PD, fill = Timepoint)) + 
+  geom_boxplot(aes(fill = Timepoint), outlier.shape = NA, size = 0.8, width = 0.8) +
+  geom_quasirandom(size = 0.8, color = "black") + 
+  scale_x_discrete(labels = int_names) +
+  theme_bw() + 
+  theme_classic() +
+  scale_fill_manual(values = cols2) +
+  #facet_wrap(~Sample.Type, nrow = 1) +
+  annotate("text", x = 0.01, y = 20, label = paste("2-way ANOVA Test: F = 0.32, p = 0.813"),
+  size = 5) +
+  labs(title = "Doudenal Aspirate",
+       x = " ", 
+       y = "Faiths PD")  +
+  theme(axis.text.x = element_text(size = 14, vjust = 0.5),
+        axis.text.y = element_text(size = 14),
+        plot.title = element_text(size = 14, hjust = 0.5),
+        axis.title = element_text(size = 14))
+alpha.plot_stool <- ggplot(AlphaDiv %>% filter(Sample.Type == "Stool"), 
+                     aes(InterventionArm, PD, fill = Timepoint)) + 
+  geom_boxplot(aes(fill = Timepoint), outlier.shape = NA, size = 0.8, width = 0.8) +
+  geom_quasirandom(size = 0.8, color = "black") + 
+  scale_x_discrete(labels = int_names) +
+  theme_bw() + 
+  theme_classic() +
+  scale_fill_manual(values = cols2) +
+  #facet_wrap(~Sample.Type, nrow = 1) +
+  annotate("text", x = 0.01, y = 20, label = paste("2-way ANOVA Test:", "F = 1.88, p = 0.139"),
+  size = 5) +
+  labs(title = "Stool",
+       x = " ", 
+       y = "Faiths PD")  +
+  theme(axis.text.x = element_text(size = 14, vjust = 0.5),
+        axis.text.y = element_text(size = 14),
+        plot.title = element_text(size = 14, hjust = 0.5),
+        axis.title = element_text(size = 14))
+
+alpha.plot <- ggarrange(alpha.plot_duod, alpha.plot_stool, legend = "right", common.legend = T)
+#Save plot
+ggsave("Outputs/3. SupplementationAnalysis/AlphaDiversity/AlphaPlot.png", plot = alpha.plot, dpi = 600, device = "png", width = 30, height = 15, units = "cm")
+
+#save for combined plots
+save(alpha.plot, file = "Inputs/RData/ForCombinedPlots/AlphaPlotMain.RData")
+```
+
+Plot AA vs No AA
+```{r}
+#anova
+
+#Stool
+library(ez)
+# remove missing rows
+data_clean <- AlphaDiv %>%
+  filter(Sample.Type == "Duodenal Aspirate") %>%
+  filter(!is.na(PD)) %>%
+  filter(duplicated(PID) | duplicated(PID, fromLast = TRUE))
+
+result <- ezANOVA(
+  data = data_clean,
+  dv = PD,
+  wid = PID,
+  between = .(InterventionArm2),
+  within = .(Timepoint),
+  type = 3
+)
+
+print(result)
+
+
+#Plot alpha diversity
+cols2 <- c("Pre-Intervention" = "orange", "Post-Intervention" = "blue")
+int_names <- c("AA", "no AA")
+library(ggplot2)
+library(ggbeeswarm) #for geom_quasirandom
+library(ggpubr) #for stat_compare_means
+alpha.plot_duod <- ggplot(AlphaDiv %>% filter(Sample.Type == "Duodenal Aspirate"), 
+                     aes(InterventionArm2, PD, fill = Timepoint)) + 
+  geom_boxplot(aes(fill = Timepoint), outlier.shape = NA, size = 0.8, width = 0.8) +
+  geom_quasirandom(size = 0.8, color = "black") + 
+  scale_x_discrete(labels = int_names) +
+  theme_bw() + 
+  theme_classic() +
+  scale_fill_manual(values = cols2) +
+  annotate("text", x = 0.01, y = 20, label = paste("F = 0.664, p = 0.418"),
+  size = 5) +
+  labs(title = "Doudenal Aspirate",
+       x = " ", 
+       y = "Faiths PD")  +
+  theme(axis.text.x = element_text(size = 14, vjust = 0.5),
+        axis.text.y = element_text(size = 14),
+        plot.title = element_text(size = 14, hjust = 0.5),
+        axis.title = element_text(size = 14))
+alpha.plot_stool <- ggplot(AlphaDiv %>% filter(Sample.Type == "Stool"), 
+                     aes(InterventionArm2, PD, fill = Timepoint)) + 
+  geom_boxplot(aes(fill = Timepoint), outlier.shape = NA, size = 0.8, width = 0.8) +
+  geom_quasirandom(size = 0.8, color = "black") + 
+  scale_x_discrete(labels = int_names) +
+  theme_bw() + 
+  theme_classic() +
+  scale_fill_manual(values = cols2) +
+  annotate("text", x = 0.01, y = 20, label = paste("F = 0.208, p = 0.65"),
+  size = 5) +
+  labs(title = "Stool",
+       x = " ", 
+       y = "Faiths PD")  +
+  theme(axis.text.x = element_text(size = 14, vjust = 0.5),
+        axis.text.y = element_text(size = 14),
+        plot.title = element_text(size = 14, hjust = 0.5),
+        axis.title = element_text(size = 14))
+
+alpha.plot <- ggarrange(alpha.plot_duod, alpha.plot_stool, legend = "right", common.legend = T)
+#Save plot
+ggsave("Outputs/3. SupplementationAnalysis/AlphaDiversity/AlphaPlot_AAonly.png", plot = alpha.plot, dpi = 600, device = "png", width = 20, height = 10, units = "cm")
+
+```
