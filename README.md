@@ -24,8 +24,12 @@ The analysis was conducted using the following software and packages:
   - `ggrepel`: For enhancing plot labels.
   - `ggpubr`: For arranging plots and statistical comparisons.
   - `ez`: For performing ANOVA and other statistical tests.
-  - 'MicrobiomeStat'
-  - '
+  - `MicrobiomeStat`: For differential abundance analysis
+  - `Maaslin2`: For differential abundance analysis
+  - `MicroViz`: For differential abundance analysis
+  - `msa`: For mutliple sequence alignment
+  - `phyloseq`: For microbiome data handling
+  - `vegan`: For PERMANOVA analysis and phylogenetic tree construction 
 
 
 ## How to Use the Code
