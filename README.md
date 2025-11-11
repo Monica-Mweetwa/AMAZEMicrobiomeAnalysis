@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to the GitHub repository for the manuscript titled "Intestinal microbiome changes in response to amino acid and micronutrient supplementation: secondary analysis of the AMAZE Trial". This repository contains all the code and scripts used for the data analysis, visualization, and statistical tests presented in the manuscript. The code is organized and documented to facilitate reproducibility and transparency in our research.
+This is the GitHub repository for the manuscript titled "Intestinal microbiome changes in response to amino acid and micronutrient supplementation: secondary analysis of the AMAZE Trial". This repository contains all the code and scripts used for the data analysis, visualization, and statistical tests presented in the manuscript. The code is organized and documented to facilitate reproducibility and transparency in our research.
 
 ## Repository Structure
 
@@ -35,13 +35,13 @@ The analysis was conducted using the following software and packages:
 ## How to Use the Code
 
 2. **Run the analysis**:
-   - 1. `DataCleaning/`: This folder conatis all the code used to preprocesses the raw count data and prepares it for analysis.
+   - 1. `DataCleaning/`: This folder conatis all the code used to preprocess the raw count data and prepares it for analysis.
      2. `Baseline_08_24.Rmd`: Performs statistical tests of the baseline mcirobiome data.
-     3. `3. SupplementationAnalysis`: This folder conatis all the code used to anylse micrla changes after intervention
+     3. `3. SupplementationAnalysis`: This folder contains all the code used to anaylse microbial changes after intervention
 
 ## Contact Information
 
-If you have any questions, or comments, with the code, please feel free to contact:
+If you have any questions or comments with the code, please feel free to contact:
 
 - **Lead Author**: [Monica N Mweetwa]  
   **Email**: [monica@tropgan.com]  
