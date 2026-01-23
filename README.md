@@ -8,7 +8,7 @@ This is the GitHub repository for the manuscript titled "Intestinal microbiome c
 
 The repository is organized into the following directories:
 
-- **`/Data/`**: Contains raw and processed data files used in the analysis. Note that some data files may not be included due to privacy or size constraints.
+- **`/Data/`**: Contains raw and processed data files used in the analysis. **NOTE**: This is in the prcoess of being updated. 
 - **`/Code/`**: Contains all R scripts used for data processing, analysis, and visualization.  **NOTE**: This is in the prcoess of being updated. 
 - **`/Docs/`**: Includes additional documentation, such as method details, supplementary information, and references.
 
