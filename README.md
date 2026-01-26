@@ -8,9 +8,10 @@ This is the GitHub repository for the manuscript titled "Intestinal microbiome c
 
 The repository is organized into the following directories:
 
-- **`/Data/`**: Contains raw and processed data files used in the analysis. **NOTE**: This is in the prcoess of being updated. 
 - **`/Code/`**: Contains all R scripts used for data processing, analysis, and visualization.  **NOTE**: This is in the prcoess of being updated. 
-- **`/Docs/`**: Includes additional documentation, such as method details, supplementary information, and references.
+- **`/Docs/`**: Includes additional documentation, such as method details.
+
+the data associated with this project is submitted to Dryad under the accession number : 
 
 ## Dependencies
 
@@ -35,8 +36,7 @@ The analysis was conducted using the following software and packages:
 ## How to Use the Code
 
 2. **Run the analysis**:
-   - 1. `DataCleaning/`: This folder conatis all the code used to preprocess the raw count data and prepares it for analysis.
-     2. `Baseline_08_24.Rmd`: Performs statistical tests of the baseline mcirobiome data.
+   - 2. `Baseline_08_24.Rmd`: Performs statistical tests of the baseline mcirobiome data.
      3. `3. SupplementationAnalysis`: This folder contains all the code used to anaylse microbial changes after intervention
 
 ## Contact Information
